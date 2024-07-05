@@ -1,7 +1,12 @@
+import HomePage from "./routes/HomePage";
 import "./App.css";
 
 function App() {
-  return <div className="App">carewise-front</div>;
+  return (
+    <div className="App">
+      <HomePage />
+    </div>
+  );
 }
 
 export default App;
