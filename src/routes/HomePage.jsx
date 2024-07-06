@@ -1,9 +1,11 @@
-import title from "../assets/images/title.png";
-
+// 홈화면
 const HomePage = () => {
   return (
     <div>
-      <img src={title} alt="title" />
+      {/* posting1 */}
+      {/* posting2 */}
+      {/* posting3 */}
+      {/* posting4 */}
     </div>
   );
 };
