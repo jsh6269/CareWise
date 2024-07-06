@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./routes/HomePage";
 import CareSearchPage from "./routes/CareSearchPage";
 import CareResultPage from "./routes/CareResultPage";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/label-ex-result" element={<LabelExResult />} />
           <Route path="/label-search" element={<LabelSearchPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
