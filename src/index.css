@@ -11,6 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   /* Custom Styles */
+  overflow-y: scroll;
   background-color: #ffffff;
   color: #000000;
 }
