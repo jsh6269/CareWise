@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import clothes from "../../assets/images/banner/clothes.png";
 import label3 from "../../assets/images/banner/label3.png";
 import label5 from "../../assets/images/banner/label5.png";
@@ -14,6 +15,8 @@ const Banner = (props) => {
       return Banner2;
     case 3:
       return Banner3;
+    default:
+      return <div>Unknown</div>;
   }
 };
 
@@ -41,11 +44,13 @@ const Banner1 = (
   <div className="w-[1440px] h-[480px]">
     <div className="w-[1440px] h-[480px] top-0 left-0 bg-[#b5b5b5]">
       <div className="relative w-[1051px] h-[259px] top-[127px] left-[198px]">
-        <button className="all-[unset] box-border flex w-[243px] items-center justify-center gap-2 px-3 py-4 absolute top-[206px] left-[808px] rounded-lg overflow-hidden border-2 border-solid border-white">
-          <button className="all-[unset] box-border relative w-fit mt-[-2.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-neutral-100 text-base tracking-[0] leading-4 whitespace-nowrap">
-            관리법 검색하러 가기
+        <Link to="/care-search">
+          <button className="all-[unset] box-border flex w-[243px] items-center justify-center gap-2 px-3 py-4 absolute top-[206px] left-[808px] rounded-lg overflow-hidden border-2 border-solid border-white">
+            <button className="all-[unset] box-border relative w-fit mt-[-2.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-neutral-100 text-base tracking-[0] leading-4 whitespace-nowrap">
+              관리법 검색하러 가기
+            </button>
           </button>
-        </button>
+        </Link>
         <img
           className="absolute w-[182px] h-[181px] top-0 left-[830px]"
           alt="clothes"
@@ -72,11 +77,13 @@ const Banner1 = (
 const Banner2 = (
   <div className="relative w-[1440px] h-[480px]">
     <div className="w-[1440px] h-[480px] top-0 left-0 bg-[#f8f8f8]">
-      <button className="all-[unset] box-border flex w-[287px] items-center justify-center gap-2 px-3 py-4 absolute top-[311px] left-[198px] rounded-lg overflow-hidden border-2 border-solid border-black">
-        <button className="all-[unset] box-border relative w-fit mt-[-2.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-base tracking-[0] leading-4 whitespace-nowrap">
-          세탁기호 분석하러 가기
+      <Link to="/label-ex">
+        <button className="all-[unset] box-border flex w-[287px] items-center justify-center gap-2 px-3 py-4 absolute top-[311px] left-[198px] rounded-lg overflow-hidden border-2 border-solid border-black">
+          <button className="all-[unset] box-border relative w-fit mt-[-2.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-base tracking-[0] leading-4 whitespace-nowrap">
+            세탁기호 분석하러 가기
+          </button>
         </button>
-      </button>
+      </Link>
       <div className="absolute w-[537px] h-[232px] top-[124px] left-[737px]">
         <div className="flex flex-col w-[537px] h-[232px] items-end gap-[21px] relative">
           <div className="self-stretch mt-[-1.00px] [font-family:'Inter-Light',Helvetica] font-light text-[25px] relative text-[#3f3f3f] tracking-[0] leading-[normal]">
@@ -94,7 +101,7 @@ const Banner2 = (
       </div>
       <img
         className="absolute w-[287px] h-[182px] top-[108px] left-[198px] object-cover"
-        alt="image"
+        alt="label5"
         src={label5}
       />
     </div>
@@ -106,14 +113,16 @@ const Banner3 = (
     <div className="w-[1440px] h-[480px] top-0 left-0">
       <div className="h-[480px] bg-[#e4e4e4]">
         <div className="relative w-[1044px] h-[210px] top-[127px] left-[198px]">
-          <button className="all-[unset] box-border flex w-[243px] items-center justify-center gap-2 px-3 py-4 absolute top-[162px] left-[801px] rounded-lg overflow-hidden border-2 border-solid border-[#3f3f3f]">
-            <button className="all-[unset] box-border relative w-fit mt-[-2.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-base tracking-[0] leading-4 whitespace-nowrap">
-              세탁기호 찾으러 가기
+          <Link to="/label-search">
+            <button className="all-[unset] box-border flex w-[243px] items-center justify-center gap-2 px-3 py-4 absolute top-[162px] left-[801px] rounded-lg overflow-hidden border-2 border-solid border-[#3f3f3f]">
+              <button className="all-[unset] box-border relative w-fit mt-[-2.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-base tracking-[0] leading-4 whitespace-nowrap">
+                세탁기호 찾으러 가기
+              </button>
             </button>
-          </button>
+          </Link>
           <img
             className="absolute w-[330px] h-[97px] top-[10px] left-[730px]"
-            alt="image"
+            alt="label3"
             src={label3}
           />
           <div className="flex flex-col w-[537px] items-end gap-[21px] absolute top-0 left-0 bg-[#e4e4e4]">
