@@ -13,15 +13,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/care-search" element={<CareSearchPage />} />
-          <Route path="/care-result" element={<CareResultPage />} />
-          <Route path="/label-ex" element={<LabelExPage />} />
-          <Route path="/label-ex-result" element={<LabelExResult />} />
-          <Route path="/label-search" element={<LabelSearchPage />} />
-        </Routes>
+        <div id="wrapper">
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/care-search" element={<CareSearchPage />} />
+            <Route path="/care-result" element={<CareResultPage />} />
+            <Route path="/label-ex" element={<LabelExPage />} />
+            <Route path="/label-ex-result" element={<LabelExResult />} />
+            <Route path="/label-search" element={<LabelSearchPage />} />
+          </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
     </div>
