@@ -7,3 +7,8 @@
   align-items: center;
   height: 100%;
 }
+
+#wrapper {
+  width: 1440px;
+  min-height: calc(100vh - 128px);
+}
