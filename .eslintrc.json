@@ -1,36 +1,11 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "parser": "@babel/eslint-parser",
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:prettier/recommended"
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "plugins": ["react", "react-hooks", "prettier"],
+  "extends": ["react-app", "eslint:recommended"],
   "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react/prefer-stateless-function": 0,
-    "react/jsx-filename-extension": 0,
-    "react/jsx-one-expression-per-line": 0
-  },
-  "globals": {
-    "React": "writable"
+    "no-var": "error", //var 금지
+    "no-multiple-empty-lines": "error", //여러 줄 공백 금지
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }], //console.log() 있으면 warning
+    "eqeqeq": "error", // 일치 연산자 사용 필수
+    "dot-notation": "error", // 가능하다면 dot notation 사용
+    "no-unused-vars": "error" //사용하지 않는 변수 금지
   }
 }
