@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 //import CanvasDraw from "react-canvas-draw";
 
 // 세탁기호 분석
-/*const LabelExPage = () => {
-  const canvasRef = useRef(null);
+const LabelExPage = () => {
+  /*const canvasRef = useRef(null);
 
   const handleSave = () => {
     const canvas = canvasRef.current.canvas.drawing;
@@ -32,7 +32,7 @@ import React, { useRef } from "react";
         </button>
       </div>
     </div>
-  );
-};*/
+  );*/
+};
 
 export default LabelExPage;
