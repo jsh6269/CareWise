@@ -1,0 +1,69 @@
+/* @import "reset.css"; */
+
+body {
+  background-color: #f6f9fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0px; /*  밑부분의 잉여공간을 줄여줬다. */
+}
+
+.canvas {
+  width: 700px;
+  height: 700px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow:
+    0 4px 6px rgba(50, 50, 93, 0.11),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.controls {
+  margin-top: 50px; /* canvas와 controls의 거리를 두기위해 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.controls .controls__btns {
+  margin-bottom: 30px;
+}
+
+.controls__btns button {
+  all: unset; /* 버튼에 기본적으로 적용된 스타일을 제거 */
+  cursor: pointer;
+  background-color: white;
+  padding: 5px 0px;
+  width: 80px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow:
+    0 4px 6px rgba(50, 50, 93, 0.11),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.2); /* 버튼에 회색 테두리 */
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase; /* 전체 대문자로 */
+  font-weight: 800;
+  font-size: 12px;
+}
+.controls__btns button:active {
+  transform: scale(0.98); /*  요소를 확대 또는 축소 */
+}
+
+.controls .controls__colors {
+  display: flex; /* 일렬로 나열 */
+}
+
+.controls__colors .controls__color {
+  /* 각각의 색상 박스들 */
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; /* 원형으로 만드려면 width의 반만큼 border-radius를 가지면 된다. */
+  box-shadow:
+    0 4px 6px rgba(50, 50, 93, 0.11),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.controls .controls__range {
+  margin-bottom: 30px;
+}
