@@ -1,65 +1,48 @@
+import React, { useRef, useEffect, useState } from "react";
+
+// 세탁기호 분석
 const Canvas = () => {
+  const canvasRef = useRef(null);
+  const [getCtx, setGetCtx] = useState(null);
+  const [painting, setPainting] = useState(false);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    canvas.width = 500;
+    canvas.height = 500;
+    const ctx = canvas.getContext("2d");
+    ctx.lineJoin = "round";
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = "#000000";
+    setGetCtx(ctx);
+  }, []);
+
+  const drawFn = (e) => {
+    const mouseX = e.nativeEvent.offsetX;
+    const mouseY = e.nativeEvent.offsetY;
+
+    if (!painting) {
+      getCtx.beginPath();
+      getCtx.moveTo(mouseX, mouseY);
+    } else {
+      getCtx.lineTo(mouseX, mouseY);
+      getCtx.stroke();
+    }
+  };
+
   return (
-    <>
-      <canvas id="jsCanvas" class="canvas"></canvas>
-      <div className="controls">
-        <div className="controls__range">
-          {/* <!-- 페인트 브러쉬의 사이즈를 컨트롤 --> */}
-          <input
-            type="range"
-            id="jsRange"
-            min="0.1"
-            max="5.0"
-            value="2.5"
-            step="0.1"
-          />
-          {/* <!-- value는 기본값을 말하고 step은 0.1씩 이동 --> */}
-        </div>
-        <div className="controls__btns">
-          <button id="jsMode">Fill</button>
-          <button id="jsSave">Save</button>
-        </div>
-        <div className="controls__colors" id="jsColors">
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "white" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "black" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "red" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "orange" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "yellow" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "green" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "green" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "green" }}
-          ></div>
-          <div
-            className="controls__color jsColor"
-            style={{ backgroundColor: "green" }}
-          ></div>
-        </div>
+    <div className="view">
+      <div className="canvasWrap flex justify-center m-16">
+        <canvas
+          className="canvas bg-gray-200"
+          ref={canvasRef}
+          onMouseDown={() => setPainting(true)}
+          onMouseUp={() => setPainting(false)}
+          onMouseMove={(e) => drawFn(e)}
+          onMouseLeave={() => setPainting(false)}
+        ></canvas>
       </div>
-      <script src="./app.js"></script>
-    </>
+    </div>
   );
 };
 
