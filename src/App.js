@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div id="wrapper">
+        <div id="wrapper" className="flex flex-col items-center">
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
