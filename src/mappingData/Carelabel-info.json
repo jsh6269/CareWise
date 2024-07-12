@@ -22,7 +22,7 @@
   "dry-highheat.png": {
     "info": "높은 온도로 기계건조하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/dry-highheat.png",
-    "keyword": ["그늘", "높은 온도"]
+    "keyword": ["기계건조", "높은 온도"]
   },
   "dry-shadow.png": {
     "info": "그늘에서 건조하세요.",
