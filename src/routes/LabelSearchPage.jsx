@@ -1,16 +1,23 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import careLabelData from "../mappingData/Carelabel-info.json";
+import careLabelTab from "../mappingData/Carelabel-tab.json";
 
 // 세탁기호 찾기
 const LabelSearchPage = () => {
   // 90px 246px 406px 569px
   const xloc = ["90px", "246px", "406px", "569px", "740px"];
+  const menu = ["세탁", "건조", "표백", "세제", "다림질"];
   const [tab, setTab] = useState(0);
+  const [labelLst, setLabelLst] = useState([]);
 
   const changeTab = (key) => {
     setTab(key);
   };
+
+  useEffect(() => {
+    const labels = careLabelTab[menu[tab]];
+    setLabelLst(labels);
+  }, [tab]);
 
   return (
     <div className="w-[1222px] h-[1230px]">
@@ -62,11 +69,17 @@ const LabelSearchPage = () => {
             </div>
           </div>
           <div className="absolute w-[1222px] h-[899px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9]" />
-          <img
-            className="absolute w-[100px] h-[100px] top-[200px] left-[91px]"
-            alt="Group"
-            src="https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable.png"
-          />
+          <div className="absolute w-[1160px] h-[690px] left-[-24px] top-[147px] overflow-y-auto">
+            {labelLst.map((img_name) => (
+              <div className="relative w-[115px] h-[115px] mt-[51px] ml-[100px] inline-block">
+                <img
+                  className="absolute w-[115px] bottom-0"
+                  alt="Group"
+                  src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
