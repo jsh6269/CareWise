@@ -4,7 +4,7 @@ import logo from "../../assets/images/title.png";
 
 const Header = () => {
   return (
-    <div>
+    <div className="w-[1440px] h-[100px]">
       <div className="fixed z-50 flex w-[1440px] h-[100px] items-center gap-[180px] px-[110px] py-[30px] bg-white">
         <a href="/">
           <img
