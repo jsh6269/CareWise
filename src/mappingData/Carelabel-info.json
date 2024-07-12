@@ -31,7 +31,7 @@
   },
   "dry-hang.png": {
     "info": "걸어서 건조하세요.",
-    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/dry-hang.png.com",
+    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/dry-hang.png",
     "keyword": ["걸어서", "건조"]
   },
   "dry-hang-shadow.png": {
