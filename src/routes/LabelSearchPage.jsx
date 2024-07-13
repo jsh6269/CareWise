@@ -20,6 +20,10 @@ const LabelSearchPage = () => {
     setLabelLst(careLabelTab[tabMenu[tab]]);
   }, [tab]);
 
+  useEffect(() => {
+    setLabelLst(careLabelTab["세탁"]);
+  }, []);
+
   return (
     <div className="w-[1222px]">
       <div className="relative w-[826px] h-[90px] mx-[3px] my-[70px] top-0 left-0">
