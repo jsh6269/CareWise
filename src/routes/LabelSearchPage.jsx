@@ -5,7 +5,6 @@ import LabelCard from "../components/LabelCard";
 
 // 세탁기호 찾기
 const LabelSearchPage = () => {
-  // 90px 246px 406px 569px
   const xloc = ["90px", "246px", "406px", "569px", "740px"];
   const [tab, setTab] = useState(0);
   const [labelLst, setLabelLst] = useState([]);
