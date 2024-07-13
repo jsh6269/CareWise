@@ -1,4 +1,4 @@
-// 관리법 검색
+// 관리법 검색 1
 const CareSearchPage = () => {
   return <div></div>;
 };
