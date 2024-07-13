@@ -1,10 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import drawingIcon from "../../assets/images/icons/Vector.png";
-import polygon from "../../assets/images/icons/Polygon 1.svg";
+import polygon from "../../assets/images/icons/Polygon1.svg";
 import eraserIcon from "../../assets/images/icons/Vector.svg";
-import textIcon from "../../assets/images/icons/Vector (1).svg";
+import textIcon from "../../assets/images/icons/Vector(1).svg";
 import resetLogo from "../../assets/images/icons/radix-icons_reset.png";
 import uploadLogo from "../../assets/images/icons/material-symbols_upload.png";
+import AWS from "aws-sdk";
 
 // 세탁기호 분석
 const Canvas = () => {
@@ -67,7 +68,7 @@ const Canvas = () => {
           <button
             onClick={() => {
               getCtx.strokeStyle = "#FFFFFF";
-              getCtx.lineWidth = "15";
+              getCtx.lineWidth = "20";
             }}
           >
             <img
@@ -104,18 +105,59 @@ const Buttons = ({ getCtx, getCanvas }) => {
     getCtx.clearRect(0, 0, 531, 400);
   };
 
+  const date = new Date();
+
   const onSave = () => {
     const imageURL = getCanvas.toDataURL();
     const downloadImage = document.createElement("a");
     downloadImage.href = imageURL;
-    downloadImage.download = "paint_image";
+    downloadImage.download = `${date.toISOString()}.png`;
     downloadImage.click();
+  };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    if (!selectedFile) {
+      alert("Please select a file");
+      return;
+    }
+
+    // AWS S3 설정
+    AWS.config.update({
+      accessKeyId: "YOUR_ACCESS_KEY_ID", // IAM 사용자 엑세스 키 변경
+      secretAccessKey: "YOUR_SECRET_ACCESS_KEY", // IAM 엑세스 시크릿키 변경
+      region: "YOUR_REGION", // 리전 변경
+    });
+
+    const s3 = new AWS.S3();
+
+    // 업로드할 파일 정보 설정
+    const uploadParams = {
+      Bucket: "your-s3-bucket-name", // 버킷 이름 변경
+      Key: `folder/${selectedFile.name}`, // S3에 저장될 경로와 파일명
+      Body: selectedFile,
+    };
+
+    // S3에 파일 업로드
+    s3.upload(uploadParams, (err, data) => {
+      if (err) {
+        console.error("Error uploading file:", err);
+      } else {
+        console.log("File uploaded successfully. ETag:", data.ETag);
+        // 업로드 성공 후 필요한 작업 수행
+      }
+    });
   };
 
   return (
     <div className="inline space-y-8 ml-20">
       <button
-        onClick={onSave}
+        onClick={handleUpload}
         className="flex flex-col w-[333px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] bg-[#b5b5b5] rounded-lg"
       >
         <div className="ml-[-38.50px] mr-[-38.50px] inline-flex items-center justify-center gap-[15px] relative flex-[0_0_auto]">
@@ -129,6 +171,7 @@ const Buttons = ({ getCtx, getCanvas }) => {
           </div>
         </div>
       </button>
+
       <button
         onClick={onReset}
         className="flex flex-col w-[333px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px]  bg-white rounded-lg border border-solid border-[#a4a3a3]"
