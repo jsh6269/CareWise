@@ -160,7 +160,7 @@
     "keyword": ["90°C", "세탁"]
   },
   "washable-95.png": {
-    "info": "물온도 95°C로 세탁하세요. (삶을 수 있어요.)",
+    "info": "물온도 95°C로 세탁하세요.\n(삶을 수 있어요.)",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable-95.png",
     "keyword": ["95°C", "세탁"]
   },
@@ -190,7 +190,7 @@
     "keyword": ["70°C", "세탁"]
   },
   "washable-95(2).png": {
-    "info": "물온도 95°C로 세탁하세요. (삶을 수 있어요.)",
+    "info": "물온도 95°C로 세탁하세요.\n(삶을 수 있어요.)",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable-95(2).png",
     "keyword": ["95°C", "세탁"]
   },
@@ -200,7 +200,7 @@
     "keyword": ["손세탁"]
   },
   "handwash-30-neutral.png": {
-    "info": "물온도 30˚C에서, 중성세제로 손세탁하세요.",
+    "info": "물온도 30˚C에서,\n중성세제로 손세탁하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/handwash-30-neutral.png",
     "keyword": ["30˚C", "중성세제", "손세탁"]
   },
@@ -215,7 +215,7 @@
     "keyword": ["30˚C", "약하게", "세탁"]
   },
   "washable-30-mild-neutral.png": {
-    "info": "물온도 30˚C로 약하게 중성세제로 세탁하세요.",
+    "info": "물온도 30˚C로 약하게\n중성세제로세탁하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable-30-mild-neutral.png",
     "keyword": ["30˚C", "약하게", "중성세제", "세탁"]
   },
@@ -255,7 +255,7 @@
     "keyword": ["90˚C", "세탁"]
   },
   "washable-95(3).png": {
-    "info": "물온도 95˚C로 세탁하세요. (삶을 수 있어요.)",
+    "info": "물온도 95˚C로 세탁하세요.\n(삶을 수 있어요.)",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable-95(3).png",
     "keyword": ["95˚C", "세탁"]
   },
@@ -305,17 +305,17 @@
     "keyword": ["180~210˚C", "다림질"]
   },
   "iron-80-120-cloth.png": {
-    "info": "원단 위에 천을 덮고 80~120˚C로 다림질하세요.",
+    "info": "원단 위에 천을 덮고\n80~120˚C로 다림질하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-80-120-cloth.png",
     "keyword": ["천", "80~120˚C", "다림질"]
   },
   "iron-140-160-cloth.png": {
-    "info": "원단 위에 천을 덮고 140~160˚C로 다림질하세요.",
+    "info": "원단 위에 천을 덮고\n140~160˚C로 다림질하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-140-160-cloth.png",
     "keyword": ["천", "140~160˚C", "다림질"]
   },
   "iron-180-210-cloth.png": {
-    "info": "원단 위에 천을 덮고 180~210˚C로 다림질하세요.",
+    "info": "원단 위에 천을 덮고\n180~210˚C로 다림질하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-180-210-cloth.png",
     "keyword": ["천", "180~210˚C", "다림질"]
   },
@@ -419,22 +419,22 @@
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/wetcleaning-x(2).png",
     "keyword": ["웨트클리닝", "불가능"]
   },
-  "low heat.png": {
+  "low+heat.png": {
     "info": "낮은 온도로 드라이클리닝하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/low+heat.png",
     "keyword": ["낮은 온도", "드라이클리닝"]
   },
-  "short cycle.png": {
+  "short+cycle.png": {
     "info": "짧은 시간 내로 드라이클리닝하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/short+cycle.png",
     "keyword": ["짧은 시간", "드라이클리닝"]
   },
-  "reduced moisture.png": {
+  "reduced+moisture.png": {
     "info": "적은 수분으로 드라이클리닝하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/reduced+moisture.png",
     "keyword": ["적은 수분", "드라이클리닝"]
   },
-  "no steam.png": {
+  "no+steam.png": {
     "info": "스팀 없이 드라이클리닝하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/no+steam.png",
     "keyword": ["스팀 없이", "드라이클리닝"]

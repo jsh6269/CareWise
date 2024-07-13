@@ -1,26 +1,28 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import careLabelTab from "../mappingData/Carelabel-tab.json";
+import LabelCard from "../components/LabelCard";
 
 // 세탁기호 찾기
 const LabelSearchPage = () => {
   // 90px 246px 406px 569px
   const xloc = ["90px", "246px", "406px", "569px", "740px"];
-  const menu = ["세탁", "건조", "표백", "세제", "다림질"];
+  const tabMenu = ["세탁", "건조", "표백", "세제", "다림질"];
   const [tab, setTab] = useState(0);
   const [labelLst, setLabelLst] = useState([]);
+  const [selectedLabel, setSelectedLabel] = useState(null);
 
   const changeTab = (key) => {
     setTab(key);
   };
 
   useEffect(() => {
-    const labels = careLabelTab[menu[tab]];
+    const labels = careLabelTab[tabMenu[tab]];
     setLabelLst(labels);
   }, [tab]);
 
   return (
-    <div className="w-[1222px] h-[1230px]">
+    <div className="w-[1222px]">
       <div className="relative w-[826px] h-[90px] mx-[3px] my-[70px] top-0 left-0">
         <p className="top-[65px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-xl absolute left-0 tracking-[0] leading-[normal] whitespace-nowrap">
           다른 모양이지만 같은 의미로 쓰이는 기호들도 같이 볼 수 있어요.
@@ -29,6 +31,7 @@ const LabelSearchPage = () => {
           다양한 세탁기호들을 찾아보세요.
         </div>
       </div>
+      <LabelCard label={selectedLabel} />
       <div className="w-[1222px] h-[900px] top-0 left-0">
         <div className="relative h-[900px] rounded-[20px]">
           <div className="absolute w-[1043px] h-1 top-[126px] left-[90px] bg-[#d9d9d9]" />
@@ -71,12 +74,17 @@ const LabelSearchPage = () => {
           <div className="absolute w-[1222px] h-[899px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9]" />
           <div className="absolute w-[1160px] h-[690px] left-[-24px] top-[147px] overflow-y-auto">
             {labelLst.map((img_name) => (
-              <div className="relative w-[115px] h-[115px] mt-[51px] ml-[100px] inline-block">
-                <img
-                  className="absolute w-[115px] bottom-0"
-                  alt="Group"
-                  src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
-                />
+              <div className="relative w-[115px] h-[115px] mt-[51px] ml-[100px] inline-block cursor-pointer">
+                <div className="relative w-[115px] h-[115px] grid place-items-center cursor-pointer">
+                  <img
+                    className="absolute max-w-[115px] max-h-[115px]"
+                    alt="Group"
+                    src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
+                    onClick={() => {
+                      setSelectedLabel(img_name);
+                    }}
+                  />
+                </div>
               </div>
             ))}
           </div>
