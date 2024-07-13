@@ -18,7 +18,7 @@ const subText = (same) => {
   if (same.length > 0)
     return (
       <div className="h-[22px] [font-family:'Inter-Medium',Helvetica] font-medium text-[#7a7a7a] text-xl whitespace-nowrap relative self-stretch mt-[-1.00px] text-center tracking-[0] leading-[normal]">
-        동일한 의미의 기호들:
+        동일한 의미의 기호들
       </div>
     );
 };
