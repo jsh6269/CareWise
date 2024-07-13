@@ -74,22 +74,34 @@ const LabelSearchPage = () => {
             </div>
           </div>
           <div className="absolute w-[1222px] h-[899px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9]" />
-          <div className="absolute w-[1160px] h-[690px] left-[-24px] top-[147px] overflow-y-auto">
+          <section className="absolute w-[1160px] h-[690px] left-[3px] top-[147px] flex flex-wrap overflow-y-auto">
             {labelLst.map((img_name) => (
-              <div className="relative w-[115px] h-[115px] mt-[51px] ml-[100px] inline-block cursor-pointer">
+              <div
+                className="relative w-[145px] h-[145px] mt-[36px] ml-[73px] grid place-items-center cursor-pointer"
+                style={{
+                  // borderColor: "#B3B3B3",
+                  // borderWidth: selectedLabel === img_name ? "3px" : "0px",
+                  backgroundColor:
+                    selectedLabel === img_name ? "#b3b3b3" : "#ffffff",
+                }}
+              >
                 <div className="relative w-[115px] h-[115px] grid place-items-center cursor-pointer">
                   <img
                     className="absolute max-w-[115px] max-h-[115px]"
                     alt="Group"
                     src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
                     onClick={() => {
-                      setSelectedLabel(img_name);
+                      if (selectedLabel === img_name) {
+                        setSelectedLabel(null);
+                      } else {
+                        setSelectedLabel(img_name);
+                      }
                     }}
                   />
                 </div>
               </div>
             ))}
-          </div>
+          </section>
         </div>
       </div>
     </div>
