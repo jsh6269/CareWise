@@ -1,16 +1,55 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { default as Canvas } from "../components/Canvas/index.jsx";
+import AWS from "aws-sdk";
 
+import { default as Canvas } from "../components/Canvas/index.jsx";
 import careLabelSample from "../assets/images/icons/carelabel-sample.png";
 import uploadLogo from "../assets/images/icons/material-symbols_upload.png";
-
 import { Loading, RecogFail } from "../components/Modal/index.jsx";
 
 const LabelExPage = () => {
   const navigate = useNavigate();
 
   const [isLoading, setisLoading] = useState(false);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    if (!selectedFile) {
+      alert("Please select a file");
+      return;
+    }
+
+    // AWS S3 설정
+    AWS.config.update({
+      accessKeyId: "YOUR_ACCESS_KEY_ID", // IAM 사용자 엑세스 키 변경
+      secretAccessKey: "YOUR_SECRET_ACCESS_KEY", // IAM 엑세스 시크릿키 변경
+      region: "YOUR_REGION", // 리전 변경
+    });
+
+    const s3 = new AWS.S3();
+
+    // 업로드할 파일 정보 설정
+    const uploadParams = {
+      Bucket: "carewise-input", // 버킷 이름 변경
+      Key: `folder/${selectedFile.name}`, // S3에 저장될 경로와 파일명
+      Body: selectedFile,
+    };
+
+    // S3에 파일 업로드
+    s3.upload(uploadParams, (err, data) => {
+      if (err) {
+        console.error("Error uploading file:", err);
+      } else {
+        console.log("File uploaded successfully. ETag:", data.ETag);
+        // 업로드 성공 후 필요한 작업 수행
+      }
+    });
+  };
 
   return (
     <>
@@ -34,23 +73,29 @@ const LabelExPage = () => {
               alt="carelabel sample"
               src={careLabelSample}
             />
-            <button
-              onClick={() => {
-                navigate("/label-ex-result");
-              }}
-              className="flex flex-col w-[421px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] absolute top-[261px] left-[710px] bg-[#b5b5b5] rounded-lg"
-            >
-              <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
-                <img
-                  className="relative w-[31px] h-[31px]"
-                  alt="Material symbols"
-                  src={uploadLogo}
-                />
-                <div className="relative w-fit [font-family:'Inter-Regular',Helvetica] font-normal text-white text-xl text-center tracking-[0] leading-5 whitespace-nowrap">
-                  사진 업로드
+            <div className="z-50">
+              <input
+                type="file"
+                onChange={handleFileChange}
+                className="absolute top-[211px] left-[710px]"
+                accept=".jpg, .jpeg, .png"
+              />
+              <button
+                onClick={handleUpload}
+                className="flex flex-col w-[421px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] absolute top-[261px] left-[710px] bg-[#b5b5b5] rounded-lg"
+              >
+                <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
+                  <img
+                    className="relative w-[31px] h-[31px]"
+                    alt="Material symbols"
+                    src={uploadLogo}
+                  />
+                  <div className="relative w-fit [font-family:'Inter-Regular',Helvetica] font-normal text-white text-xl text-center tracking-[0] leading-5 whitespace-nowrap">
+                    사진 업로드
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
+            </div>
           </div>
           {/*group 21 in figma*/}
           <div className="absolute w-[1221px] h-[588px] top-[729px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
