@@ -36,7 +36,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="h-[100px]"></div>
+      <div className="w-[1440px] h-[100px]">box</div>
     </div>
   );
 };
