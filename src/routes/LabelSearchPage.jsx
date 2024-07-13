@@ -7,7 +7,6 @@ import LabelCard from "../components/LabelCard";
 const LabelSearchPage = () => {
   // 90px 246px 406px 569px
   const xloc = ["90px", "246px", "406px", "569px", "740px"];
-  const tabMenu = ["세탁", "건조", "표백", "세제", "다림질"];
   const [tab, setTab] = useState(0);
   const [labelLst, setLabelLst] = useState([]);
   const [selectedLabel, setSelectedLabel] = useState(null);
@@ -17,8 +16,8 @@ const LabelSearchPage = () => {
   };
 
   useEffect(() => {
-    const labels = careLabelTab[tabMenu[tab]];
-    setLabelLst(labels);
+    const tabMenu = ["세탁", "건조", "표백", "세제", "다림질"];
+    setLabelLst(careLabelTab[tabMenu[tab]]);
   }, [tab]);
 
   return (
