@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
           <Link to="/care-search">
             <div className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-[16px] text-sm tracking-[0] leading-[normal]">
-              관리법 검색
+              관리법 검색임시
             </div>
           </Link>
           <Link to="/label-ex">
