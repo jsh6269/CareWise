@@ -77,6 +77,7 @@ const LabelSearchPage = () => {
           <section className="absolute w-[1160px] h-[750px] left-[3px] top-[147px] flex flex-wrap gap-0 content-start justify-start overflow-y-auto">
             {labelLst.map((img_name) => (
               <li
+                key={img_name}
                 className="relative w-[145px] h-[145px] mt-[36px] ml-[73px] grid place-items-center cursor-pointer list-none"
                 style={{
                   // borderColor: "#B3B3B3",
