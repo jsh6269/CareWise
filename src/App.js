@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./routes/HomePage";
@@ -10,10 +11,21 @@ import LabelExResult from "./routes/LabelExResultPage";
 import LabelSearchPage from "./routes/LabelSearchPage";
 import "./App.css";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <div id="wrapper" className="flex flex-col items-center">
           <Header />
           <Routes>
