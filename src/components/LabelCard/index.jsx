@@ -36,7 +36,7 @@ const LabelCard = ({ label }) => {
   const same = similar.filter((item) => careLabelInfo[item]);
 
   return (
-    <div className="flex flex-col w-[1222px] h-[404px] items-start justify-center gap-2.5 px-[89px] py-[115px] mb-[84px] relative bg-white rounded-[20px] border-2 border-solid border-[#d9d9d9]">
+    <div className="flex flex-col w-[1222px] h-[360px] items-start justify-center gap-2.5 px-[89px] py-[115px] mb-[84px] relative bg-white rounded-[20px] border-2 border-solid border-[#d9d9d9]">
       <div className="justify-center gap-[74px] flex-[0_0_auto] mt-[-14.50px] mb-[-14.50px] flex items-center relative">
         <div className="realative w-[203px] h-[203px] ml-[70px] grid place-items-center">
           <img
