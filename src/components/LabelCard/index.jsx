@@ -36,38 +36,38 @@ const LabelCard = ({ label }) => {
   const same = similar.filter((item) => careLabelInfo[item]);
 
   return (
-    <div className="flex flex-col w-[1222px] h-[360px] items-start justify-center gap-2.5 px-[89px] py-[115px] mb-[84px] relative bg-white rounded-[20px] border-2 border-solid border-[#d9d9d9]">
+    <article className="flex flex-col w-[1222px] h-[360px] items-start justify-center gap-2.5 px-[89px] py-[115px] mb-[84px] relative bg-white rounded-[20px] border-2 border-solid border-[#d9d9d9]">
       <div className="justify-center gap-[74px] flex-[0_0_auto] mt-[-14.50px] mb-[-14.50px] flex items-center relative">
-        <div className="realative w-[203px] h-[203px] ml-[70px] grid place-items-center">
+        <span className="realative w-[203px] h-[203px] ml-[70px] grid place-items-center">
           <img
             className="absolute max-w-[203px] max-h-[203px] object-cover"
             alt="High heat"
             src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${label}`}
           />
-        </div>
+        </span>
         <div className="flex-col justify-center gap-[23px] w-[680px] flex items-center relative">
-          <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-[38px] relative self-stretch mt-[-1.00px] text-center tracking-[0] leading-[normal]">
+          <p className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-[38px] relative self-stretch mt-[-1.00px] text-center tracking-[0] leading-[normal]">
             <Text text={careLabelInfo[label].info} />
-          </div>
+          </p>
           <div className="flex-col w-[361px] gap-[23px] flex-[0_0_auto] flex items-center relative">
             {subText(same)}
             <div className="gap-[47px] self-stretch w-full justify-center flex items-center relative">
               {same.map((sim) => {
                 return (
-                  <div className="realative w-[89px] h-[89px] grid place-items-center">
+                  <span className="realative w-[89px] h-[89px] grid place-items-center">
                     <img
                       className="absolute max-w-[89px] max-h-[89px] object-cover"
                       alt="High heat"
                       src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${sim}`}
                     />
-                  </div>
+                  </span>
                 );
               })}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
