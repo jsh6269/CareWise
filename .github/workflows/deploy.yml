@@ -35,3 +35,9 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             build s3://carewise-front
+
+      - name: Cache Ignoring # Cloudfront 캐시 무효화
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} \
+            --paths "/*"
