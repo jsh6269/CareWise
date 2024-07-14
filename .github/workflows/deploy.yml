@@ -37,7 +37,10 @@ jobs:
             build s3://carewise-front
 
       - name: Cache Ignoring # Cloudfront 캐시 무효화
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id EAF3FKCAHX406 \
-            --paths "/*"
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          PATHS: '/*'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'ap-northeast-2'
+          DISTRIBUTION: ${{ secrets.DEV_AWS_DISTRIBUTION_ID }}
