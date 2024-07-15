@@ -8,8 +8,6 @@ import uploadLogo from "../assets/images/icons/material-symbols_upload.png";
 import { Loading, RecogFail } from "../components/Modal/index.jsx";
 
 const LabelExPage = () => {
-  const navigate = useNavigate();
-
   const [isLoading, setisLoading] = useState(false);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -26,9 +24,9 @@ const LabelExPage = () => {
 
     // AWS S3 설정
     AWS.config.update({
-      accessKeyId: "YOUR_ACCESS_KEY_ID", // IAM 사용자 엑세스 키 변경
-      secretAccessKey: "YOUR_SECRET_ACCESS_KEY", // IAM 엑세스 시크릿키 변경
-      region: "YOUR_REGION", // 리전 변경
+      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
+      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
+      region: "ap-northeast-2", // 리전 변경
     });
 
     const s3 = new AWS.S3();
@@ -36,7 +34,7 @@ const LabelExPage = () => {
     // 업로드할 파일 정보 설정
     const uploadParams = {
       Bucket: "carewise-input", // 버킷 이름 변경
-      Key: `folder/${selectedFile.name}`, // S3에 저장될 경로와 파일명
+      Key: `${selectedFile.name}`, // S3에 저장될 경로와 파일명
       Body: selectedFile,
     };
 
