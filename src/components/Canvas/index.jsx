@@ -21,6 +21,8 @@ const Canvas = () => {
     ctx.lineJoin = "round";
     ctx.lineWidth = 2.5;
     ctx.strokeStyle = "#000000";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, 531, 400);
     setGetCtx(ctx);
   }, []);
 
@@ -68,7 +70,7 @@ const Canvas = () => {
           <button
             onClick={() => {
               getCtx.strokeStyle = "#FFFFFF";
-              getCtx.lineWidth = "20";
+              getCtx.lineWidth = "40";
             }}
           >
             <img
@@ -105,42 +107,35 @@ const Buttons = ({ getCtx, getCanvas }) => {
     getCtx.clearRect(0, 0, 531, 400);
   };
 
-  const date = new Date();
-
-  const onSave = () => {
-    const imageURL = getCanvas.toDataURL();
-    const downloadImage = document.createElement("a");
-    downloadImage.href = imageURL;
-    downloadImage.download = `${date.toISOString()}.png`;
-    downloadImage.click();
-  };
-
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
   const handleUpload = () => {
-    if (!selectedFile) {
-      alert("Please select a file");
-      return;
+    const imageURL = getCanvas.toDataURL("image/jpeg");
+
+    function dataURItoBlob(dataURI) {
+      const binary = atob(dataURI.split(",")[1]);
+      const array = [];
+      for (let i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], { type: "image/jpeg" });
     }
+
+    const blobData = dataURItoBlob(imageURL);
 
     // AWS S3 설정
     AWS.config.update({
-      accessKeyId: "YOUR_ACCESS_KEY_ID", // IAM 사용자 엑세스 키 변경
-      secretAccessKey: "YOUR_SECRET_ACCESS_KEY", // IAM 엑세스 시크릿키 변경
-      region: "YOUR_REGION", // 리전 변경
+      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
+      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
+      region: "ap-northeast-2", // 리전 변경
     });
 
     const s3 = new AWS.S3();
+    const date = new Date();
 
     // 업로드할 파일 정보 설정
     const uploadParams = {
-      Bucket: "your-s3-bucket-name", // 버킷 이름 변경
-      Key: `folder/${selectedFile.name}`, // S3에 저장될 경로와 파일명
-      Body: selectedFile,
+      Bucket: "carewise-input", // 버킷 이름 변경
+      Key: `${date.toISOString()}.png`, // S3에 저장될 경로와 파일명
+      Body: blobData,
     };
 
     // S3에 파일 업로드
