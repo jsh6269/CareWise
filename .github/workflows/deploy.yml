@@ -25,8 +25,8 @@ jobs:
         
       - name: Generate Environment Variables File for Production 	#환경 변수 파일 생성
         run: |
-          echo "REACT_APP_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .env.producton
-          echo "REACT_APP_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .env.production
+          echo "REACT_APP_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .env
+          echo "REACT_APP_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .env
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
