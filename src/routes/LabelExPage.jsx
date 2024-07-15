@@ -24,8 +24,8 @@ const LabelExPage = () => {
 
     // AWS S3 설정
     AWS.config.update({
-      accessKeyId: env.production.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
-      secretAccessKey: env.production.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
+      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
+      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
       region: "ap-northeast-2", // 리전 변경
     });
 
