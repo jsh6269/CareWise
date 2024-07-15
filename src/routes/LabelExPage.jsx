@@ -30,11 +30,12 @@ const LabelExPage = () => {
     });
 
     const s3 = new AWS.S3();
+    const date = new Date();
 
     // 업로드할 파일 정보 설정
     const uploadParams = {
       Bucket: "carewise-input", // 버킷 이름 변경
-      Key: `${selectedFile.name}`, // S3에 저장될 경로와 파일명
+      Key: `${date.toISOString()}.png`, // S3에 저장될 경로와 파일명
       Body: selectedFile,
     };
 
