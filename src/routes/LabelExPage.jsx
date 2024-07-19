@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import AWS from "aws-sdk";
 
@@ -49,6 +49,23 @@ const LabelExPage = () => {
       }
     });
   };
+
+  const MODES = {
+    PAN: 0,
+    PEN: 1,
+    LINE: 2,
+    RECT: 3,
+    CIRCLE: 4,
+    TRIANGLE: 5,
+  };
+
+  const PAN_LIMIT = 3000;
+
+  const settings = useRef({
+    stroke: 3,
+    color: "#000",
+    mode: MODES.PEN,
+  });
 
   return (
     <>
@@ -109,7 +126,7 @@ const LabelExPage = () => {
 
             {/*frame 51 in figma*/}
             <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
-              <Canvas />
+              <Canvas settings={settings} />
             </div>
           </div>
         </div>
