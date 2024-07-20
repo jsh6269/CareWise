@@ -21,6 +21,17 @@ code {
     monospace;
 }
 
+.header-menu {
+  position: relative;
+  width: fit-content;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  margin-top: -1px;
+  color: #3f3f3f;
+  color: 16px;
+}
+
 .tab-menu {
   position: relative;
   z-index: 12;
@@ -36,33 +47,10 @@ code {
   color: #393939;
 }
 
-.header-menu {
-  position: relative;
-  width: fit-content;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 400;
-  margin-top: -1px;
-  color: #3f3f3f;
-  color: 16px;
-}
-
 .image-container {
   display: grid;
   position: relative;
   place-items: center;
-}
-
-.banner-button {
-  box-sizing: border-box;
-  position: relative;
-  width: fit-content;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  line-height: 1rem;
-  white-space: nowrap;
-  margin-top: -2px;
 }
 
 .span-button {
@@ -82,13 +70,23 @@ code {
   border-style: solid;
 }
 
+.banner-button {
+  box-sizing: border-box;
+  position: relative;
+  width: fit-content;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  line-height: 1rem;
+  white-space: nowrap;
+  margin-top: -2px;
+}
+
 .banner-title {
   position: relative;
   align-self: stretch;
-  font-weight: 600;
   color: 40px;
   font-size: 40px;
-  font-weight: 600;
 }
 
 .inter-light {
@@ -96,13 +94,7 @@ code {
   line-height: normal;
   align-self: stretch;
   font-family: "Inter-Light", Helvetica;
-}
-
-.inter-semi-bold {
-  letter-space: 0;
-  line-height: normal;
-  align-self: stretch;
-  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 300;
 }
 
 .inter-regular {
@@ -110,4 +102,13 @@ code {
   line-height: normal;
   align-self: stretch;
   font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+}
+
+.inter-semi-bold {
+  letter-space: 0;
+  line-height: normal;
+  align-self: stretch;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
 }

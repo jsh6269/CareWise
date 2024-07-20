@@ -71,16 +71,16 @@ const LabelExPage = () => {
     <>
       <div className="bg-white flex flex-row justify-center w-full">
         <div className="bg-white w-[1440px] h-[1389px] relative">
-          <div className="absolute inter-semi-bold font-semibold w-[822px] top-[39px] left-[110px] text-[#3f3f3f] text-[40px] whitespace-nowrap">
+          <div className="absolute inter-semi-bold w-[822px] top-[39px] left-[110px] text-[#3f3f3f] text-[40px] whitespace-nowrap">
             케어라벨 세탁기호 분석하기
           </div>
           {/*group 18 in figma*/}
           <div className="absolute w-[1221px] h-[494px] top-[145px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
-              <div className="relative inter-semi-bold mt-[-1.00px] font-semibold text-[#3f3f3f] text-[32px]">
+              <div className="relative inter-semi-bold mt-[-1.00px] text-[#3f3f3f] text-[32px]">
                 사진 분석
               </div>
-              <p className="relative inter-regular font-normal text-[#757575] text-[21.5px]">
+              <p className="relative inter-regular text-[#757575] text-[21.5px]">
                 케어라벨에 그려져 있는 세탁기호의 사진을 찍어서 업로드해보세요!
               </p>
             </div>
@@ -116,10 +116,10 @@ const LabelExPage = () => {
           {/*group 21 in figma*/}
           <div className="absolute w-[1221px] h-[588px] top-[729px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] h-36 items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
-              <div className="relative inter-semi-bold mt-[-1.00px] font-semibold text-[#3f3f3f] text-[32px]">
+              <div className="relative inter-semi-bold mt-[-1.00px] text-[#3f3f3f] text-[32px]">
                 그림 분석
               </div>
-              <p className="relative inter-regular font-normal text-[#757575] text-[21.5px]">
+              <p className="relative inter-regular text-[#757575] text-[21.5px]">
                 사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요!
               </p>
             </div>

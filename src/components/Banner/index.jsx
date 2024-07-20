@@ -27,7 +27,7 @@ const Banner0 = (
       style={{ backgroundImage: `url(${closet})` }}
     >
       <article className="flex flex-col w-[580px] items-end gap-3.5 relative top-[259px] left-[794px]">
-        <p className="relative inter-light mt-[-1.00px] font-light text-white text-[17px] text-right">
+        <p className="relative inter-light mt-[-1.00px] text-white text-[17px] text-right">
           의복 관리법 제공부터, 세탁기호 분석까지
         </p>
         <p className="banner-title inter-semi-bold text-right text-white">
@@ -57,7 +57,7 @@ const Banner1 = (
           src={clothes}
         />
         <article className="absolute flex flex-col w-[537px] h-[251px] items-end gap-[21px] top-2 left-0">
-          <p className="relative inter-light mt-[-1px] text-[25px] font-light text-white">
+          <p className="relative inter-light mt-[-1px] text-[25px] text-white">
             이 옷은 어떻게 관리해야할까?
           </p>
           <p className="banner-title inter-semi-bold h-[139px] text-white">
@@ -65,7 +65,7 @@ const Banner1 = (
             <br />
             AI가 답해드려요!
           </p>
-          <p className="relative inter-light w-[537px] text-[17px] font-light text-white">
+          <p className="relative inter-light w-[537px] text-[17px] text-white">
             어떻게 관리해야할지 헷갈리는 의류나, 소재를 검색해보세요.
           </p>
         </article>
@@ -86,13 +86,13 @@ const Banner2 = (
       </Link>
       <article className="absolute w-[537px] h-[232px] top-[124px] left-[737px]">
         <div className="flex flex-col w-[537px] h-[232px] items-end gap-[21px] relative">
-          <p className="relative inter-light mt-[-1.00px] font-light text-[25px] text-[#3f3f3f]">
+          <p className="relative inter-light mt-[-1.00px] text-[25px] text-[#3f3f3f]">
             이 세탁기호는 무슨 뜻일까?
           </p>
           <p className="banner-title inter-semi-bold h-[90px] text-[#3f3f3f]">
             세탁기호 분석하기
           </p>
-          <p className="relative inter-light w-[537px] font-light text-[17px] text-[#3f3f3f]">
+          <p className="relative inter-light w-[537px] text-[17px] text-[#3f3f3f]">
             케어라벨에 그려져 있는 세탁기호의 사진을 업로드하거나, 그려보세요.
             <br />
             무슨 의미인지 분석해드릴게요!
@@ -126,13 +126,13 @@ const Banner3 = (
             src={label3}
           />
           <article className="flex flex-col w-[537px] items-end gap-[21px] absolute top-0 left-0 bg-[#e4e4e4]">
-            <p className="relative inter-light mt-[-1.00px] font-light text-[25px] text-[#3f3f3f]">
+            <p className="relative inter-light mt-[-1.00px] text-[25px] text-[#3f3f3f]">
               기호는 다르게 생겼는데, 의미는 똑같네...
             </p>
             <div className="banner-title inter-semi-bold h-[90px] text-[#3f3f3f]">
               세탁기호 직접 찾아보기
             </div>
-            <p className="relative inter-light w-[537px] font-light text-[17px] text-[#3f3f3f]">
+            <p className="relative inter-light w-[537px] text-[17px] text-[#3f3f3f]">
               국가별, 사업자별로 다양한 케어라벨의 세탁기호의 리스트를 제공해요.
               <br />
               세탁기호의 뜻을 직접 찾아보세요!
