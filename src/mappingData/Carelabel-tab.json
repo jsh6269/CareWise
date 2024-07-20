@@ -1,5 +1,5 @@
 {
-  "세탁": [
+  "물세탁": [
     "washable.png",
     "handwash.png",
     "washable-mild.png",
@@ -32,24 +32,7 @@
     "washable-70(3).png",
     "washable-80(2).png",
     "washable-90(2).png",
-    "washable-95(3).png",
-    "drycleaning.png",
-    "drycleaning-x.png",
-    "Any.png",
-    "F.png",
-    "P.png",
-    "wetcleaning.png",
-    "wetcleaning-mild.png",
-    "wetcleaning-x.png",
-    "wetcleaning-x(2).png",
-    "low+heat.png",
-    "short+cycle.png",
-    "reduced+moisture.png",
-    "no+steam.png",
-    "drycleaning(2).png",
-    "drycleaning(caution).png",
-    "drycleaning-x(2).png",
-    "drycleaning-petroleum.png"
+    "washable-95(3).png"
   ],
   "건조": [
     "dry-machine.png",
@@ -85,14 +68,6 @@
     "bleach-oxygen%26chlorine.png",
     "bleach-oxygen%26chlorine-no.png"
   ],
-  "세제": [
-    "handwash-30-neutral.png",
-    "washable-30-mild-neutral.png",
-    "Any.png",
-    "F.png",
-    "P.png",
-    "drycleaning-petroleum.png"
-  ],
   "다림질": [
     "iron-x.png",
     "iron-steam.png",
@@ -106,5 +81,24 @@
     "iron-80-120-cloth.png",
     "iron-140-160-cloth.png",
     "iron-180-210-cloth.png"
+  ],
+  "드라이클리닝": [
+    "drycleaning.png",
+    "low+heat.png",
+    "short+cycle.png",
+    "reduced+moisture.png",
+    "no+steam.png",
+    "drycleaning(2).png",
+    "drycleaning(caution).png",
+    "drycleaning-x(2).png",
+    "drycleaning-petroleum.png",
+    "Any.png",
+    "F.png",
+    "P.png",
+    "drycleaning-x.png",
+    "wetcleaning-x(2).png",
+    "wetcleaning.png",
+    "wetcleaning-mild.png",
+    "wetcleaning-x.png"
   ]
 }

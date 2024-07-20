@@ -5,7 +5,8 @@ import LabelCard from "../components/LabelCard";
 
 // 세탁기호 찾기
 const LabelSearchPage = () => {
-  const xloc = ["90px", "246px", "406px", "569px", "740px"];
+  const xloc = ["90px", "290px", "460px", "630px", "830px"];
+  const xwidth = ["200px", "170px", "170px", "200px", "290px"];
   const [tab, setTab] = useState(0);
   const [labelLst, setLabelLst] = useState([]);
   const [selectedLabel, setSelectedLabel] = useState(null);
@@ -15,12 +16,12 @@ const LabelSearchPage = () => {
   };
 
   useEffect(() => {
-    const tabMenu = ["세탁", "건조", "표백", "세제", "다림질"];
+    const tabMenu = ["물세탁", "건조", "표백", "다림질", "드라이클리닝"];
     setLabelLst(careLabelTab[tabMenu[tab]]);
   }, [tab]);
 
   useEffect(() => {
-    setLabelLst(careLabelTab["세탁"]);
+    setLabelLst(careLabelTab["물세탁"]);
   }, []);
 
   return (
@@ -36,17 +37,17 @@ const LabelSearchPage = () => {
       <LabelCard label={selectedLabel} />
       <section className="w-[1222px] h-[990px] top-0 left-0">
         <div className="relative h-[900px] rounded-[20px]">
-          <div className="absolute w-[1043px] h-1 top-[126px] left-[90px] bg-[#d9d9d9]" />
+          <div className="absolute w-[1030px] h-1 top-[126px] left-[90px] bg-[#d9d9d9]" />
           <div
-            className="absolute w-40 h-1 top-[126px] bg-[#363636]"
-            style={{ left: xloc[tab] }}
+            className="absolute h-1 top-[126px] bg-[#363636]"
+            style={{ left: xloc[tab], width: xwidth[tab] }}
           />
-          <div className="inline-flex items-center gap-[100px] px-[50px] py-0 absolute top-[76px] left-[91px]">
+          <div className="inline-flex items-center gap-[110px] px-[55px] py-0 absolute top-[76px] left-[91px]">
             <li
-              className="relative w-14 h-9 mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
+              className="relative w-fit h-9 mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
               onClick={() => changeTab(0)}
             >
-              세탁
+              물세탁
             </li>
             <li
               className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
@@ -64,13 +65,13 @@ const LabelSearchPage = () => {
               className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
               onClick={() => changeTab(3)}
             >
-              세제
+              다림질
             </li>
             <li
               className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
               onClick={() => changeTab(4)}
             >
-              다림질
+              드라이클리닝
             </li>
           </div>
           <div className="absolute w-[1222px] h-[960px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9]" />
