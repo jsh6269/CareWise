@@ -77,7 +77,7 @@ const LabelExPage = () => {
           {/*group 18 in figma*/}
           <div className="absolute w-[1221px] h-[494px] top-[145px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
-              <div className="relative self-stretch mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[32px] tracking-[0] leading-[normal]">
+              <div className="relative inter-semi-bold mt-[-1.00px] font-semibold text-[#3f3f3f] text-[32px]">
                 사진 분석
               </div>
               <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
@@ -116,7 +116,7 @@ const LabelExPage = () => {
           {/*group 21 in figma*/}
           <div className="absolute w-[1221px] h-[588px] top-[729px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] h-36 items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
-              <div className="relative self-stretch mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[32px] tracking-[0] leading-[normal]">
+              <div className="relative inter-semi-bold mt-[-1.00px] font-semibold text-[#3f3f3f] text-[32px]">
                 그림 분석
               </div>
               <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">

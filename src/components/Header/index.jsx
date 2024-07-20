@@ -15,24 +15,16 @@ const Header = () => {
         </a>
         <nav className="inline-flex items-center gap-[120px] relative flex-[0_0_auto]">
           <Link to="/">
-            <p className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-[16px] text-sm tracking-[0] leading-[normal]">
-              HOME
-            </p>
+            <p className="header-menu">HOME</p>
           </Link>
           <Link to="/care-search">
-            <p className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-[16px] text-sm tracking-[0] leading-[normal]">
-              관리법 검색
-            </p>
+            <p className="header-menu">관리법 검색</p>
           </Link>
           <Link to="/label-ex">
-            <p className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-[16px] text-sm tracking-[0] leading-[normal]">
-              세탁기호 분석
-            </p>
+            <p className="header-menu">세탁기호 분석</p>
           </Link>
           <Link to="/label-search">
-            <p className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#3f3f3f] text-[16px] text-sm tracking-[0] leading-[normal]">
-              세탁기호 찾기
-            </p>
+            <p className="header-menu">세탁기호 찾기</p>
           </Link>
         </nav>
       </div>

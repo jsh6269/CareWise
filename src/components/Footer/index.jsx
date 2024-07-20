@@ -22,10 +22,10 @@ const Footer = () => {
         </a>
       </span>
       <span className="flex flex-col w-[272px] items-start gap-2.5 relative">
-        <p className="w-[272px] mt-[-1.00px] text-[#3f3f3f] text-lg relative [font-family:'Inter-Regular',Helvetica] font-normal text-right tracking-[0] leading-[normal]">
+        <p className="relative inter-regular w-[272px] mt-[-1.00px] text-[#3f3f3f] text-lg font-normal text-right">
           서울대학교 멋쟁이사자처럼 12기
         </p>
-        <ul className="self-stretch text-[#757575] text-[13px] relative [font-family:'Inter-Regular',Helvetica] font-normal text-right tracking-[0] leading-[normal]">
+        <ul className="relative inter-regular text-[#757575] text-[13px] font-normal text-right">
           <a href="https://github.com/sisihae">김시현</a>
           ｜&nbsp;&nbsp;<a href="https://github.com/jj1kim">김지원</a>
           ｜&nbsp;&nbsp;<a href="https://github.com/jsh6269">장수한</a>

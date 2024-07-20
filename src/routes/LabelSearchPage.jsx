@@ -43,43 +43,28 @@ const LabelSearchPage = () => {
             style={{ left: xloc[tab], width: xwidth[tab] }}
           />
           <div className="inline-flex items-center gap-[110px] px-[55px] py-0 absolute top-[76px] left-[91px]">
-            <li
-              className="relative w-fit h-9 mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
-              onClick={() => changeTab(0)}
-            >
+            <li className="tab-menu" onClick={() => changeTab(0)}>
               물세탁
             </li>
-            <li
-              className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
-              onClick={() => changeTab(1)}
-            >
+            <li className="tab-menu" onClick={() => changeTab(1)}>
               건조
             </li>
-            <li
-              className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
-              onClick={() => changeTab(2)}
-            >
+            <li className="tab-menu" onClick={() => changeTab(2)}>
               표백
             </li>
-            <li
-              className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
-              onClick={() => changeTab(3)}
-            >
+            <li className="tab-menu" onClick={() => changeTab(3)}>
               다림질
             </li>
-            <li
-              className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#393939] text-3xl text-center tracking-[0] leading-[normal] whitespace-nowrap z-10 list-none cursor-pointer"
-              onClick={() => changeTab(4)}
-            >
+            <li className="tab-menu" onClick={() => changeTab(4)}>
               드라이클리닝
             </li>
           </div>
           <div className="absolute w-[1222px] h-[960px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9]" />
-          <section className="absolute w-[1160px] h-[750px] left-[3px] top-[147px] flex flex-wrap gap-0 content-start justify-start overflow-y-auto">
+          <section className="absolute w-[1120px] h-[750px] left-[18px] top-[147px] flex flex-wrap gap-0 content-start justify-start overflow-y-auto">
             {labelLst.map((img_name) => (
               <li
                 key={img_name}
-                className="relative w-[145px] h-[145px] mt-[36px] ml-[73px] grid place-items-center cursor-pointer list-none"
+                className="image-container w-[145px] h-[145px] mt-[36px] ml-[68px] cursor-pointer list-none"
                 style={{
                   // borderColor: "#B3B3B3",
                   // borderWidth: selectedLabel === img_name ? "3px" : "0px",
@@ -87,7 +72,7 @@ const LabelSearchPage = () => {
                     selectedLabel === img_name ? "#b3b3b3" : "#ffffff",
                 }}
               >
-                <span className="relative w-[115px] h-[115px] grid place-items-center cursor-pointer">
+                <span className="image-container w-[115px] h-[115px] cursor-pointer">
                   <img
                     className="absolute max-w-[115px] max-h-[115px]"
                     alt="Group"
