@@ -22,8 +22,8 @@ jobs:
 
       - name: Install Dependencies # 의존 파일 설치
         run: npm install # npm install을 실행할 경로로 설정
-        
-      - name: Generate Environment Variables File for Production 	#환경 변수 파일 생성
+
+      - name: Generate Environment Variables File for Production #환경 변수 파일 생성
         run: |
           echo "REACT_APP_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .env.production
           echo "REACT_APP_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .env.production
@@ -47,8 +47,8 @@ jobs:
       - name: Cache Ignoring # Cloudfront 캐시 무효화
         uses: chetan/invalidate-cloudfront-action@master
         env:
-          PATHS: '/*'
+          PATHS: "/*"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'ap-northeast-2'
+          AWS_REGION: "ap-northeast-2"
           DISTRIBUTION: ${{ secrets.DEV_AWS_DISTRIBUTION_ID }}
