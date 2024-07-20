@@ -186,6 +186,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawLine = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.moveTo(path[0][0], path[0][1]);
     ctx.lineTo(path[1][0], path[1][1]);
@@ -199,6 +200,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawRect = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.rect(
       path[0][0],
@@ -216,6 +218,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawTri = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.moveTo(path[0][0], path[0][1]);
     ctx.lineTo(path[0][0] * 2 - path[1][0], path[1][1]);
@@ -236,6 +239,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawCircle = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.arc(path[0][0], path[0][1], getDistance(path), 0, 2 * Math.PI);
     ctx.stroke();
