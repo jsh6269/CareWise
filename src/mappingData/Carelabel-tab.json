@@ -32,10 +32,7 @@
     "washable-70(3).png",
     "washable-80(2).png",
     "washable-90(2).png",
-    "washable-95(3).png",
-    "drycleaning-x.png",
-    "wetcleaning.png",
-    "wetcleaning-mild.png"
+    "washable-95(3).png"
   ],
   "건조": [
     "dry-machine.png",
@@ -98,7 +95,10 @@
     "Any.png",
     "F.png",
     "P.png",
-    "wetcleaning-x.png",
-    "wetcleaning-x(2).png"
+    "drycleaning-x.png",
+    "wetcleaning-x(2).png",
+    "wetcleaning.png",
+    "wetcleaning-mild.png",
+    "wetcleaning-x.png"
   ]
 }
