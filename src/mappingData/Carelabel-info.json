@@ -309,6 +309,11 @@
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-180-210.png",
     "keyword": ["180~210˚C", "다림질"]
   },
+  "iron-cloth.png": {
+    "info": "원단 위에 천을 덮고 다림질하세요.",
+    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-cloth.png",
+    "keyword": ["천", "다림질"]
+  },
   "iron-80-120-cloth.png": {
     "info": "원단 위에 천을 덮고\n80~120˚C로 다림질하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-80-120-cloth.png",
