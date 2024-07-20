@@ -86,9 +86,9 @@ const CareSearchPage = () => {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white w-[1440px] h-[1373px] relative">
-        <div className="absolute w-[822px] top-[39px] left-[110px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
+        <div className="absolute inter-semi-bold w-[822px] top-[39px] left-[110px] font-semibold text-[#3f3f3f] text-[40px] whitespace-nowrap">
           헷갈리는 의복 세탁/관리법, AI에게 물어보세요.
-          <p className="top-[65px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-xl absolute left-0 tracking-[0] leading-[normal] whitespace-nowrap">
+          <p className="absolute inter-regular top-[65px] font-normal text-[#757575] text-xl left-0 whitespace-nowrap">
             다른 모양이지만 같은 의미로 쓰이는 기호들도 같이 볼 수 있어요.
           </p>
         </div>

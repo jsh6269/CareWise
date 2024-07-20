@@ -71,7 +71,7 @@ const LabelExPage = () => {
     <>
       <div className="bg-white flex flex-row justify-center w-full">
         <div className="bg-white w-[1440px] h-[1389px] relative">
-          <div className="absolute w-[822px] top-[39px] left-[110px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
+          <div className="absolute inter-semi-bold font-semibold w-[822px] top-[39px] left-[110px] text-[#3f3f3f] text-[40px] whitespace-nowrap">
             케어라벨 세탁기호 분석하기
           </div>
           {/*group 18 in figma*/}
@@ -80,7 +80,7 @@ const LabelExPage = () => {
               <div className="relative inter-semi-bold mt-[-1.00px] font-semibold text-[#3f3f3f] text-[32px]">
                 사진 분석
               </div>
-              <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
+              <p className="relative inter-regular font-normal text-[#757575] text-[21.5px]">
                 케어라벨에 그려져 있는 세탁기호의 사진을 찍어서 업로드해보세요!
               </p>
             </div>
@@ -119,7 +119,7 @@ const LabelExPage = () => {
               <div className="relative inter-semi-bold mt-[-1.00px] font-semibold text-[#3f3f3f] text-[32px]">
                 그림 분석
               </div>
-              <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
+              <p className="relative inter-regular font-normal text-[#757575] text-[21.5px]">
                 사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요!
               </p>
             </div>
