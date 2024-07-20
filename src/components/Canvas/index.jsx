@@ -6,7 +6,6 @@ import textIcon from "../../assets/images/icons/Vector(1).svg";
 import resetLogo from "../../assets/images/icons/radix-icons_reset.png";
 import uploadLogo from "../../assets/images/icons/material-symbols_upload.png";
 import AWS from "aws-sdk";
-import { canvasInput } from "canvasinput.jsx";
 
 let lastPath = [];
 
@@ -416,10 +415,6 @@ const Canvas = ({ settings }) => {
   useEffect(() => {
     setGetCtx(canvas.current.getContext("2d"));
   }, [canvas]);
-
-  const input = CanvasInput({
-    canvas: document.getElementById("canvas"),
-  });
 
   return (
     <>
