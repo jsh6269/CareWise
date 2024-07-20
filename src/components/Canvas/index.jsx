@@ -6,6 +6,7 @@ import textIcon from "../../assets/images/icons/Vector(1).svg";
 import resetLogo from "../../assets/images/icons/radix-icons_reset.png";
 import uploadLogo from "../../assets/images/icons/material-symbols_upload.png";
 import AWS from "aws-sdk";
+import { canvasInput } from "canvasinput.jsx";
 
 let lastPath = [];
 
@@ -34,6 +35,19 @@ const Canvas = ({ settings }) => {
   const moving = useRef(false);
   const importInput = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
+
+  useEffect(() => {
+    const canvasRef = canvas.current;
+    canvasRef.width = 531;
+    canvasRef.height = 400;
+    const ctx = canvasRef.getContext("2d");
+    ctx.lineJoin = "round";
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = "#000000";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, 531, 400);
+    setGetCtx(ctx);
+  }, []);
 
   const prevent = (e) => {
     e.preventDefault();
@@ -186,6 +200,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawLine = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.moveTo(path[0][0], path[0][1]);
     ctx.lineTo(path[1][0], path[1][1]);
@@ -199,6 +214,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawRect = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.rect(
       path[0][0],
@@ -216,6 +232,7 @@ const Canvas = ({ settings }) => {
   };
 
   const drawTri = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
     ctx.moveTo(path[0][0], path[0][1]);
     ctx.lineTo(path[0][0] * 2 - path[1][0], path[1][1]);
@@ -236,8 +253,15 @@ const Canvas = ({ settings }) => {
   };
 
   const drawCircle = (path, ctx) => {
+    if (path.length < 2) return;
     ctx.beginPath();
-    ctx.arc(path[0][0], path[0][1], getDistance(path), 0, 2 * Math.PI);
+    ctx.arc(
+      (path[0][0] + path[1][0]) / 2,
+      (path[0][1] + path[1][1]) / 2,
+      getDistance(path) / 2,
+      0,
+      2 * Math.PI,
+    );
     ctx.stroke();
   };
 
@@ -267,6 +291,17 @@ const Canvas = ({ settings }) => {
     ctx.restore();
   };
 
+  //내가만듦
+  const resetCanvas = (e) => {
+    prevent(e);
+    if (history.current.length === 0) return;
+    while (history.current.length !== 0) {
+      redoHistory.current.push(history.current.pop());
+    }
+    drawCanvas(getContext());
+    render();
+  };
+
   const drawCanvas = (ctx) => {
     clearCanvas(ctx);
     for (const item of history.current) {
@@ -283,10 +318,18 @@ const Canvas = ({ settings }) => {
     render();
   };
 
-  const redoCanvas = (e) => {
+  // const redoCanvas = (e) => {
+  //   prevent(e);
+  //   if (redoHistory.current.length === 0) return;
+  //   history.current.push(redoHistory.current.pop());
+  //   drawCanvas(getContext());
+  //   render();
+  // };
+
+  const Canvas = (e) => {
     prevent(e);
-    if (redoHistory.current.length === 0) return;
-    history.current.push(redoHistory.current.pop());
+    if (history.current.length === 0) return;
+    redoHistory.current.push(history.current.pop());
     drawCanvas(getContext());
     render();
   };
@@ -315,10 +358,6 @@ const Canvas = ({ settings }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
-
-  const changeColor = (e) => {
-    settings.current.color = e.target.value;
-  };
 
   const exportCanvas = () => {
     const link = document.createElement("a");
@@ -378,12 +417,15 @@ const Canvas = ({ settings }) => {
     setGetCtx(canvas.current.getContext("2d"));
   }, [canvas]);
 
+  const input = CanvasInput({
+    canvas: document.getElementById("canvas"),
+  });
+
   return (
     <>
       <div
         onPointerDown={(e) => e.stopPropagation()}
         onPointerUp={(e) => e.stopPropagation()}
-        aria-disabled={drawing}
         className="relative w-[77px] h-[400px] bg-white rounded-[10px] border-2 border-solid border-[#b5b5b5] shadow-[4px_4px_4px_#00000040]"
       >
         <div className="absolute w-[33px] h-[348px] top-[26px] left-[22px]">
@@ -469,15 +511,19 @@ const Canvas = ({ settings }) => {
         height={height}
         onPointerDown={onPointerDown}
       ></canvas>
-      <Buttons getCtx={getCtx} getCanvas={canvas.current} />
+      <Buttons
+        getCtx={getCtx}
+        getCanvas={canvas.current}
+        undoCanvas={resetCanvas}
+      />
     </>
   );
 };
 
-const Buttons = ({ getCtx, getCanvas }) => {
-  const onReset = () => {
-    getCtx.clearRect(0, 0, 531, 400);
-  };
+const Buttons = ({ getCtx, getCanvas, undoCanvas }) => {
+  // const onReset = () => {
+  //   getCtx.clearRect(0, 0, 531, 400);
+  // };
 
   const handleUpload = () => {
     const imageURL = getCanvas.toDataURL("image/jpeg");
@@ -540,7 +586,7 @@ const Buttons = ({ getCtx, getCanvas }) => {
       </button>
 
       <button
-        onClick={onReset}
+        onClick={undoCanvas}
         className="flex flex-col w-[333px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px]  bg-white rounded-lg border border-solid border-[#a4a3a3]"
       >
         <div className="ml-[-38.00px] mr-[-38.00px] inline-flex items-center justify-center gap-[15px] relative flex-[0_0_auto]">
