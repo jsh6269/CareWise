@@ -416,10 +416,6 @@ const Canvas = ({ settings }) => {
     setGetCtx(canvas.current.getContext("2d"));
   }, [canvas]);
 
-  const input = CanvasInput({
-    canvas: document.getElementById("canvas"),
-  });
-
   return (
     <>
       <div
