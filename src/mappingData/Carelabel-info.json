@@ -259,6 +259,11 @@
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable-95(3).png",
     "keyword": ["95˚C", "세탁"]
   },
+  "iron.png": {
+    "info": "다림질이 가능해요.",
+    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron.png",
+    "keyword": ["다림질", "가능"]
+  },
   "iron-x.png": {
     "info": "다림질이 불가능해요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-x.png",
