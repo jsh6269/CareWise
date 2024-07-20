@@ -27,13 +27,14 @@ const LabelCard = ({ label }) => {
   if (label == null) {
     return <div></div>;
   }
-  const name = label.slice(0, -4);
+  const name = label.slice(0, -4).split("(")[0];
   const similar = [
+    name.concat(".png"),
     name.concat("(2).png"),
     name.concat("(3).png"),
     name.concat("(4).png"),
   ];
-  const same = similar.filter((item) => careLabelInfo[item]);
+  const same = similar.filter((item) => careLabelInfo[item] && item !== label);
 
   return (
     <article className="flex flex-col w-[1222px] h-[360px] items-start justify-center gap-2.5 px-[89px] py-[115px] mb-[84px] relative bg-white rounded-[20px] border-2 border-solid border-[#d9d9d9]">
