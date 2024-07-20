@@ -9,7 +9,7 @@ const CareResultPage = () => {
           섬유 혼용률 [레이온 97%, 폴리우레탄 3%]의 [블라우스]
         </div>
       </div>
-      <div className="left-[197px] top-[160px] relative">
+      <div className="left-[197px] top-[100px] relative">
         <div className="w-[822px] h-[47px] absolute text-neutral-700 text-[40px] font-semibold font-['Inter']">
           해당 의복에 대한 관리법이에요:
         </div>
