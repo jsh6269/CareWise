@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useReducer } from "react";
 import drawingIcon from "../../assets/images/icons/Vector.png";
 import polygon from "../../assets/images/icons/Polygon1.svg";
 import eraserIcon from "../../assets/images/icons/Vector.svg";
-import textIcon from "../../assets/images/icons/Vector(1).svg";
+import UndoIcon from "../../assets/images/icons/material-symbols_undo.png";
 import resetLogo from "../../assets/images/icons/radix-icons_reset.png";
 import uploadLogo from "../../assets/images/icons/material-symbols_upload.png";
 import AWS from "aws-sdk";
@@ -32,21 +32,6 @@ const Canvas = ({ settings }) => {
   const history = useRef([]);
   const redoHistory = useRef([]);
   const moving = useRef(false);
-  const importInput = useRef(null);
-  const [getCtx, setGetCtx] = useState(null);
-
-  useEffect(() => {
-    const canvasRef = canvas.current;
-    canvasRef.width = 531;
-    canvasRef.height = 400;
-    const ctx = canvasRef.getContext("2d");
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 2.5;
-    ctx.strokeStyle = "#000000";
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(0, 0, 531, 400);
-    setGetCtx(ctx);
-  }, []);
 
   const prevent = (e) => {
     e.preventDefault();
@@ -325,18 +310,18 @@ const Canvas = ({ settings }) => {
   //   render();
   // };
 
-  const Canvas = (e) => {
-    prevent(e);
-    if (history.current.length === 0) return;
-    redoHistory.current.push(history.current.pop());
-    drawCanvas(getContext());
-    render();
-  };
+  // const Canvas = (e) => {
+  //   prevent(e);
+  //   if (history.current.length === 0) return;
+  //   redoHistory.current.push(history.current.pop());
+  //   drawCanvas(getContext());
+  //   render();
+  // };
 
-  const setMode = (mode) => (e) => {
-    settings.current.mode = mode;
-    render();
-  };
+  // const setMode = (mode) => (e) => {
+  //   settings.current.mode = mode;
+  //   render();
+  // };
 
   useEffect(() => {
     document.addEventListener("pointerup", onPointerUp);
@@ -358,63 +343,47 @@ const Canvas = ({ settings }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
 
-  const exportCanvas = () => {
-    const link = document.createElement("a");
-    const content = JSON.stringify(history.current);
-    const file = new Blob([content], { type: "application/json" });
-    link.href = URL.createObjectURL(file);
-    link.download = `canvas_export_${Date.now()}_${Math.floor(
-      Math.random() * 3,
-    )}.json`;
-    link.click();
-    URL.revokeObjectURL(link.href);
-  };
+  // const importCanvas = (e) => {
+  //   if (e.target.files.length === 0) return;
+  //   const reader = new FileReader();
+  //   try {
+  //     reader.onload = () => {
+  //       history.current = JSON.parse(reader.result);
+  //       drawCanvas(getContext());
+  //       render();
+  //     };
+  //     reader.readAsText(e.target.files[0]);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
-  const importCanvas = (e) => {
-    if (e.target.files.length === 0) return;
-    const reader = new FileReader();
-    try {
-      reader.onload = () => {
-        history.current = JSON.parse(reader.result);
-        drawCanvas(getContext());
-        render();
-      };
-      reader.readAsText(e.target.files[0]);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const onImportClick = () => {
+  //   importInput.current?.click();
+  // };
 
-  const onImportClick = () => {
-    importInput.current?.click();
-  };
-
-  const modeButtons = [
-    {
-      mode: MODES.PAN,
-      title: "move",
-      icon: "move.svg",
-    },
-    {
-      mode: MODES.PEN,
-      title: "pen",
-      icon: "pen.svg",
-    },
-    {
-      mode: MODES.RECT,
-      title: "rectangle",
-      icon: "rectangle.svg",
-    },
-    {
-      mode: MODES.CIRCLE,
-      title: "circle",
-      icon: "circle.svg",
-    },
-  ];
-
-  useEffect(() => {
-    setGetCtx(canvas.current.getContext("2d"));
-  }, [canvas]);
+  // const modeButtons = [
+  //   {
+  //     mode: MODES.PAN,
+  //     title: "move",
+  //     icon: "move.svg",
+  //   },
+  //   {
+  //     mode: MODES.PEN,
+  //     title: "pen",
+  //     icon: "pen.svg",
+  //   },
+  //   {
+  //     mode: MODES.RECT,
+  //     title: "rectangle",
+  //     icon: "rectangle.svg",
+  //   },
+  //   {
+  //     mode: MODES.CIRCLE,
+  //     title: "circle",
+  //     icon: "circle.svg",
+  //   },
+  // ];
 
   return (
     <>
@@ -490,11 +459,11 @@ const Canvas = ({ settings }) => {
             />
           </button>
 
-          <button>
+          <button onClick={undoCanvas}>
             <img
-              className="h-[30px] top-[318px] absolute w-7 left-[3px]"
+              className="absolute w-[45px] h-[40px] top-[310px]"
               alt="Vector"
-              src={textIcon}
+              src={UndoIcon}
             />
           </button>
         </div>
@@ -506,23 +475,78 @@ const Canvas = ({ settings }) => {
         height={height}
         onPointerDown={onPointerDown}
       ></canvas>
-      <Buttons
-        getCtx={getCtx}
-        getCanvas={canvas.current}
-        undoCanvas={resetCanvas}
-      />
+      <Buttons getCanvas={canvas.current} resetCanvas={resetCanvas} />
     </>
   );
 };
 
-const Buttons = ({ getCtx, getCanvas, undoCanvas }) => {
-  // const onReset = () => {
-  //   getCtx.clearRect(0, 0, 531, 400);
+const Buttons = ({ getCanvas, resetCanvas }) => {
+  // const handleUpload = () => {
+  //   const imageURL = getCanvas.toDataURL("image/jpeg");
+
+  //   function dataURItoBlob(dataURI) {
+  //     const binary = atob(dataURI.split(",")[1]);
+  //     const array = [];
+  //     for (let i = 0; i < binary.length; i++) {
+  //       array.push(binary.charCodeAt(i));
+  //     }
+  //     return new Blob([new Uint8Array(array)], { type: "image/jpeg" });
+  //   }
+
+  //   const blobData = dataURItoBlob(imageURL);
+
+  //   // AWS S3 설정
+  //   AWS.config.update({
+  //     accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
+  //     secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
+  //     region: "ap-northeast-2", // 리전 변경
+  //   });
+
+  //   const s3 = new AWS.S3();
+  //   const date = new Date();
+
+  //   // 업로드할 파일 정보 설정
+  //   const uploadParams = {
+  //     Bucket: "carewise-input", // 버킷 이름 변경
+  //     Key: `${date.toISOString()}.jpg`, // S3에 저장될 경로와 파일명
+  //     Body: blobData,
+  //   };
+
+  //   // S3에 파일 업로드
+  //   s3.upload(uploadParams, (err, data) => {
+  //     if (err) {
+  //       console.error("Error uploading file:", err);
+  //     } else {
+  //       console.log("File uploaded successfully. ETag:", data.ETag);
+  //       // 업로드 성공 후 필요한 작업 수행
+  //     }
+  //   });
   // };
 
+  // 내가 만듦
   const handleUpload = () => {
-    const imageURL = getCanvas.toDataURL("image/jpeg");
+    const canvas = getCanvas;
+    const context = canvas.getContext("2d");
 
+    // Create a temporary canvas to draw a white background and then the current canvas content
+    const tempCanvas = document.createElement("canvas");
+    const tempContext = tempCanvas.getContext("2d");
+
+    // Set the same size as the original canvas
+    tempCanvas.width = canvas.width;
+    tempCanvas.height = canvas.height;
+
+    // Draw a white background
+    tempContext.fillStyle = "#FFFFFF";
+    tempContext.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+    // Draw the original canvas content on top of the white background
+    tempContext.drawImage(canvas, 0, 0);
+
+    // Get the data URL of the temporary canvas
+    const imageURL = tempCanvas.toDataURL("image/jpeg");
+
+    // Convert data URL to Blob
     function dataURItoBlob(dataURI) {
       const binary = atob(dataURI.split(",")[1]);
       const array = [];
@@ -547,7 +571,7 @@ const Buttons = ({ getCtx, getCanvas, undoCanvas }) => {
     // 업로드할 파일 정보 설정
     const uploadParams = {
       Bucket: "carewise-input", // 버킷 이름 변경
-      Key: `${date.toISOString()}.png`, // S3에 저장될 경로와 파일명
+      Key: `${date.toISOString()}.jpg`, // S3에 저장될 경로와 파일명
       Body: blobData,
     };
 
@@ -581,7 +605,7 @@ const Buttons = ({ getCtx, getCanvas, undoCanvas }) => {
       </button>
 
       <button
-        onClick={undoCanvas}
+        onClick={resetCanvas}
         className="flex flex-col w-[333px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px]  bg-white rounded-lg border border-solid border-[#a4a3a3]"
       >
         <div className="ml-[-38.00px] mr-[-38.00px] inline-flex items-center justify-center gap-[15px] relative flex-[0_0_auto]">
