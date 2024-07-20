@@ -89,6 +89,7 @@ const Dropdown = ({ options, placeholder }) => {
                       : "https://s3-alpha-sig.figma.com/img/555d/5ec3/5e60ad107162aa76e07d596006c0303d?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A8WcBiQYB0hm6xrvFWj29Ba538dpam1WFRn-i29iIgE4hNopnnI1iqC9A6lMfUuF3uoyuUMhITS9~RXdZAepChc26iNM-0pDBUO8~1KLTLQ2sRc6E69i4JnNcpAHJNJfODti0F5Emi3V~9HJdLiiPMe-wn4q-0rL0Jq77tb7IzickvJafn5jpiWcXDRGD5M~-0x3es2s-I7R-dLxlwF85b5h1zgEmQuqiiE7QR1xWxkt2IFjvm4qW~Da2p6l2hhi-ssbxxMRoRraRuTVcezclstfvNv9vZ1sYrje6MoD0OoXZMKuCqg0tQfW0peUVtyiK3YvxTCZJr5H0IDqt9mZAA__"
                   }
                   className="w-5 h-5 cursor-pointer"
+                  alt="checkbox"
                 />
               </div>
               <span>{option.label}</span>

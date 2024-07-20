@@ -29,6 +29,11 @@
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/dry-shadow.png",
     "keyword": ["그늘", "건조"]
   },
+  "dry-shadow(2).png": {
+    "info": "그늘에서 건조하세요.",
+    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/dry-shadow(2).png",
+    "keyword": ["그늘", "건조"]
+  },
   "dry-hang.png": {
     "info": "걸어서 건조하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/dry-hang.png",
@@ -259,6 +264,11 @@
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/washable-95(3).png",
     "keyword": ["95˚C", "세탁"]
   },
+  "iron.png": {
+    "info": "다림질이 가능해요.",
+    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron.png",
+    "keyword": ["다림질", "가능"]
+  },
   "iron-x.png": {
     "info": "다림질이 불가능해요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-x.png",
@@ -303,6 +313,11 @@
     "info": "180~210˚C로 다림질하세요.",
     "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-180-210.png",
     "keyword": ["180~210˚C", "다림질"]
+  },
+  "iron-cloth.png": {
+    "info": "원단 위에 천을 덮고 다림질하세요.",
+    "image": "https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/iron-cloth.png",
+    "keyword": ["천", "다림질"]
   },
   "iron-80-120-cloth.png": {
     "info": "원단 위에 천을 덮고\n80~120˚C로 다림질하세요.",

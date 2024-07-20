@@ -41,6 +41,7 @@
     "dry-mediumheat.png",
     "dry-highheat.png",
     "dry-shadow.png",
+    "dry-shadow(2).png",
     "dry-hang.png",
     "dry-hang-shadow.png",
     "dry-flat.png",
@@ -65,10 +66,11 @@
     "bleach-oxygen-no.png",
     "bleach-chlorine(2).png",
     "bleach-chlorine-no(2).png",
-    "bleach-oxygen%26chlorine.png",
-    "bleach-oxygen%26chlorine-no.png"
+    "bleach-oxygen&chlorine.png",
+    "bleach-oxygen&chlorine-no.png"
   ],
   "다림질": [
+    "iron.png",
     "iron-x.png",
     "iron-steam.png",
     "iron-steam-x.png",
@@ -78,6 +80,7 @@
     "iron-80-120.png",
     "iron-140-160.png",
     "iron-180-210.png",
+    "iron-cloth.png",
     "iron-80-120-cloth.png",
     "iron-140-160-cloth.png",
     "iron-180-210-cloth.png"
