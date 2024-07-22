@@ -109,6 +109,7 @@ const View1 = ({
             boxShadow: "5px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
           src={`https://s3-alpha-sig.figma.com/img/cc16/a19c/5a0b743438973d3baa4e5fb0dd5d417c?Expires=1721606400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KkealoRLai8WAHexT9Y8oqKduTorFbrkgaWBlndJMQbrPBlHkaH52nUa~T0IBCab4fJp5KVmUfpzR6o26aWe8ilOVAK43SKKTPDBE-bzcDHMWfZ1ccxc86lOX1vUXwQ~qaTJH7AGnpjv2AkVU7A0jO0tHMG4n0SPybFLyHkgBoquMspkAh2DQE2QUyOKsYz1PXLfOulae309psKtmPiBAQsf4~FfzfPANqjPtAs~UPhDVap1VgltJA0srSn8jxOZx~WfWYp4QLuSzZgeb9buuUmLXNVOXCw1Ezj2Z~3-N5I0XGq-wkJArYRhRYkLuoAvMbYAdj51hzVC-nIG3xNL8A__`}
+          alt="container"
         />
         <div className="absolute mt-[160px] ml-[108px]">
           <h1 className="text-[#3A3A3A] text-[20px] font-normal tracking-[10px] ml-[12px] mb-[18px]">
