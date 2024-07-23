@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import HomePage from "./routes/HomePage";
 import CareSearchPage from "./routes/CareSearchPage";
 import CareResultPage from "./routes/CareResultPage";
+import CareResultPage2 from "./routes/CareResultPage2";
 import LabelExPage from "./routes/LabelExPage";
 import LabelExResult from "./routes/LabelExResultPage";
 import LabelSearchPage from "./routes/LabelSearchPage";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/care-search" element={<CareSearchPage />} />
             <Route path="/care-result" element={<CareResultPage />} />
+            <Route path="/care-result2" element={<CareResultPage2 />} />
             <Route path="/label-ex" element={<LabelExPage />} />
             <Route path="/label-ex-result" element={<LabelExResult />} />
             <Route path="/label-search" element={<LabelSearchPage />} />
