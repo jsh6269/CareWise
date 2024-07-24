@@ -77,30 +77,43 @@ const View1 = ({
           의복의 종류, 섬유 혼용률을 분석해서 적절한 관리법을 알려드려요!
         </p>
       </div>
-      <div className="absolute top-[200px] left-[567px] justify-center gap-[40px] mb-4">
-        <label className="text-[15px] text-[#757575] mx-2 cursor-pointer">
+      <div className="absolute grid grid-cols-2 top-[198px] left-[506px] justify-center gap-[30px] mb-4">
+        <div>
           <input
             type="radio"
-            name="viewOption"
+            name="viewoption"
+            id="view1"
             value="view1"
-            checked
+            class="peer hidden"
             onChange={() => setCurrentView("view1")}
-            className="mr-[15px]"
+            checked
           />
-          케어라벨 입력하기
-        </label>
-        <label className="text-[15px] text-[#757575] mx-2 cursor-pointer">
+          <label
+            for="view1"
+            class="block text-[14px] cursor-pointer select-none rounded-3xl px-10 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#b6b6b6]  peer-checked:text-white"
+          >
+            케어라벨 입력하기
+          </label>
+        </div>
+
+        <div>
           <input
             type="radio"
-            name="viewOption"
+            name="viewoption"
+            id="view2"
             value="view2"
+            class="peer hidden"
             onChange={() => setCurrentView("view2")}
-            className="mr-[15px]"
           />
-          직접 검색하기
-        </label>
+          <label
+            for="view2"
+            class="block text-[14px] cursor-pointer select-none rounded-3xl px-8 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#c5c5c5]  peer-checked:text-white"
+          >
+            직접 검색하기
+          </label>
+        </div>
       </div>
-      <div className="relative top-[250px] left-[499px] w-[441px] h-[582px] items-center">
+      <div className="relative top-[265px] left-[499px] w-[441px] h-[582px] items-center">
         <img
           className="absolute"
           style={{
@@ -162,7 +175,7 @@ const View1 = ({
           </div>
         </div>
       </div>
-      <button className="absolute top-[880px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]">
+      <button className="absolute top-[895px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]">
         검색결과 보기
       </button>
     </div>
@@ -179,34 +192,47 @@ const View2 = ({ setCurrentView }) => {
           물어볼 수 있어요.
         </p>
       </div>
-      <div className="absolute top-[200px] left-[567px] justify-center gap-[40px] mb-4">
-        <label className="text-[15px] text-[#757575] mx-2 cursor-pointer">
+      <div className="absolute grid grid-cols-2 top-[198px] left-[506px] justify-center gap-[30px] mb-4">
+        <div>
           <input
             type="radio"
-            name="viewOption"
+            name="viewoption"
+            id="view1"
             value="view1"
+            class="peer hidden"
             onChange={() => setCurrentView("view1")}
-            className="mr-[15px]"
           />
-          케어라벨 입력하기
-        </label>
-        <label className="text-[15px] text-[#757575] mx-2 cursor-pointer">
+          <label
+            for="view1"
+            class="block text-[14px] cursor-pointer select-none rounded-3xl px-10 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#b6b6b6]  peer-checked:text-white"
+          >
+            케어라벨 입력하기
+          </label>
+        </div>
+
+        <div>
           <input
             type="radio"
-            name="viewOption"
+            name="viewoption"
+            id="view2"
             value="view2"
-            checked
+            class="peer hidden"
             onChange={() => setCurrentView("view2")}
-            className="mr-[15px]"
+            checked
           />
-          직접 검색하기
-        </label>
+          <label
+            for="view2"
+            class="block text-[14px] cursor-pointer select-none rounded-3xl px-8 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#c5c5c5]  peer-checked:text-white"
+          >
+            직접 검색하기
+          </label>
+        </div>
       </div>
       <textarea
-        className="absolute left-[180px] top-[250px] px-[25px] py-[20px] w-[1060px] h-[130px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[17px] placeholder-[#757575] overflow-auto"
+        className="absolute left-[180px] top-[265px] px-[25px] py-[20px] w-[1060px] h-[130px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[17px] placeholder-[#757575] overflow-auto"
         placeholder="니트류에 대한 관리법을 알려줘, 스타킹에 올이 나갔어, 셔츠에 잉크를 쏟았어!"
       ></textarea>
-      <button className="absolute top-[430px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]">
+      <button className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]">
         검색결과 보기
       </button>
     </div>
