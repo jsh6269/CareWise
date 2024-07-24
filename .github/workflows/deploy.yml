@@ -27,9 +27,11 @@ jobs:
         run: |
           echo "REACT_APP_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .env.production
           echo "REACT_APP_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .env.production
+          echo "OPENAI_API_KEY=$OPENAI_API_KEY" >> .env.production
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Build # React Build
         run: CI='false' npm run build # npm run build를 실행할 경로로 설정
