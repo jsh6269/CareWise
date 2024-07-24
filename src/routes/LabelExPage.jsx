@@ -53,7 +53,7 @@ const LabelExPage = () => {
   };
 
   // API 실행 함수 (현재는 정의만 되어 있어 작동시키는 코드 추가해야 함)
-  const getResultAPI = async () => {
+  /* const getResultAPI = async () => {
     const result = await getResult();
     if (result) {
       navigate("/label-ex-result", {
@@ -62,7 +62,7 @@ const LabelExPage = () => {
     } else {
       navigate(""); // 인식 실패 페이지로 이동 (아직 구현 x)
     }
-  };
+  };*/
 
   return (
     <>
