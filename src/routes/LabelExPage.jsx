@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AWS from "aws-sdk";
-import { getResult } from "../apis/api.js";
 
 import { default as Canvas } from "../components/Canvas/index.jsx";
 import careLabelSample from "../assets/images/icons/carelabel-sample.png";
