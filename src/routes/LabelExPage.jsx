@@ -12,10 +12,18 @@ const LabelExPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [retry, setRetry] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [base64, setBase64] = useState("");
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
+  };
+
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   async function handleUpload() {
@@ -28,19 +36,34 @@ const LabelExPage = () => {
       return;
     }
 
-    async function tobase64() {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBase64(reader.result);
-      };
-      reader.readAsDataURL(selectedFile);
-    }
+    // async function tobase64() {
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     setEncodedImage(reader.result);
+    //   };
+    //   reader.readAsDataURL(selectedFile);
+    // }
 
-    await tobase64();
-    const result = await LabelSearchAPI(base64);
-    navigate("/label-ex-result", {
-      state: { image: URL.createObjectURL(selectedFile), result: result },
-    });
+    // await tobase64();
+    // const result = await LabelSearchAPI(encodedImage);
+    // navigate("/label-ex-result", {
+    //   state: { image: URL.createObjectURL(selectedFile), result: result },
+    // });
+
+    setIsLoading(true);
+    try {
+      const encodedImage = await toBase64(selectedFile);
+      const result = await LabelSearchAPI(encodedImage);
+      navigate("/label-ex-result", {
+        state: { image: URL.createObjectURL(selectedFile), result: result },
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   // API 실행 함수

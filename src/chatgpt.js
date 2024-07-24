@@ -2,6 +2,7 @@ const OpenAI = require("openai");
 
 const openai = new OpenAI({
   apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
+  dangerouslyAllowBrowser: true,
 });
 
 export async function LabelSearchAPI(base64Image) {

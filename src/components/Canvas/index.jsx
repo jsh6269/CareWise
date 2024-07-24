@@ -324,8 +324,12 @@ const Canvas = ({ settings }) => {
   // };
 
   useEffect(() => {
-    document.addEventListener("pointerup", onPointerUp);
-    document.addEventListener("pointermove", onPointerMove);
+    document
+      .getElementsByTagName("canvas")[0]
+      .addEventListener("pointerup", onPointerUp);
+    document
+      .getElementsByTagName("canvas")[0]
+      .addEventListener("pointermove", onPointerMove);
     getContext().setTransform(
       1,
       0,
@@ -342,25 +346,6 @@ const Canvas = ({ settings }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
-
-  // const importCanvas = (e) => {
-  //   if (e.target.files.length === 0) return;
-  //   const reader = new FileReader();
-  //   try {
-  //     reader.onload = () => {
-  //       history.current = JSON.parse(reader.result);
-  //       drawCanvas(getContext());
-  //       render();
-  //     };
-  //     reader.readAsText(e.target.files[0]);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
-  // const onImportClick = () => {
-  //   importInput.current?.click();
-  // };
 
   // const modeButtons = [
   //   {
