@@ -1,8 +1,11 @@
 const OpenAI = require("openai");
 
-const openai = new OpenAI({ apiKey: `${process.env.OPENAI_API_KEY}` });
+const openai = new OpenAI({
+  apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
+  dangerouslyAllowBrowser: true,
+});
 
-async function LabelSearchAPI(base64Image) {
+export async function LabelSearchAPI(base64Image) {
   const stream = await openai.chat.completions.create({
     model: "gpt-4o",
     messages: [
@@ -127,7 +130,7 @@ async function LabelSearchAPI(base64Image) {
 
   for await (const chunk of stream) {
     const temp = chunk.choices[0]?.delta?.content || "";
-    if (temp == "" || temp == "\n") {
+    if (temp === "" || temp === "\n") {
       continue;
     }
     listing.push(temp);

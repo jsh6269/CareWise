@@ -1,68 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import AWS from "aws-sdk";
 
 import { default as Canvas } from "../components/Canvas/index.jsx";
 import careLabelSample from "../assets/images/icons/carelabel-sample.png";
 import uploadLogo from "../assets/images/icons/material-symbols_upload.png";
 import { Loading, RecogFail } from "../components/Modal/index.jsx";
+import { LabelSearchAPI } from "../chatgpt.js";
 
 const LabelExPage = () => {
   const navigate = useNavigate();
-
-  const [isLoading, setisLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [retry, setRetry] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpload = () => {
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  async function handleUpload() {
     if (!selectedFile) {
       alert("Please select a file");
       return;
     }
-
-    // AWS S3 설정
-    AWS.config.update({
-      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
-      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
-      region: "ap-northeast-2", // 리전 변경
-    });
-
-    const s3 = new AWS.S3();
-    const date = new Date();
-
-    // 업로드할 파일 정보 설정
-    const uploadParams = {
-      Bucket: "carewise-input", // 버킷 이름 변경
-      Key: `${date.toISOString()}.png`, // S3에 저장될 경로와 파일명
-      Body: selectedFile,
-    };
-
-    // S3에 파일 업로드
-    s3.upload(uploadParams, (err, data) => {
-      if (err) {
-        console.error("Error uploading file:", err);
-      } else {
-        console.log("File uploaded successfully. ETag:", data.ETag);
-        // 업로드 성공 후 필요한 작업 수행
-      }
-    });
-  };
-
-  // API 실행 함수 (현재는 정의만 되어 있어 작동시키는 코드 추가해야 함)
-  /* const getResultAPI = async () => {
-    const result = await getResult();
-    if (result) {
-      navigate("/label-ex-result", {
-        state: { image: URL.createObjectURL(selectedFile), result: result },
-      });
-    } else {
-      navigate(""); // 인식 실패 페이지로 이동 (아직 구현 x)
+    if (!["image/jpeg", "image/jpg", "image/png"].includes(selectedFile.type)) {
+      alert("JPG 사진 파일만 가능합니다.");
+      return;
     }
-  };*/
+
+    try {
+      const encodedImage = await toBase64(selectedFile);
+      const result = await LabelSearchAPI(encodedImage);
+      if (result.length > 0) {
+        navigate("/label-ex-result", {
+          state: { image: URL.createObjectURL(selectedFile), result: result },
+        });
+      } else {
+        setIsLoading(false);
+        setRetry(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const settings = useRef({
+    stroke: 3,
+    color: "#000",
+    mode: 1,
+  });
 
   return (
     <>
@@ -123,13 +121,27 @@ const LabelExPage = () => {
 
             {/*frame 51 in figma*/}
             <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
-              <Canvas />
+              <Canvas
+                settings={settings}
+                setIsLoading={(x) => {
+                  setIsLoading(x);
+                }}
+                setRetry={(x) => {
+                  setRetry(x);
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
       <div>
         <Loading isLoading={isLoading} />
+        <RecogFail
+          retry={retry}
+          setRetry={(x) => {
+            setRetry(x);
+          }}
+        />
       </div>
     </>
   );
