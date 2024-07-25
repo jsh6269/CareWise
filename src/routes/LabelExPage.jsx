@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { default as Canvas } from "../components/Canvas/index.jsx";
@@ -36,27 +36,17 @@ const LabelExPage = () => {
       return;
     }
 
-    // async function tobase64() {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     setEncodedImage(reader.result);
-    //   };
-    //   reader.readAsDataURL(selectedFile);
-    // }
-
-    // await tobase64();
-    // const result = await LabelSearchAPI(encodedImage);
-    // navigate("/label-ex-result", {
-    //   state: { image: URL.createObjectURL(selectedFile), result: result },
-    // });
-
-    setIsLoading(true);
     try {
       const encodedImage = await toBase64(selectedFile);
       const result = await LabelSearchAPI(encodedImage);
-      navigate("/label-ex-result", {
-        state: { image: URL.createObjectURL(selectedFile), result: result },
-      });
+      if (result.length > 0) {
+        navigate("/label-ex-result", {
+          state: { image: URL.createObjectURL(selectedFile), result: result },
+        });
+      } else {
+        setIsLoading(false);
+        setRetry(true);
+      }
     } catch (error) {
       console.error("Error:", error);
       setIsLoading(false);
@@ -66,17 +56,11 @@ const LabelExPage = () => {
     }
   }
 
-  // API 실행 함수
-  // const getResultAPI = async () => {
-  // const result = await getResult();
-  // if (result) {
-  //   navigate("/label-ex-result", {
-  //     state: { image: URL.createObjectURL(selectedFile), result: result },
-  //   });
-  // } else {
-  //   setRetry(true);
-  // }
-  // };
+  const settings = useRef({
+    stroke: 3,
+    color: "#000",
+    mode: 1,
+  });
 
   return (
     <>
@@ -137,7 +121,15 @@ const LabelExPage = () => {
 
             {/*frame 51 in figma*/}
             <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
-              <Canvas />
+              <Canvas
+                settings={settings}
+                setIsLoading={(x) => {
+                  setIsLoading(x);
+                }}
+                setRetry={(x) => {
+                  setRetry(x);
+                }}
+              />
             </div>
           </div>
         </div>
@@ -146,8 +138,8 @@ const LabelExPage = () => {
         <Loading isLoading={isLoading} />
         <RecogFail
           retry={retry}
-          setRetry={() => {
-            setRetry(false);
+          setRetry={(x) => {
+            setRetry(x);
           }}
         />
       </div>

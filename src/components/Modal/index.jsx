@@ -36,9 +36,21 @@ const Loading = ({ isLoading }) => {
         <div className="w-[489px] h-[238px] py-[42px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center gap-2.5 inline-flex">
           <div className="h-[91px] flex-col justify-start items-start gap-5 flex">
             <div className="w-[265px] opacity-60 justify-start items-center gap-20 inline-flex">
-              <img className="w-[35px] h-[35px] shadow" src={loadingIcon1} />
-              <img className="w-[35px] h-[35px] shadow" src={loadingIcon2} />
-              <img className="w-[42.30px] h-[35px] shadow" src={loadingIcon3} />
+              <img
+                className="w-[35px] h-[35px] shadow"
+                src={loadingIcon1}
+                alt="carelabel icon for animation"
+              />
+              <img
+                className="w-[35px] h-[35px] shadow"
+                src={loadingIcon2}
+                alt="carelabel icon for animation"
+              />
+              <img
+                className="w-[42.30px] h-[35px] shadow"
+                src={loadingIcon3}
+                alt="carelabel icon for animation"
+              />
             </div>
             <div className="self-stretch text-center text-neutral-500 text-3xl font-normal font-['Inter']">
               기호를 분석 중이에요!
@@ -50,11 +62,11 @@ const Loading = ({ isLoading }) => {
   );
 };
 
-const RecogFail = ({ RecogFail }) => {
+const RecogFail = ({ retry, setRetry }) => {
   return (
     <div
       style={{
-        display: RecogFail ? "block" : "none",
+        display: retry ? "block" : "none",
       }}
     >
       <div
@@ -89,14 +101,19 @@ const RecogFail = ({ RecogFail }) => {
             </div>
             <div className="w-[25px] h-[25px] left-[446px] top-[4px] absolute"></div>
           </div>
-          <div className="w-[367px] h-[67px] px-[133px] py-[18px] bg-zinc-400 rounded-lg flex-col justify-center items-center gap-2.5 flex">
+          <button
+            onClick={() => {
+              setRetry(false);
+            }}
+            className="w-[367px] h-[67px] px-[133px] py-[18px] bg-zinc-400 rounded-lg flex-col justify-center items-center gap-2.5 flex"
+          >
             <div className="justify-start items-center gap-[15px] inline-flex">
               <div className="w-[30px] h-[30px] relative" />
               <div className="text-center text-white text-xl font-normal font-['Inter'] leading-tight">
                 다시 업로드하러 가기
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>

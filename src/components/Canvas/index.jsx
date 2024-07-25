@@ -1,15 +1,16 @@
 import React, { useRef, useEffect, useState, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import drawingIcon from "../../assets/images/icons/Vector.png";
 import polygon from "../../assets/images/icons/Polygon1.svg";
 import eraserIcon from "../../assets/images/icons/Vector.svg";
 import UndoIcon from "../../assets/images/icons/material-symbols_undo.png";
 import resetLogo from "../../assets/images/icons/radix-icons_reset.png";
 import uploadLogo from "../../assets/images/icons/material-symbols_upload.png";
-import AWS from "aws-sdk";
+import { LabelSearchAPI } from "../../chatgpt.js";
 
 let lastPath = [];
 
-const Canvas = ({ settings }) => {
+const Canvas = ({ settings, setIsLoading, setRetry }) => {
   const MODES = {
     PAN: 0,
     PEN: 1,
@@ -318,11 +319,6 @@ const Canvas = ({ settings }) => {
   //   render();
   // };
 
-  // const setMode = (mode) => (e) => {
-  //   settings.current.mode = mode;
-  //   render();
-  // };
-
   useEffect(() => {
     document
       .getElementsByTagName("canvas")[0]
@@ -346,29 +342,6 @@ const Canvas = ({ settings }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
-
-  // const modeButtons = [
-  //   {
-  //     mode: MODES.PAN,
-  //     title: "move",
-  //     icon: "move.svg",
-  //   },
-  //   {
-  //     mode: MODES.PEN,
-  //     title: "pen",
-  //     icon: "pen.svg",
-  //   },
-  //   {
-  //     mode: MODES.RECT,
-  //     title: "rectangle",
-  //     icon: "rectangle.svg",
-  //   },
-  //   {
-  //     mode: MODES.CIRCLE,
-  //     title: "circle",
-  //     icon: "circle.svg",
-  //   },
-  // ];
 
   return (
     <>
@@ -460,15 +433,41 @@ const Canvas = ({ settings }) => {
         height={height}
         onPointerDown={onPointerDown}
       ></canvas>
-      <Buttons getCanvas={canvas.current} resetCanvas={resetCanvas} />
+      <Buttons
+        getCanvas={canvas.current}
+        resetCanvas={resetCanvas}
+        setIsLoading={setIsLoading}
+        setRetry={setRetry}
+      />
     </>
   );
 };
 
-const Buttons = ({ getCanvas, resetCanvas }) => {
+const Buttons = ({ getCanvas, resetCanvas, setIsLoading, setRetry }) => {
+  // 내가 만듦
   // const handleUpload = () => {
-  //   const imageURL = getCanvas.toDataURL("image/jpeg");
+  //   const canvas = getCanvas;
+  //   const context = canvas.getContext("2d");
 
+  //   // Create a temporary canvas to draw a white background and then the current canvas content
+  //   const tempCanvas = document.createElement("canvas");
+  //   const tempContext = tempCanvas.getContext("2d");
+
+  //   // Set the same size as the original canvas
+  //   tempCanvas.width = canvas.width;
+  //   tempCanvas.height = canvas.height;
+
+  //   // Draw a white background
+  //   tempContext.fillStyle = "#FFFFFF";
+  //   tempContext.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+  //   // Draw the original canvas content on top of the white background
+  //   tempContext.drawImage(canvas, 0, 0);
+
+  //   // Get the data URL of the temporary canvas
+  //   const imageURL = tempCanvas.toDataURL("image/jpeg");
+
+  //   // Convert data URL to Blob
   //   function dataURItoBlob(dataURI) {
   //     const binary = atob(dataURI.split(",")[1]);
   //     const array = [];
@@ -508,8 +507,20 @@ const Buttons = ({ getCanvas, resetCanvas }) => {
   //   });
   // };
 
-  // 내가 만듦
-  const handleUpload = () => {
+  const navigate = useNavigate();
+
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  async function handleUpload() {
+    setIsLoading(true);
+
     const canvas = getCanvas;
     const context = canvas.getContext("2d");
 
@@ -543,33 +554,25 @@ const Buttons = ({ getCanvas, resetCanvas }) => {
 
     const blobData = dataURItoBlob(imageURL);
 
-    // AWS S3 설정
-    AWS.config.update({
-      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, // IAM 사용자 엑세스 키 변경
-      secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY, // IAM 엑세스 시크릿키 변경
-      region: "ap-northeast-2", // 리전 변경
-    });
-
-    const s3 = new AWS.S3();
-    const date = new Date();
-
-    // 업로드할 파일 정보 설정
-    const uploadParams = {
-      Bucket: "carewise-input", // 버킷 이름 변경
-      Key: `${date.toISOString()}.jpg`, // S3에 저장될 경로와 파일명
-      Body: blobData,
-    };
-
-    // S3에 파일 업로드
-    s3.upload(uploadParams, (err, data) => {
-      if (err) {
-        console.error("Error uploading file:", err);
+    try {
+      const encodedImage = await toBase64(blobData);
+      const result = await LabelSearchAPI(encodedImage);
+      if (result.length > 0) {
+        navigate("/label-ex-result", {
+          state: { image: imageURL, result: result },
+        });
       } else {
-        console.log("File uploaded successfully. ETag:", data.ETag);
-        // 업로드 성공 후 필요한 작업 수행
+        setIsLoading(false);
+        setRetry(true);
       }
-    });
-  };
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className="inline space-y-8 ml-20">
