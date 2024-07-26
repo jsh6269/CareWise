@@ -95,13 +95,13 @@ const RecogFail = ({ retry, setRetry }) => {
           backgroundColor: "white",
         }}
       >
-        <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center gap-[50px] inline-flex">
-          <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter']">
-            이미지 인식에 실패했어요.
-          </div>
-          <img className="w-[25px] h-[25px] absolute" src={smile} />
-          <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter']">
-            다시 시도하시거나, 기호를 직접 그려보세요.
+        <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center inline-flex gap-[50px]">
+          <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter'] gap-[20px]">
+            <div className="inline-flex">
+              <p>이미지 인식에 실패했어요.</p>
+              <img className="w-[25px] h-[25px]" src={smile} />
+            </div>
+            <p>다시 시도하시거나, 기호를 직접 그려보세요.</p>
           </div>
 
           <button

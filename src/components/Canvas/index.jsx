@@ -520,6 +520,11 @@ const Buttons = ({ getCanvas, resetCanvas, setIsLoading, setRetry }) => {
 
   async function handleUpload() {
     setIsLoading(true);
+    if (!getCanvas) {
+      setIsLoading(false);
+      setRetry(true);
+      return;
+    }
 
     const canvas = getCanvas;
     const context = canvas.getContext("2d");
