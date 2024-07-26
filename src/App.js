@@ -31,7 +31,7 @@ const AnimatedRoutes = () => {
       <CSSTransition
         key={location.key}
         classNames="fade"
-        timeout={{ enter: 600 }} // Adjust the timeout to synchronize with CSS animation
+        timeout={{ enter: 700 }} // Adjust the timeout to synchronize with CSS animation
         unmountOnExit
       >
         <div className="route-wrapper">
