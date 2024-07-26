@@ -224,7 +224,7 @@ const View1 = ({
   );
 };
 
-const View2 = ({ setCurrentView, handleSearchButtonClick2 }) => {
+const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
   return (
     <div className="relative w-[1440px] h-[700px]">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
@@ -273,10 +273,13 @@ const View2 = ({ setCurrentView, handleSearchButtonClick2 }) => {
       <textarea
         className="absolute left-[180px] top-[265px] px-[25px] py-[20px] w-[1060px] h-[130px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[17px] placeholder-[#757575] overflow-auto"
         placeholder="니트류에 대한 관리법을 알려줘, 스타킹에 올이 나갔어, 셔츠에 잉크를 쏟았어!"
+        onChange={(e) => {
+          setInputText(e.target.value);
+        }}
       ></textarea>
       <button
         className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
-        onClick={handleSearchButtonClick2}
+        onClick={handleSearchButtonClick}
       >
         검색결과 보기
       </button>
@@ -287,6 +290,8 @@ const View2 = ({ setCurrentView, handleSearchButtonClick2 }) => {
 const CareSearchPage = () => {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = useState("view1");
+
+  // parameter for view1
   const [clothes, setClothes] = useState("");
   const [garment1, setGarment1] = useState("");
   const [garment2, setGarment2] = useState("");
@@ -294,6 +299,9 @@ const CareSearchPage = () => {
   const [customInput1, setCustomInput1] = useState("");
   const [customInput2, setCustomInput2] = useState("");
   const [customInput3, setCustomInput3] = useState("");
+
+  // parameter for view2
+  const [inputText, setInputText] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [retry, setRetry] = useState(false);
@@ -332,6 +340,7 @@ const CareSearchPage = () => {
     return true;
   };
 
+  // api call function for view 1
   async function handleSearchButtonClick1() {
     if (!validateInputs()) {
       alert("섬유 혼용률의 합을 100%로 맞춰주세요");
@@ -347,9 +356,6 @@ const CareSearchPage = () => {
       garment3,
       customInput3,
     ];
-
-    //test
-    console.log(input);
 
     if (null in input) {
       alert("Please fill in the form");
@@ -377,11 +383,28 @@ const CareSearchPage = () => {
     }
   }
 
-  const handleSearchButtonClick2 = () => {
-    if (!validateInputs()) {
+  // api call function for view 2
+  async function handleSearchButtonClick2() {
+    if (!inputText) {
+      alert("내용을 입력해 주세요.");
       return;
     }
-  };
+    setIsLoading(true);
+
+    try {
+      const result = await CareSearchAPI(inputText);
+      navigate("/care-result2", {
+        state: { result: result },
+      });
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <div className="h-auto">
@@ -418,6 +441,9 @@ const CareSearchPage = () => {
         <View2
           setCurrentView={setCurrentView}
           handleSearchButtonClick={handleSearchButtonClick2}
+          setInputText={(x) => {
+            setInputText(x);
+          }}
         />
       )}
       <Loading isLoading={isLoading} />
