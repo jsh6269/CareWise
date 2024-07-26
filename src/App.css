@@ -34,7 +34,7 @@
 .fade-exit-active {
   opacity: 0;
   transition: opacity 0ms; /* Fade out duration */
-  position: relative;
+  /* position: relative; */
   top: 0;
   left: 0;
   width: 100%;

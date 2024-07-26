@@ -32,7 +32,7 @@ const LabelSearchPage = () => {
   }, []);
 
   return (
-    <div className="w-[1222px]">
+    <div className="w-[1222px] top-0 left-0">
       <div className="relative w-[826px] h-[90px] mx-[3px] mt-[39px] mb-[66px] top-0 left-0">
         <p className="absolute inter-regular top-[65px] text-[#757575] text-xl left-0 whitespace-nowrap">
           다른 모양이지만 같은 의미로 쓰이는 기호들도 같이 볼 수 있어요.
