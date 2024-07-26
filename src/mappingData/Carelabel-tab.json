@@ -87,6 +87,7 @@
   ],
   "드라이클리닝": [
     "drycleaning.png",
+    "drycleaning-x.png",
     "low+heat.png",
     "short+cycle.png",
     "reduced+moisture.png",
@@ -98,10 +99,9 @@
     "Any.png",
     "F.png",
     "P.png",
-    "drycleaning-x.png",
-    "wetcleaning-x(2).png",
     "wetcleaning.png",
     "wetcleaning-mild.png",
-    "wetcleaning-x.png"
+    "wetcleaning-x.png",
+    "wetcleaning-x(2).png"
   ]
 }
