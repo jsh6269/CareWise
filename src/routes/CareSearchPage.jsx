@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
 import { Loading, RecogFail } from "../components/Modal/index.jsx";
+import { CareLabelSearchAPI, CareSearchAPI } from "../chatgpt.js";
 
 const clothesoptions = [
   { label: "재킷" },
@@ -62,6 +63,14 @@ const garmentoptions = [
 ];
 
 const View1 = ({
+  clothes,
+  garment1,
+  garment2,
+  garment3,
+  setClothes,
+  setGarment1,
+  setGarment2,
+  setGarment3,
   customInput1,
   customInput2,
   customInput3,
@@ -132,14 +141,28 @@ const View1 = ({
           <h1 className="text-[#3A3A3A] text-[20px] font-normal tracking-[10px] ml-[12px] mb-[18px]">
             &lt;의복의 종류&gt;
           </h1>
-          <Dropdown options={clothesoptions} placeholder="의복 선택" />
+          <Dropdown
+            options={clothesoptions}
+            placeholder="의복 선택"
+            selectedOption={clothes}
+            setSelectedOption={(x) => {
+              setClothes(x);
+            }}
+          />
         </div>
         <div className="absolute mt-[290px] mb-[71px] ml-[60px]">
           <h1 className="text-[#3A3A3A] text-[20px] font-normal tracking-[10px] ml-[48px] mb-[18px]">
             &lt;섬유 혼용률&gt;
           </h1>
           <div className="flex items-center mb-[19.5px]">
-            <Dropdown options={garmentoptions} placeholder="섬유1 선택" />
+            <Dropdown
+              options={garmentoptions}
+              placeholder="섬유1 선택"
+              selectedOption={garment1}
+              setSelectedOption={(x) => {
+                setGarment1(x);
+              }}
+            />
             <input
               type="text"
               value={customInput1}
@@ -153,6 +176,10 @@ const View1 = ({
             <Dropdown
               options={[{ label: "-" }, ...garmentoptions]}
               placeholder="섬유2 선택"
+              selectedOption={garment2}
+              setSelectedOption={(x) => {
+                setGarment2(x);
+              }}
             />
             <input
               type="text"
@@ -167,6 +194,10 @@ const View1 = ({
             <Dropdown
               options={[{ label: "-" }, ...garmentoptions]}
               placeholder="섬유3 선택"
+              selectedOption={garment3}
+              setSelectedOption={(x) => {
+                setGarment3(x);
+              }}
             />
             <input
               type="text"
@@ -193,7 +224,7 @@ const View1 = ({
   );
 };
 
-const View2 = ({ setCurrentView, handleSearchButtonClick }) => {
+const View2 = ({ setCurrentView, handleSearchButtonClick2 }) => {
   return (
     <div className="relative w-[1440px] h-[700px]">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
@@ -245,7 +276,7 @@ const View2 = ({ setCurrentView, handleSearchButtonClick }) => {
       ></textarea>
       <button
         className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
-        onClick={handleSearchButtonClick}
+        onClick={handleSearchButtonClick2}
       >
         검색결과 보기
       </button>
@@ -256,6 +287,10 @@ const View2 = ({ setCurrentView, handleSearchButtonClick }) => {
 const CareSearchPage = () => {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = useState("view1");
+  const [clothes, setClothes] = useState("");
+  const [garment1, setGarment1] = useState("");
+  const [garment2, setGarment2] = useState("");
+  const [garment3, setGarment3] = useState("");
   const [customInput1, setCustomInput1] = useState("");
   const [customInput2, setCustomInput2] = useState("");
   const [customInput3, setCustomInput3] = useState("");
@@ -297,17 +332,77 @@ const CareSearchPage = () => {
     return true;
   };
 
-  const handleSearchButtonClick = () => {
-    if (currentView === "view1" && !validateInputs()) {
+  async function handleSearchButtonClick1() {
+    if (!validateInputs()) {
+      alert("섬유 혼용률의 합을 100%로 맞춰주세요");
       return;
     }
-    // 검색 버튼 클릭 처리
+
+    const input = [
+      clothes,
+      garment1,
+      customInput1,
+      garment2,
+      customInput2,
+      garment3,
+      customInput3,
+    ];
+
+    //test
+    console.log(input);
+
+    if (null in input) {
+      alert("Please fill in the form");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const result = await CareLabelSearchAPI(input);
+      if (result[1].length > 0) {
+        navigate("/care-result", {
+          state: { input: input, result: result },
+        });
+      } else {
+        setIsLoading(false);
+        setRetry(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const handleSearchButtonClick2 = () => {
+    if (!validateInputs()) {
+      return;
+    }
   };
 
   return (
     <div className="h-auto">
       {currentView === "view1" ? (
         <View1
+          clothes={clothes}
+          garment1={garment1}
+          garment2={garment2}
+          garment3={garment3}
+          setClothes={(x) => {
+            setClothes(x);
+          }}
+          setGarment1={(x) => {
+            setGarment1(x);
+          }}
+          setGarment2={(x) => {
+            setGarment2(x);
+          }}
+          setGarment3={(x) => {
+            setGarment3(x);
+          }}
           customInput1={customInput1}
           customInput2={customInput2}
           customInput3={customInput3}
@@ -316,13 +411,13 @@ const CareSearchPage = () => {
           handleInputChange3={handleInputChange3}
           handleKeyPress={handleKeyPress}
           setCurrentView={setCurrentView}
-          handleSearchButtonClick={handleSearchButtonClick}
+          handleSearchButtonClick={handleSearchButtonClick1}
           error={error}
         />
       ) : (
         <View2
           setCurrentView={setCurrentView}
-          handleSearchButtonClick={handleSearchButtonClick}
+          handleSearchButtonClick={handleSearchButtonClick2}
         />
       )}
       <Loading isLoading={isLoading} />
