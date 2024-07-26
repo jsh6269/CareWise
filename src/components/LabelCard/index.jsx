@@ -48,7 +48,7 @@ const LabelCard = ({ label }) => {
         </span>
         <section className="flex-col justify-center gap-[23px] w-[680px] flex items-center relative">
           <div className="relative inter-semi-bold text-[#393939] text-[38px] mt-[-1.00px] text-center">
-            <Text text={careLabelInfo[label].info} />
+            <Text text={careLabelInfo.label.info} />
           </div>
           <div className="flex-col w-[361px] gap-[23px] flex-[0_0_auto] flex items-center relative">
             {subText(same)}
