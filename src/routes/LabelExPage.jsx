@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { default as Canvas } from "../components/Canvas/index.jsx";
@@ -12,10 +12,18 @@ const LabelExPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [retry, setRetry] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [base64, setBase64] = useState("");
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
+  };
+
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   async function handleUpload() {
@@ -28,32 +36,31 @@ const LabelExPage = () => {
       return;
     }
 
-    async function tobase64() {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBase64(reader.result);
-      };
-      reader.readAsDataURL(selectedFile);
+    try {
+      const encodedImage = await toBase64(selectedFile);
+      const result = await LabelSearchAPI(encodedImage);
+      if (result.length > 0) {
+        navigate("/label-ex-result", {
+          state: { image: URL.createObjectURL(selectedFile), result: result },
+        });
+      } else {
+        setIsLoading(false);
+        setRetry(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
     }
-
-    await tobase64();
-    const result = await LabelSearchAPI(base64);
-    navigate("/label-ex-result", {
-      state: { image: URL.createObjectURL(selectedFile), result: result },
-    });
   }
 
-  // API 실행 함수
-  // const getResultAPI = async () => {
-  // const result = await getResult();
-  // if (result) {
-  //   navigate("/label-ex-result", {
-  //     state: { image: URL.createObjectURL(selectedFile), result: result },
-  //   });
-  // } else {
-  //   setRetry(true);
-  // }
-  // };
+  const settings = useRef({
+    stroke: 3,
+    color: "#000",
+    mode: 1,
+  });
 
   return (
     <>
@@ -114,7 +121,15 @@ const LabelExPage = () => {
 
             {/*frame 51 in figma*/}
             <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
-              <Canvas />
+              <Canvas
+                settings={settings}
+                setIsLoading={(x) => {
+                  setIsLoading(x);
+                }}
+                setRetry={(x) => {
+                  setRetry(x);
+                }}
+              />
             </div>
           </div>
         </div>
@@ -123,8 +138,8 @@ const LabelExPage = () => {
         <Loading isLoading={isLoading} />
         <RecogFail
           retry={retry}
-          setRetry={() => {
-            setRetry(false);
+          setRetry={(x) => {
+            setRetry(x);
           }}
         />
       </div>

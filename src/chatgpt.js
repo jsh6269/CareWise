@@ -1,7 +1,10 @@
+import careLabelInfo from "./mappingData/Carelabel-info.json";
+
 const OpenAI = require("openai");
 
 const openai = new OpenAI({
   apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
+  dangerouslyAllowBrowser: true,
 });
 
 export async function LabelSearchAPI(base64Image) {
@@ -132,7 +135,23 @@ export async function LabelSearchAPI(base64Image) {
     if (temp === "" || temp === "\n") {
       continue;
     }
-    listing.push(temp);
+
+    let finish = 0;
+
+    for (let key in careLabelInfo) {
+      for (let insideKey in careLabelInfo[key]) {
+        if (insideKey === "number") {
+          if (careLabelInfo[key][insideKey] === temp) {
+            listing.push(key);
+            finish = 1;
+            break;
+          }
+        }
+      }
+      if (finish === 1) {
+        break;
+      }
+    }
   }
 
   return listing;

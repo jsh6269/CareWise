@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "REACT_APP_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .env.production
           echo "REACT_APP_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .env.production
-          echo "OPENAI_API_KEY=$OPENAI_API_KEY" >> .env.production
+          echo "REACT_APP_OPENAI_API_KEY=$OPENAI_API_KEY" >> .env.production
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
