@@ -80,6 +80,7 @@ const RecogFail = ({ retry, setRetry }) => {
           width: "100vw",
           height: "100vh",
           backgroundColor: "rgba(0, 0, 0, 0.35)",
+          zIndex: 90,
         }}
       ></div>
       <div
@@ -93,6 +94,7 @@ const RecogFail = ({ retry, setRetry }) => {
           maxHeight: "90%",
           overflowY: "auto",
           backgroundColor: "white",
+          zIndex: 100,
         }}
       >
         <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center inline-flex gap-[50px]">
