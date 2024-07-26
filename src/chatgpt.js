@@ -339,3 +339,5 @@ async function CareSearchAPI(searchText) {
 
   return answerString;
 }
+
+export { LabelSearchAPI, CareLabelSearchAPI, CareSearchAPI };
