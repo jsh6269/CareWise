@@ -3,6 +3,13 @@ import { useState, useEffect } from "react";
 import careLabelTab from "../mappingData/Carelabel-tab.json";
 import LabelCard from "../components/LabelCard";
 
+const handleScrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 // 세탁기호 찾기
 const LabelSearchPage = () => {
   const xloc = ["90px", "290px", "460px", "630px", "830px"];
@@ -78,6 +85,7 @@ const LabelSearchPage = () => {
                     alt="Group"
                     src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
                     onClick={() => {
+                      handleScrollToTop();
                       if (selectedLabel === img_name) {
                         setSelectedLabel(null);
                       } else {
