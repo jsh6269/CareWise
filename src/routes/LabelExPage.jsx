@@ -150,7 +150,7 @@ const LabelExPage = () => {
         </div>
       </div>
       <div>
-        <Loading isLoading={isLoading} />
+        <Loading isLoading={isLoading} isSig={true} />
         <RecogFail
           retry={retry}
           setRetry={(x) => {

@@ -446,7 +446,7 @@ const CareSearchPage = () => {
           }}
         />
       )}
-      <Loading isLoading={isLoading} />
+      <Loading isLoading={isLoading} isSig={false} />
       <RecogFail
         retry={retry}
         setRetry={(x) => {

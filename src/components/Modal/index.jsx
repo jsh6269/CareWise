@@ -6,7 +6,7 @@ import whiteArrow from "../../assets/images/icons/arrow_white.svg";
 import smile from "../../assets/images/icons/smile.svg";
 import "../../index.css";
 
-const Loading = ({ isLoading }) => {
+const Loading = ({ isLoading, isSig }) => {
   return (
     <div
       style={{
@@ -58,7 +58,7 @@ const Loading = ({ isLoading }) => {
               />
             </div>
             <div className="self-stretch text-center text-neutral-500 text-3xl font-normal font-['Inter']">
-              기호를 분석 중이에요!
+              {isSig ? "기호를 분석 중이에요!" : "관리법을 검색 중이에요!"}
             </div>
           </div>
         </div>
