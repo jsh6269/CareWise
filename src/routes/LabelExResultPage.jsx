@@ -9,9 +9,9 @@ const LabelExResultPage = () => {
   const location = useLocation();
   const resultInfo = { ...location.state };
 
-  useEffect(() => {
-    console.log("Location state:", location.state);
-  }, [location.state]);
+  // useEffect(() => {
+  //   console.log("Location state:", location.state);
+  // }, [location.state]);
 
   const navigate = useNavigate();
 

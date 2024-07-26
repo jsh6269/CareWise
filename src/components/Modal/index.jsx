@@ -2,6 +2,9 @@ import React from "react";
 import loadingIcon1 from "../../assets/images/icons/machine-dry.png";
 import loadingIcon2 from "../../assets/images/icons/petroleum.png";
 import loadingIcon3 from "../../assets/images/icons/bleach.png";
+import whiteArrow from "../../assets/images/icons/arrow_white.svg";
+import smile from "../../assets/images/icons/smile.svg";
+import "../../index.css";
 
 const Loading = ({ isLoading }) => {
   return (
@@ -22,7 +25,7 @@ const Loading = ({ isLoading }) => {
       ></div>
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -37,17 +40,17 @@ const Loading = ({ isLoading }) => {
           <div className="h-[91px] flex-col justify-start items-start gap-5 flex">
             <div className="w-[265px] opacity-60 justify-start items-center gap-20 inline-flex">
               <img
-                className="w-[35px] h-[35px] shadow"
+                className="w-[35px] h-[35px] shadow animate-bounce"
                 src={loadingIcon1}
                 alt="carelabel icon for animation"
               />
               <img
-                className="w-[35px] h-[35px] shadow"
+                className="w-[35px] h-[35px] shadow animate-bounce"
                 src={loadingIcon2}
                 alt="carelabel icon for animation"
               />
               <img
-                className="w-[42.30px] h-[35px] shadow"
+                className="w-[42.30px] h-[35px] shadow animate-bounce"
                 src={loadingIcon3}
                 alt="carelabel icon for animation"
               />
@@ -81,7 +84,7 @@ const RecogFail = ({ retry, setRetry }) => {
       ></div>
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -92,23 +95,23 @@ const RecogFail = ({ retry, setRetry }) => {
           backgroundColor: "white",
         }}
       >
-        <div className="w-[689px] h-[361px] px-[107px] py-[50px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center gap-[50px] inline-flex">
-          <div className="w-[548px] h-[72px] relative">
-            <div className="left-0 top-0 absolute text-center text-neutral-500 text-3xl font-normal font-['Inter']">
-              이미지 인식에 실패했어요.
-              <br />
-              다시 시도하시거나, 기호를 직접 그려보세요.
+        <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center inline-flex gap-[50px]">
+          <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter'] gap-[20px]">
+            <div className="inline-flex">
+              <p>이미지 인식에 실패했어요.</p>
+              <img className="w-[25px] h-[25px]" src={smile} />
             </div>
-            <div className="w-[25px] h-[25px] left-[446px] top-[4px] absolute"></div>
+            <p>다시 시도하시거나, 기호를 직접 그려보세요.</p>
           </div>
+
           <button
             onClick={() => {
               setRetry(false);
             }}
-            className="w-[367px] h-[67px] px-[133px] py-[18px] bg-zinc-400 rounded-lg flex-col justify-center items-center gap-2.5 flex"
+            className="w-[367px] h-[67px] bg-zinc-400 rounded-lg flex-col justify-center items-center gap-2.5 flex"
           >
             <div className="justify-start items-center gap-[15px] inline-flex">
-              <div className="w-[30px] h-[30px] relative" />
+              <img className="w-[30px] h-[30px] relative" src={whiteArrow} />
               <div className="text-center text-white text-xl font-normal font-['Inter'] leading-tight">
                 다시 업로드하러 가기
               </div>

@@ -35,6 +35,7 @@ const LabelExPage = () => {
       alert("JPG 사진 파일만 가능합니다.");
       return;
     }
+    setIsLoading(true);
 
     try {
       const encodedImage = await toBase64(selectedFile);
