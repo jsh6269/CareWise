@@ -1,5 +1,5 @@
 const OpenAI = require("openai");
-import careLabelInfo from "mappingData/Carelabel-info.json";
+import careLabelInfo from "./mappingData/Carelabel-info.json";
 
 const openai = new OpenAI({
   apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
@@ -135,9 +135,9 @@ export async function LabelSearchAPI(base64Image) {
       continue;
     }
 
-    for (let key in carelabelInfo){
-      if(carelabelInfo.key.number === temp){
-        listing.push(carelabelInfo.key);
+    for (let key in careLabelInfo){
+      if(careLabelInfo.key.number === temp){
+        listing.push(careLabelInfo.key);
         break;
       }
     }
