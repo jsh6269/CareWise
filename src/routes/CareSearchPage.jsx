@@ -70,6 +70,8 @@ const View1 = ({
   handleInputChange3,
   handleKeyPress,
   setCurrentView,
+  handleSearchButtonClick,
+  error,
 }) => {
   return (
     <div className="relative h-[1024px] w-[1440px]">
@@ -86,13 +88,13 @@ const View1 = ({
             name="viewoption"
             id="view1"
             value="view1"
-            class="peer hidden"
+            className="peer hidden"
             onChange={() => setCurrentView("view1")}
             checked
           />
           <label
-            for="view1"
-            class="block text-[14px] cursor-pointer select-none rounded-3xl px-10 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#b6b6b6]  peer-checked:text-white"
+            htmlFor="view1"
+            className="block text-[14px] cursor-pointer select-none rounded-3xl px-10 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#b6b6b6] peer-checked:text-white"
           >
             케어라벨 입력하기
           </label>
@@ -104,12 +106,12 @@ const View1 = ({
             name="viewoption"
             id="view2"
             value="view2"
-            class="peer hidden"
+            className="peer hidden"
             onChange={() => setCurrentView("view2")}
           />
           <label
-            for="view2"
-            class="block text-[14px] cursor-pointer select-none rounded-3xl px-8 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#c5c5c5]  peer-checked:text-white"
+            htmlFor="view2"
+            className="block text-[14px] cursor-pointer select-none rounded-3xl px-8 py-2 text-center bg-white border-[#A4A4A4] border peer-checked:bg-[#c5c5c5] peer-checked:text-white"
           >
             직접 검색하기
           </label>
@@ -123,7 +125,7 @@ const View1 = ({
             backgroundImage: "url(<path-to-image>)",
             boxShadow: "5px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
-          src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/back_label_asset.png`}
+          src="https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/back_label_asset.png"
           alt="container"
         />
         <div className="absolute mt-[160px] ml-[108px]">
@@ -177,12 +179,17 @@ const View1 = ({
           </div>
         </div>
       </div>
-      <button
-        className="absolute top-[895px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
-        onClick={handleSearch}
-      >
-        검색결과 보기
-      </button>
+
+      <div className="absolute top-[895px] left-[50%] transform -translate-x-1/2 w-[288px]">
+        <button
+          className="w-full h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px] font-medium bg-white"
+          onClick={handleSearchButtonClick}
+        >
+          검색
+        </button>
+        {error && <p className="text-red-500 text-center mt-3">{error}</p>}
+      </div>
+
     </div>
   );
 };
@@ -253,8 +260,12 @@ const CareSearchPage = () => {
   const [customInput1, setCustomInput1] = useState("");
   const [customInput2, setCustomInput2] = useState("");
   const [customInput3, setCustomInput3] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const [retry, setRetry] = useState(false);
+
+  const [error, setError] = useState("");
+
 
   const handleInputChange1 = (e) => {
     setCustomInput1(e.target.value);
@@ -270,8 +281,29 @@ const CareSearchPage = () => {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      // Handle enter key press logic if needed
+      // 필요 시 엔터 키 입력 처리
     }
+  };
+
+  const validateInputs = () => {
+    const sum = [customInput1, customInput2, customInput3]
+      .map(Number)
+      .reduce((acc, curr) => acc + (isNaN(curr) ? 0 : curr), 0);
+
+    if (sum !== 100) {
+      setError("섬유 혼용률의 합을 100%로 맞춰주세요!");
+      return false;
+    }
+
+    setError("");
+    return true;
+  };
+
+  const handleSearchButtonClick = () => {
+    if (currentView === "view1" && !validateInputs()) {
+      return;
+    }
+    // 검색 버튼 클릭 처리
   };
 
   async function handleSearch() {
@@ -312,6 +344,8 @@ const CareSearchPage = () => {
           handleInputChange3={handleInputChange3}
           handleKeyPress={handleKeyPress}
           setCurrentView={setCurrentView}
+          handleSearchButtonClick={handleSearchButtonClick}
+          error={error}
         />
       ) : (
         <View2 setCurrentView={setCurrentView} />
