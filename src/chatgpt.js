@@ -1,6 +1,5 @@
 const OpenAI = require("openai");
 import careLabelInfo from "./mappingData/Carelabel-info.json";
-import JSON;
 
 const openai = new OpenAI({
   apiKey: `${process.env.REACT_APP_OPENAI_API_KEY}`,
