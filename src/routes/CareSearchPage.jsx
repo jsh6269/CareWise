@@ -189,12 +189,11 @@ const View1 = ({
         </button>
         {error && <p className="text-red-500 text-center mt-3">{error}</p>}
       </div>
-
     </div>
   );
 };
 
-const View2 = ({ setCurrentView }) => {
+const View2 = ({ setCurrentView, handleSearchButtonClick }) => {
   return (
     <div className="relative w-[1440px] h-[700px]">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
@@ -246,7 +245,7 @@ const View2 = ({ setCurrentView }) => {
       ></textarea>
       <button
         className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
-        onClick={handleSearch}
+        onClick={handleSearchButtonClick}
       >
         검색결과 보기
       </button>
@@ -265,7 +264,6 @@ const CareSearchPage = () => {
   const [retry, setRetry] = useState(false);
 
   const [error, setError] = useState("");
-
 
   const handleInputChange1 = (e) => {
     setCustomInput1(e.target.value);
@@ -306,32 +304,6 @@ const CareSearchPage = () => {
     // 검색 버튼 클릭 처리
   };
 
-  async function handleSearch() {
-    try {
-      const result = await LabelSearchAPI(encodedImage);
-      if (result.length > 0) {
-        if (currentView === "view1") {
-          navigate("/care-result", {
-            state: { image: URL.createObjectURL(selectedFile), result: result },
-          });
-        } else if (currentView === "view2") {
-          navigate("/care-result2", {
-            state: { image: URL.createObjectURL(selectedFile), result: result },
-          });
-        }
-      } else {
-        setIsLoading(false);
-        setRetry(true);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setIsLoading(false);
-      setRetry(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
   return (
     <div className="h-auto">
       {currentView === "view1" ? (
@@ -348,7 +320,10 @@ const CareSearchPage = () => {
           error={error}
         />
       ) : (
-        <View2 setCurrentView={setCurrentView} />
+        <View2
+          setCurrentView={setCurrentView}
+          handleSearchButtonClick={handleSearchButtonClick}
+        />
       )}
       <Loading isLoading={isLoading} />
       <RecogFail
