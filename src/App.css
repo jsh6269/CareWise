@@ -12,3 +12,32 @@
   width: 1440px;
   min-height: calc(100vh - 128px);
 }
+
+/* App.css */
+.route-wrapper {
+  position: relative; /* Ensure proper stacking */
+  width: 100%;
+  height: 100%;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1; /* Ensure entering content appears above exiting content */
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 700ms; /* Add 300ms delay to fade-in */
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 0ms; /* Fade out duration */
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Ensure exiting content goes below entering content */
+}
