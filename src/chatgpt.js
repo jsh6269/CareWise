@@ -1,4 +1,4 @@
-import careLabelInfo from "./mappingData/Carelabel-info.json";
+const careLabelInfo = require("./mappingData/Carelabel-info.json");
 
 const OpenAI = require("openai");
 
@@ -310,4 +310,32 @@ async function CareLabelSearchAPI(cloth, mat1, per1, mat2, per2, mat3, per3) {
 
   const Answer = [firstAnswer, listing];
   return Answer;
+}
+
+async function CareSearchAPI(searchText) {
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: `${searchText}에 대한 대답을 매우 자세하고 꼼꼼하게 1200자 내외로 알려줘. 상황에 대한 부연설명이나 알겠다는 말을 하지말고, 상황에 대한 해결방안이나 답만을 제시해. 답은 '~합니다'가 아닌, '~하세요', '~어요'체로 제시해.`,
+          },
+        ],
+      },
+    ],
+    stream: true,
+    max_tokens: 1500,
+  });
+
+  let answerString = "";
+
+  for await (const chuck of response) {
+    const temp = chuck.choices[0]?.delta?.content || "";
+    answerString += temp;
+  }
+
+  return answerString;
 }
