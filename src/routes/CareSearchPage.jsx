@@ -420,7 +420,7 @@ const CareSearchPage = () => {
           handleSearchButtonClick={handleSearchButtonClick2}
         />
       )}
-      <Loading isLoading={isLoading} />
+      <Loading isLoading={isLoading} isSig={false} />
       <RecogFail
         retry={retry}
         setRetry={(x) => {
