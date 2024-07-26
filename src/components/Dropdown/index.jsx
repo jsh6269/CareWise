@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Dropdown = ({ options, placeholder }) => {
+const Dropdown = ({
+  options,
+  placeholder,
+  selectedOption,
+  setSelectedOption,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
   const [customInput, setCustomInput] = useState("");
   const dropdownRef = useRef(null);
 
