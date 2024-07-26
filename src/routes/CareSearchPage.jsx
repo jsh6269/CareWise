@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
+import { Loading, RecogFail } from "../components/Modal/index.jsx";
 
 const clothesoptions = [
   { label: "재킷" },
@@ -177,6 +179,7 @@ const View1 = ({
           </div>
         </div>
       </div>
+
       <div className="absolute top-[895px] left-[50%] transform -translate-x-1/2 w-[288px]">
         <button
           className="w-full h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px] font-medium bg-white"
@@ -186,6 +189,7 @@ const View1 = ({
         </button>
         {error && <p className="text-red-500 text-center mt-3">{error}</p>}
       </div>
+
     </div>
   );
 };
@@ -240,7 +244,10 @@ const View2 = ({ setCurrentView }) => {
         className="absolute left-[180px] top-[265px] px-[25px] py-[20px] w-[1060px] h-[130px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[17px] placeholder-[#757575] overflow-auto"
         placeholder="니트류에 대한 관리법을 알려줘, 스타킹에 올이 나갔어, 셔츠에 잉크를 쏟았어!"
       ></textarea>
-      <button className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]">
+      <button
+        className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
+        onClick={handleSearch}
+      >
         검색결과 보기
       </button>
     </div>
@@ -248,11 +255,17 @@ const View2 = ({ setCurrentView }) => {
 };
 
 const CareSearchPage = () => {
+  const navigate = useNavigate();
   const [currentView, setCurrentView] = useState("view1");
   const [customInput1, setCustomInput1] = useState("");
   const [customInput2, setCustomInput2] = useState("");
   const [customInput3, setCustomInput3] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [retry, setRetry] = useState(false);
+
   const [error, setError] = useState("");
+
 
   const handleInputChange1 = (e) => {
     setCustomInput1(e.target.value);
@@ -293,6 +306,32 @@ const CareSearchPage = () => {
     // 검색 버튼 클릭 처리
   };
 
+  async function handleSearch() {
+    try {
+      const result = await LabelSearchAPI(encodedImage);
+      if (result.length > 0) {
+        if (currentView === "view1") {
+          navigate("/care-result", {
+            state: { image: URL.createObjectURL(selectedFile), result: result },
+          });
+        } else if (currentView === "view2") {
+          navigate("/care-result2", {
+            state: { image: URL.createObjectURL(selectedFile), result: result },
+          });
+        }
+      } else {
+        setIsLoading(false);
+        setRetry(true);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setIsLoading(false);
+      setRetry(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div className="h-auto">
       {currentView === "view1" ? (
@@ -311,6 +350,13 @@ const CareSearchPage = () => {
       ) : (
         <View2 setCurrentView={setCurrentView} />
       )}
+      <Loading isLoading={isLoading} />
+      <RecogFail
+        retry={retry}
+        setRetry={(x) => {
+          setRetry(x);
+        }}
+      />
     </div>
   );
 };
