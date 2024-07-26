@@ -67,7 +67,7 @@ const Loading = ({ isLoading, isSig }) => {
   );
 };
 
-const RecogFail = ({ retry, setRetry }) => {
+const RecogFail = ({ retry, setRetry, isSig }) => {
   return (
     <div
       style={{
@@ -102,7 +102,11 @@ const RecogFail = ({ retry, setRetry }) => {
         <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center inline-flex gap-[50px]">
           <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter'] gap-[20px]">
             <div className="inline-flex">
-              <p>이미지 인식에 실패했어요.</p>
+              <p>
+                {isSig
+                  ? "이미지 인식에 실패했어요."
+                  : "관리법 검색에 실패했어요."}
+              </p>
               <img className="w-[25px] h-[25px]" src={smile} />
             </div>
             <p>다시 시도하시거나, 기호를 직접 그려보세요.</p>

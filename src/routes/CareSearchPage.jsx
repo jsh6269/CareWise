@@ -452,6 +452,7 @@ const CareSearchPage = () => {
         setRetry={(x) => {
           setRetry(x);
         }}
+        isSig={false}
       />
     </div>
   );

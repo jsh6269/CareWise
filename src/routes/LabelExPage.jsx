@@ -156,6 +156,7 @@ const LabelExPage = () => {
           setRetry={(x) => {
             setRetry(x);
           }}
+          isSig={true}
         />
       </div>
     </>
