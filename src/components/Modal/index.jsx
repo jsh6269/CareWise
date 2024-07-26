@@ -21,6 +21,7 @@ const Loading = ({ isLoading }) => {
           width: "100vw",
           height: "100vh",
           backgroundColor: "rgba(0, 0, 0, 0.35)",
+          zIndex: 90,
         }}
       ></div>
       <div
@@ -34,6 +35,7 @@ const Loading = ({ isLoading }) => {
           maxHeight: "90%",
           overflowY: "auto",
           backgroundColor: "white",
+          zIndex: 100,
         }}
       >
         <div className="w-[489px] h-[238px] py-[42px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center gap-2.5 inline-flex">
