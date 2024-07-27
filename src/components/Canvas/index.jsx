@@ -343,6 +343,37 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
 
+  const [menu, setMenu] = useState("pen");
+
+  const renderSelected = () => {
+    switch (menu) {
+      case "pen":
+        return (
+          <div className="absolute w-[43px] h-[43px] top-[18px] left-[17px] rounded-[13.96px] bg-gray-300" />
+        );
+      case "line":
+        return (
+          <div className="absolute w-[43px] h-[43px] top-[68px] left-[17px] rounded-[13.96px] bg-gray-300" />
+        );
+      case "circle":
+        return (
+          <div className="absolute w-[43px] h-[43px] top-[116px] left-[17px] rounded-[13.96px] bg-gray-300" />
+        );
+      case "rect":
+        return (
+          <div className="absolute w-[43px] h-[43px] top-[170px] left-[17px] rounded-[13.96px] bg-gray-300" />
+        );
+      case "triangle":
+        return (
+          <div className="absolute w-[43px] h-[43px] top-[232px] left-[17px] rounded-[13.96px] bg-gray-300" />
+        );
+      case "eraser":
+        return (
+          <div className="absolute w-[43px] h-[43px] top-[282px] left-[17px] rounded-[13.96px] bg-gray-300" />
+        );
+    }
+  };
+
   return (
     <>
       <div
@@ -350,12 +381,15 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
         onPointerUp={(e) => e.stopPropagation()}
         className="relative w-[77px] h-[400px] bg-white rounded-[10px] border-2 border-solid border-[#b5b5b5] shadow-[4px_4px_4px_#00000040]"
       >
+        {renderSelected()}
+
         <div className="absolute w-[33px] h-[348px] top-[26px] left-[22px]">
           <button
             onClick={() => {
               settings.current.mode = MODES.PEN;
               settings.current.color = "#000000";
               settings.current.stroke = "2.5";
+              setMenu("pen");
             }}
           >
             <img
@@ -369,6 +403,16 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
               settings.current.mode = MODES.LINE;
               settings.current.color = "#000000";
               settings.current.stroke = "2.5";
+              setMenu("line");
+            }}
+            className="absolute w-[43px] h-[43px] top-[42px] left-[-3px] rounded-[13.96px]"
+          />
+          <button
+            onClick={() => {
+              settings.current.mode = MODES.LINE;
+              settings.current.color = "#000000";
+              settings.current.stroke = "2.5";
+              setMenu("line");
             }}
             className="absolute w-[32.55px] h-[0px] top-[60px] left-[2.79px] rotate-[-30.96deg] border-2 border-neutral-500"
           />
@@ -378,6 +422,7 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
               settings.current.mode = MODES.CIRCLE;
               settings.current.color = "#000000";
               settings.current.stroke = "2.5";
+              setMenu("circle");
             }}
             className="absolute w-7 h-7 top-24 left-[3px] rounded-[13.96px] border-[3px] border-solid border-[#757575]"
           />
@@ -386,6 +431,7 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
               settings.current.mode = MODES.RECT;
               settings.current.color = "#000000";
               settings.current.stroke = "2.5";
+              setMenu("rect");
             }}
             className="absolute w-7 h-7 top-[151px] left-[3px] border-[3px] border-solid border-[#757575]"
           />
@@ -395,6 +441,7 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
               settings.current.mode = MODES.TRIANGLE;
               settings.current.color = "#000000";
               settings.current.stroke = "2.5";
+              setMenu("triangle");
             }}
           >
             <img
@@ -408,6 +455,7 @@ const Canvas = ({ settings, setIsLoading, setRetry }) => {
               settings.current.mode = MODES.PEN;
               settings.current.color = "#FFFFFF";
               settings.current.stroke = "30";
+              setMenu("eraser");
             }}
           >
             <img
