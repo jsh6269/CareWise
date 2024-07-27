@@ -2,23 +2,16 @@
 import { useLocation } from "react-router-dom";
 import shirt from "../../src/assets/images/icons/shirt.png";
 
-const Text = (text) => {
-  return (
-    <p>
-      {text.split("\n").map((txt) => (
-        <span key={txt}>
-          {txt}
-          <br />
-        </span>
-      ))}
-    </p>
-  );
-};
-
 const CareResultPage = () => {
   const carelabelInfo = require("../mappingData/Carelabel-info.json");
   const location = useLocation();
   const resultInfo = { ...location.state };
+
+  let output = resultInfo.result[0].replace(
+    /\*\*(.*?)\*\*/g,
+    "<strong>$1</strong>",
+  );
+  output = output.replace(/\n/g, "<br/>");
 
   return (
     resultInfo && (
@@ -29,8 +22,14 @@ const CareResultPage = () => {
             alt="shirt"
             src={shirt}
           />
-          <div className="text-[25px] text-[#3F3F3F]">
-            {`섬유 혼용률 [${resultInfo.input[1]} ${resultInfo.input[2]}%, ${resultInfo.input[3]} ${resultInfo.input[4]}%, ${resultInfo.input[5]} ${resultInfo.input[6]}%]의 [${resultInfo.input[0]}]`}
+          <div className="text-[25px] text-[#3F3F3F] inline-flex">
+            <p>섬유 혼용률&nbsp;</p>
+            <strong>
+              [{resultInfo.input[1]}&nbsp;{resultInfo.input[2]}%,&nbsp;
+              {resultInfo.input[3]}&nbsp;{resultInfo.input[4]}%,&nbsp;
+              {resultInfo.input[5]}&nbsp;{resultInfo.input[6]}%]
+            </strong>
+            <p>의</p> <strong>&nbsp;[{resultInfo.input[0]}]</strong>
           </div>
         </div>
         <div className="flex-col">
@@ -39,7 +38,7 @@ const CareResultPage = () => {
               해당 의복에 대한 관리법이에요:
             </div>
             <div className=" mt-[30px] px-[35px] py-[44px] w-[1043px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[20px] text-[#757575]">
-              {Text(resultInfo.result[0])}
+              <div dangerouslySetInnerHTML={{ __html: output }} />
             </div>
           </div>
 

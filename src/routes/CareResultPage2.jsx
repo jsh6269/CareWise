@@ -2,23 +2,16 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import arrow from "../assets/images/icons/arrow.svg";
 
-const Text = (text) => {
-  return (
-    <p>
-      {text.split("\n").map((txt) => (
-        <span key={txt}>
-          {txt}
-          <br />
-        </span>
-      ))}
-    </p>
-  );
-};
-
 const CareResultPage2 = () => {
   const location = useLocation();
   const resultInfo = { ...location.state };
   const navigate = useNavigate();
+
+  let output = resultInfo.result.replace(
+    /\*\*(.*?)\*\*/g,
+    "<strong>$1</strong>",
+  );
+  output = output.replace(/\n/g, "<br/>");
 
   return (
     <div className="w-[1440px] h-[1100px] relative bg-white">
@@ -26,10 +19,10 @@ const CareResultPage2 = () => {
         질문에 대한 답변이에요:
       </div>
       <div>
-        {resultInfo && (
+        {output && (
           <div className="absolute border-[2px] border-[#d9d9d9] rounded-lg left-[180px] top-[135px] w-[1043px] px-[40px] py-[40px] text-[#3f3f3f] max-h-[700px] overflow-y-auto">
             {/* 텍스트 받아와지는 거 700px 넘어가면 스크롤되게함. */}
-            {Text(resultInfo.result)}
+            <div dangerouslySetInnerHTML={{ __html: output }} />
           </div>
         )}
         <button
