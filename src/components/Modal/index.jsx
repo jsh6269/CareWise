@@ -37,8 +37,8 @@ const Loading = ({ isLoading }) => {
         }}
       >
         <div className="w-[489px] h-[238px] py-[42px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center gap-2.5 inline-flex">
-          <div className="h-[91px] flex-col justify-start items-start gap-5 flex">
-            <div className="w-[265px] opacity-60 justify-start items-center gap-20 inline-flex">
+          <div className="h-[91px] flex-col justify-center items-center gap-5 flex">
+            <div className="opacity-60 justify-center items-center gap-20 flex">
               <img
                 className="w-[35px] h-[35px] shadow animate-bounce"
                 src={loadingIcon1}
@@ -97,9 +97,9 @@ const RecogFail = ({ retry, setRetry }) => {
       >
         <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center inline-flex gap-[50px]">
           <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter'] gap-[20px]">
-            <div className="inline-flex">
-              <p>이미지 인식에 실패했어요.</p>
-              <img className="w-[25px] h-[25px]" src={smile} />
+            <div className="flex justify-center">
+              <p>이미지 인식에 실패했어요. </p>
+              <img className="w-[25px] h-[25px] mt-1" src={smile} />
             </div>
             <p>다시 시도하시거나, 기호를 직접 그려보세요.</p>
           </div>
