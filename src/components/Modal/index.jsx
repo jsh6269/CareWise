@@ -6,7 +6,7 @@ import whiteArrow from "../../assets/images/icons/arrow_white.svg";
 import smile from "../../assets/images/icons/smile.svg";
 import "../../index.css";
 
-const Loading = ({ isLoading }) => {
+const Loading = ({ isLoading, isSig }) => {
   return (
     <div
       style={{
@@ -21,6 +21,7 @@ const Loading = ({ isLoading }) => {
           width: "100vw",
           height: "100vh",
           backgroundColor: "rgba(0, 0, 0, 0.35)",
+          zIndex: 90,
         }}
       ></div>
       <div
@@ -34,6 +35,7 @@ const Loading = ({ isLoading }) => {
           maxHeight: "90%",
           overflowY: "auto",
           backgroundColor: "white",
+          zIndex: 100,
         }}
       >
         <div className="w-[489px] h-[238px] py-[42px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center gap-2.5 inline-flex">
@@ -56,7 +58,7 @@ const Loading = ({ isLoading }) => {
               />
             </div>
             <div className="self-stretch text-center text-neutral-500 text-3xl font-normal font-['Inter']">
-              기호를 분석 중이에요!
+              {isSig ? "기호를 분석 중이에요!" : "관리법을 검색 중이에요!"}
             </div>
           </div>
         </div>
@@ -65,7 +67,7 @@ const Loading = ({ isLoading }) => {
   );
 };
 
-const RecogFail = ({ retry, setRetry }) => {
+const RecogFail = ({ retry, setRetry, isSig }) => {
   return (
     <div
       style={{
@@ -80,6 +82,7 @@ const RecogFail = ({ retry, setRetry }) => {
           width: "100vw",
           height: "100vh",
           backgroundColor: "rgba(0, 0, 0, 0.35)",
+          zIndex: 90,
         }}
       ></div>
       <div
@@ -93,13 +96,20 @@ const RecogFail = ({ retry, setRetry }) => {
           maxHeight: "90%",
           overflowY: "auto",
           backgroundColor: "white",
+          zIndex: 100,
         }}
       >
         <div className="w-[689px] h-[361px] bg-white/opacity-95 rounded-[30px] shadow flex-col justify-center items-center inline-flex gap-[50px]">
           <div className="text-center text-neutral-500 text-3xl font-normal font-['Inter'] gap-[20px]">
-            <div className="flex justify-center">
-              <p>이미지 인식에 실패했어요. </p>
+
+            <div className="inline-flex">
+              <p>
+                {isSig
+                  ? "이미지 인식에 실패했어요."
+                  : "관리법 검색에 실패했어요."}
+              </p>
               <img className="w-[25px] h-[25px] mt-1" src={smile} />
+
             </div>
             <p>다시 시도하시거나, 기호를 직접 그려보세요.</p>
           </div>

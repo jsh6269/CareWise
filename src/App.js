@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./routes/HomePage";
@@ -22,14 +23,19 @@ const ScrollToTop = () => {
   return null;
 };
 
-function App() {
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <ScrollToTop />
-        <div id="wrapper" className="flex flex-col items-center">
-          <Header />
-          <Routes>
+    <TransitionGroup>
+      <CSSTransition
+        key={location.key}
+        classNames="fade"
+        timeout={{ enter: 700 }} // Adjust the timeout to synchronize with CSS animation
+        unmountOnExit
+      >
+        <div className="route-wrapper">
+          <Routes location={location}>
             <Route path="/" element={<HomePage />} />
             <Route path="/care-search" element={<CareSearchPage />} />
             <Route path="/care-result" element={<CareResultPage />} />
@@ -38,6 +44,20 @@ function App() {
             <Route path="/label-ex-result" element={<LabelExResult />} />
             <Route path="/label-search" element={<LabelSearchPage />} />
           </Routes>
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
+  );
+};
+
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <ScrollToTop />
+        <div id="wrapper" className="flex flex-col items-center">
+          <Header />
+          <AnimatedRoutes />
         </div>
         <Footer />
       </BrowserRouter>

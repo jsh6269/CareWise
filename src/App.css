@@ -12,3 +12,26 @@
   width: 1440px;
   min-height: calc(100vh - 128px);
 }
+
+/* transition */
+.route-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 700ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  display: none;
+  z-index: 0;
+}

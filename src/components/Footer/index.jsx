@@ -8,7 +8,7 @@ const Footer = () => {
       <span className="inline-flex items-center gap-5 relative flex-[0_0_auto]">
         <a href="https://snulion-web.vercel.app/">
           <img
-            className="relative w-16 h-[68px] object-cover"
+            className="relative w-16 h-[68px] object-cover -z-20"
             alt="likelion"
             src={likelion_logo}
           />

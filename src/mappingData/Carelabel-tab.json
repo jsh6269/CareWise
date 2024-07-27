@@ -41,7 +41,6 @@
     "dry-mediumheat.png",
     "dry-highheat.png",
     "dry-shadow.png",
-    "dry-shadow(2).png",
     "dry-hang.png",
     "dry-hang-shadow.png",
     "dry-flat.png",
@@ -49,6 +48,7 @@
     "dry-hang(4).png",
     "dry-hang(2).png",
     "dry-hang-shadow(2).png",
+    "dry-shadow(2).png",
     "dry-hang(3).png",
     "dry-hang-shadow(3).png",
     "dry-flat(2).png",
@@ -57,11 +57,11 @@
     "wring-x.png"
   ],
   "표백": [
+    "bleach.png",
     "bleach-no.png",
+    "bleach-no(2).png",
     "bleach-chlorine-no.png",
     "bleach-chlorine.png",
-    "bleach.png",
-    "bleach-no(2).png",
     "bleach-oxygen.png",
     "bleach-oxygen-no.png",
     "bleach-chlorine(2).png",
@@ -87,6 +87,7 @@
   ],
   "드라이클리닝": [
     "drycleaning.png",
+    "drycleaning-x.png",
     "low+heat.png",
     "short+cycle.png",
     "reduced+moisture.png",
@@ -98,10 +99,9 @@
     "Any.png",
     "F.png",
     "P.png",
-    "drycleaning-x.png",
-    "wetcleaning-x(2).png",
     "wetcleaning.png",
     "wetcleaning-mild.png",
-    "wetcleaning-x.png"
+    "wetcleaning-x.png",
+    "wetcleaning-x(2).png"
   ]
 }

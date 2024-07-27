@@ -3,6 +3,13 @@ import { useState, useEffect } from "react";
 import careLabelTab from "../mappingData/Carelabel-tab.json";
 import LabelCard from "../components/LabelCard";
 
+const handleScrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 // 세탁기호 찾기
 const LabelSearchPage = () => {
   const xloc = ["90px", "290px", "460px", "630px", "830px"];
@@ -25,7 +32,7 @@ const LabelSearchPage = () => {
   }, []);
 
   return (
-    <div className="w-[1222px]">
+    <div className="w-[1222px] top-0 left-0">
       <div className="relative w-[826px] h-[90px] mx-[3px] mt-[39px] mb-[66px] top-0 left-0">
         <p className="absolute inter-regular top-[65px] text-[#757575] text-xl left-0 whitespace-nowrap">
           다른 모양이지만 같은 의미로 쓰이는 기호들도 같이 볼 수 있어요.
@@ -78,6 +85,7 @@ const LabelSearchPage = () => {
                     alt="Group"
                     src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
                     onClick={() => {
+                      handleScrollToTop();
                       if (selectedLabel === img_name) {
                         setSelectedLabel(null);
                       } else {

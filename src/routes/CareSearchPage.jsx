@@ -216,7 +216,7 @@ const View1 = ({
           className="w-full h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px] font-medium bg-white"
           onClick={handleSearchButtonClick}
         >
-          검색
+          검색결과 보기
         </button>
         {error && <p className="text-red-500 text-center mt-3">{error}</p>}
       </div>
@@ -446,12 +446,13 @@ const CareSearchPage = () => {
           }}
         />
       )}
-      <Loading isLoading={isLoading} />
+      <Loading isLoading={isLoading} isSig={false} />
       <RecogFail
         retry={retry}
         setRetry={(x) => {
           setRetry(x);
         }}
+        isSig={false}
       />
     </div>
   );

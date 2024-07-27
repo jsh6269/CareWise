@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { default as Canvas } from "../components/Canvas/index.jsx";
 import careLabelSample from "../assets/images/icons/carelabel-sample.png";
 import uploadLogo from "../assets/images/icons/material-symbols_upload.png";
+import imageUploadLogo from "../assets/images/icons/image-gallery.png";
 import { Loading, RecogFail } from "../components/Modal/index.jsx";
 import { LabelSearchAPI } from "../chatgpt.js";
 
@@ -70,7 +71,6 @@ const LabelExPage = () => {
           <div className="absolute w-[822px] top-[39px] left-[110px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
             케어라벨 세탁기호 분석하기
           </div>
-          {/*group 18 in figma*/}
           <div className="absolute w-[1221px] h-[494px] top-[145px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
               <div className="relative self-stretch mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[32px] tracking-[0] leading-[normal]">
@@ -83,18 +83,35 @@ const LabelExPage = () => {
             <img
               className="absolute w-[498px] h-[284px] top-[158px] left-[88px] object-cover"
               alt="carelabel sample"
-              src={careLabelSample}
+              src={
+                selectedFile
+                  ? URL.createObjectURL(selectedFile)
+                  : careLabelSample
+              }
             />
             <div className="z-50">
-              <input
-                type="file"
-                onChange={handleFileChange}
-                className="absolute top-[211px] left-[710px]"
-                accept=".jpg, .jpeg, .png"
-              />
+              <div>
+                <label htmlFor="file">
+                  <div className="flex flex-row gap-4 justify-center items-center absolute top-[211px] left-[710px] w-[421px] h-[67px] cursor-pointer bg-[#757575] rounded-lg text-white text-xl">
+                    <img
+                      className="relative w-[29px] h-[29px]"
+                      src={imageUploadLogo}
+                      alt="Upload"
+                    />
+                    <div>{selectedFile ? selectedFile.name : "사진 선택"}</div>
+                  </div>
+                </label>
+                <input
+                  id="file"
+                  type="file"
+                  onChange={handleFileChange}
+                  className="hidden"
+                  accept=".jpg, .jpeg, .png"
+                />
+              </div>
               <button
                 onClick={handleUpload}
-                className="flex flex-col w-[421px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] absolute top-[261px] left-[710px] bg-[#b5b5b5] rounded-lg"
+                className="flex flex-col w-[421px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] absolute top-[300px] left-[710px] bg-[#b5b5b5] rounded-lg"
               >
                 <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
                   <img
@@ -109,7 +126,6 @@ const LabelExPage = () => {
               </button>
             </div>
           </div>
-          {/*group 21 in figma*/}
           <div className="absolute w-[1221px] h-[588px] top-[729px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] h-36 items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
               <div className="relative self-stretch mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[32px] tracking-[0] leading-[normal]">
@@ -119,8 +135,6 @@ const LabelExPage = () => {
                 사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요!
               </p>
             </div>
-
-            {/*frame 51 in figma*/}
             <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
               <Canvas
                 settings={settings}
@@ -136,12 +150,13 @@ const LabelExPage = () => {
         </div>
       </div>
       <div>
-        <Loading isLoading={isLoading} />
+        <Loading isLoading={isLoading} isSig={true} />
         <RecogFail
           retry={retry}
           setRetry={(x) => {
             setRetry(x);
           }}
+          isSig={true}
         />
       </div>
     </>
