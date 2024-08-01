@@ -23,7 +23,9 @@
 
 ## 배포 링크
 - 배포링크 : https://carewise-snu.com (deprecated)
-- 추후 github pages로 재호스팅 될 예정입니다. 
+- github page로 재배포되었습니다. : https://jj1kim.github.io/CareWise
+- react 프로젝트를 github page로 배포했기 때문에, 첫 화면에 접속했을 시 에셋이 바로 로딩되지 않습니다. Home 버튼을 눌러주세요.
+- react router로 인해서 탭을 누르면 화면 이동이 가능하지만, 새로고침을 누르면 페이지 찾을 수 없음이 뜨니 유의해주세요.
 
 ## 프로젝트 뷰
 - 홈 화면
