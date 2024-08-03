@@ -1,5 +1,6 @@
 import React from "react";
 import careLabelInfo from "../../mappingData/Carelabel-info.json";
+import labels from "../../data/LabelExport";
 
 const Text = ({ text }) => {
   return (
@@ -42,8 +43,8 @@ const LabelCard = ({ label }) => {
         <span className="image-container w-[203px] h-[203px] ml-[70px]">
           <img
             className="absolute max-w-[203px] max-h-[203px] object-cover"
-            alt="High heat"
-            src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${label}`}
+            alt="Label"
+            src={labels[label]}
           />
         </span>
         <section className="flex-col justify-center gap-[23px] w-[680px] flex items-center relative">
@@ -57,8 +58,8 @@ const LabelCard = ({ label }) => {
                 <span key={sim} className="image-container w-[89px] h-[89px]">
                   <img
                     className="absolute max-w-[89px] max-h-[89px] object-cover"
-                    alt="High heat"
-                    src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${sim}`}
+                    alt="Label"
+                    src={labels[sim]}
                   />
                 </span>
               ))}

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import careLabelTab from "../mappingData/Carelabel-tab.json";
 import LabelCard from "../components/LabelCard";
+import labels from "../data/LabelExport";
 
 const handleScrollToTop = () => {
   window.scrollTo({
@@ -83,7 +84,7 @@ const LabelSearchPage = () => {
                   <img
                     className="absolute max-w-[115px] max-h-[115px]"
                     alt="Group"
-                    src={`https://carelabel-asset.s3.ap-northeast-2.amazonaws.com/${img_name}`}
+                    src={labels[img_name]}
                     onClick={() => {
                       handleScrollToTop();
                       if (selectedLabel === img_name) {
