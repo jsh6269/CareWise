@@ -37,6 +37,7 @@ const AnimatedRoutes = () => {
         <div className="route-wrapper">
           <Routes location={location}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/CareWise" element={<HomePage />} />
             <Route path="/care-search" element={<CareSearchPage />} />
             <Route path="/care-result" element={<CareResultPage />} />
             <Route path="/care-result2" element={<CareResultPage2 />} />
