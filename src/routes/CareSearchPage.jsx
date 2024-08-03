@@ -228,7 +228,7 @@ const View1 = ({
 
 const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
   return (
-    <div className="relative w-[1440px] h-[700px]">
+    <div className="relative w-[1440px] h-[1000px]">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
         헷갈리는 의복 세탁/관리법, AI에게 물어보세요.
         <p className="mt-4 font-normal text-[#757575] text-lg">
@@ -237,7 +237,7 @@ const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
         </p>
         <p className="text-xs font-extralight">(현재 지원하지 않습니다)</p>
       </div>
-      <div className="absolute grid grid-cols-2 top-[198px] left-[506px] justify-center gap-[30px] mb-4">
+      <div className="absolute grid grid-cols-2 top-[210px] left-[506px] justify-center gap-[30px] mb-4">
         <div>
           <input
             type="radio"
@@ -274,14 +274,14 @@ const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
         </div>
       </div>
       <textarea
-        className="absolute left-[180px] top-[265px] px-[25px] py-[20px] w-[1060px] h-[130px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[17px] placeholder-[#757575] overflow-auto"
+        className="absolute left-[180px] top-[277px] px-[25px] py-[20px] w-[1060px] h-[530px] border-2 border-[#E5E5E5] bg-[#F2F2F2] rounded-xl text-[17px] placeholder-[#757575] overflow-auto"
         placeholder="니트류에 대한 관리법을 알려줘, 스타킹에 올이 나갔어, 셔츠에 잉크를 쏟았어!"
         onChange={(e) => {
           setInputText(e.target.value);
         }}
       ></textarea>
       <button
-        className="absolute top-[445px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
+        className="absolute top-[855px] left-[50%] transform -translate-x-1/2 w-[288px] h-[48px] border-[#757575] border-2 rounded-lg text-[#3F3F3F] text-[16px]"
         onClick={handleSearchButtonClick}
       >
         검색결과 보기
