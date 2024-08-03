@@ -77,11 +77,14 @@ const LabelExPage = () => {
                 사진 분석
               </div>
               <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
-                케어라벨에 그려져 있는 세탁기호의 사진을 찍어서 업로드해보세요! (현재 지원하지 않습니다)
+                케어라벨에 그려져 있는 세탁기호의 사진을 찍어서 업로드해보세요!
+              </p>
+              <p className="text-xs font-extralight">
+                (현재 지원하지 않습니다)
               </p>
             </div>
             <img
-              className="absolute w-[498px] h-[284px] top-[158px] left-[88px] object-cover"
+              className="absolute w-[498px] h-[284px] top-[168px] left-[88px] object-cover"
               alt="carelabel sample"
               src={
                 selectedFile
@@ -92,7 +95,7 @@ const LabelExPage = () => {
             <div className="z-50">
               <div>
                 <label htmlFor="file">
-                  <div className="flex flex-row gap-4 justify-center items-center absolute top-[211px] left-[710px] w-[421px] h-[67px] cursor-pointer bg-[#757575] rounded-lg text-white text-xl">
+                  <div className="flex flex-row gap-4 justify-center items-center absolute top-[221px] left-[710px] w-[421px] h-[67px] cursor-pointer bg-[#757575] rounded-lg text-white text-xl">
                     <img
                       className="relative w-[29px] h-[29px]"
                       src={imageUploadLogo}
@@ -111,7 +114,7 @@ const LabelExPage = () => {
               </div>
               <button
                 onClick={handleUpload}
-                className="flex flex-col w-[421px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] absolute top-[300px] left-[710px] bg-[#b5b5b5] rounded-lg"
+                className="flex flex-col w-[421px] h-[67px] items-center justify-center gap-2.5 px-[133px] py-[18px] absolute top-[310px] left-[710px] bg-[#b5b5b5] rounded-lg"
               >
                 <div className="inline-flex items-center gap-[15px] relative flex-[0_0_auto]">
                   <img
@@ -126,16 +129,19 @@ const LabelExPage = () => {
               </button>
             </div>
           </div>
-          <div className="absolute w-[1221px] h-[588px] top-[729px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
+          <div className="absolute w-[1221px] h-[638px] top-[729px] left-[109px] bg-white rounded-[20px] border-2 border-solid border-[#a4a3a3] shadow-[0px_4px_4px_#00000033]">
             <div className="flex flex-col w-[729px] h-36 items-start gap-1.5 pl-[85px] pr-0 pt-[50px] pb-0 absolute -top-0.5 -left-px">
               <div className="relative self-stretch mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[32px] tracking-[0] leading-[normal]">
                 그림 분석
               </div>
               <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
-                사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요! (현재 지원하지 않습니다)
+                사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요! <br />
+              </p>
+              <p className="text-xs font-extralight">
+                (현재 지원하지 않습니다)
               </p>
             </div>
-            <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
+            <div className="inline-flex items-center gap-3 absolute top-[180px] left-[85px]">
               <Canvas
                 settings={settings}
                 setIsLoading={(x) => {
