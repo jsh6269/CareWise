@@ -237,7 +237,7 @@ const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
         </p>
         <p className="text-xs font-extralight">(현재 지원하지 않습니다)</p>
       </div>
-      <div className="absolute grid grid-cols-2 top-[210px] left-[506px] justify-center gap-[30px] mb-4">
+      <div className="absolute grid grid-cols-2 top-[198px] left-[506px] justify-center gap-[30px] mb-4">
         <div>
           <input
             type="radio"
