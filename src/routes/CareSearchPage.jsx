@@ -87,7 +87,7 @@ const View1 = ({
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
         헷갈리는 의복 세탁/관리법, AI에게 물어보세요.
         <p className="mt-4 font-normal text-[#757575] text-lg">
-          의복의 종류, 섬유 혼용률을 분석해서 적절한 관리법을 알려드려요! (현재 지원하지 않습니다)
+          의복의 종류, 섬유 혼용률을 분석해서 적절한 관리법을 알려드려요!
         </p>
       </div>
       <div className="absolute grid grid-cols-2 top-[198px] left-[506px] justify-center gap-[30px] mb-4">
@@ -228,10 +228,10 @@ const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
   return (
     <div className="relative w-[1440px] h-[700px]">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
-        헷갈리는 의복 세탁/관리법, AI에게 물어보세요. 
+        헷갈리는 의복 세탁/관리법, AI에게 물어보세요.
         <p className="mt-4 font-normal text-[#757575] text-lg">
           기본 세탁법, 얼룩 제거, 특수 소재 등 의복 관리에 대한 어떤 질문이든
-          물어볼 수 있어요. (현재 지원하지 않습니다)
+          물어볼 수 있어요.
         </p>
       </div>
       <div className="absolute grid grid-cols-2 top-[198px] left-[506px] justify-center gap-[30px] mb-4">

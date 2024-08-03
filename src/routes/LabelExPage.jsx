@@ -77,7 +77,7 @@ const LabelExPage = () => {
                 사진 분석
               </div>
               <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
-                케어라벨에 그려져 있는 세탁기호의 사진을 찍어서 업로드해보세요! (현재 지원하지 않습니다)
+                케어라벨에 그려져 있는 세탁기호의 사진을 찍어서 업로드해보세요!
               </p>
             </div>
             <img
@@ -132,7 +132,7 @@ const LabelExPage = () => {
                 그림 분석
               </div>
               <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[21.5px] tracking-[0] leading-[normal]">
-                사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요! (현재 지원하지 않습니다)
+                사진 인식이 어렵다면, 직접 그림을 그려서 업로드해보세요!
               </p>
             </div>
             <div className="inline-flex items-center gap-3 absolute top-[147px] left-[85px]">
