@@ -37,7 +37,6 @@ const AnimatedRoutes = () => {
         <div className="route-wrapper">
           <Routes location={location}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/CareWise" element={<HomePage />} />
             <Route path="/care-search" element={<CareSearchPage />} />
             <Route path="/care-result" element={<CareResultPage />} />
             <Route path="/care-result2" element={<CareResultPage2 />} />
@@ -52,10 +51,9 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
-  const public_url = "https://jj1kim.github.io/CareWise";
   return (
     <div className="App">
-      <BrowserRouter basename={public_url}>
+      <BrowserRouter basename="/CareWise">
         <ScrollToTop />
         <div id="wrapper" className="flex flex-col items-center">
           <Header />
