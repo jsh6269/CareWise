@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/CareWise/static/css/main.679a9dc8.css",
-    "main.js": "/CareWise/static/js/main.b2503b03.js",
+    "main.css": "/CareWise/static/css/main.002693f2.css",
+    "main.js": "/CareWise/static/js/main.7a42258c.js",
     "static/js/453.fb256eb4.chunk.js": "/CareWise/static/js/453.fb256eb4.chunk.js",
     "static/media/back_label_asset.png": "/CareWise/static/media/back_label_asset.166140c69eb78192711e.png",
     "static/media/closet.png": "/CareWise/static/media/closet.81734389ca985ca9a1e2.png",
@@ -102,17 +102,17 @@
     "static/media/dry-hang-shadow.png": "/CareWise/static/media/dry-hang-shadow.c0808d6428f924e466ad.png",
     "static/media/ph_question.svg": "/CareWise/static/media/ph_question.f2e306ef54c40626ed8c36a64de18257.svg",
     "static/media/smile.svg": "/CareWise/static/media/smile.ff69c35d395a0183b1795f33e135848d.svg",
+    "index.html": "/CareWise/index.html",
     "static/media/arrow.svg": "/CareWise/static/media/arrow.99180e11fb57e92be34ed5b4e075ed9a.svg",
     "static/media/arrow_white.svg": "/CareWise/static/media/arrow_white.c9fb5c841f018d9f069f22ebd9caecff.svg",
-    "index.html": "/CareWise/index.html",
     "static/media/Vector.svg": "/CareWise/static/media/Vector.95eadd35c19e64f5a1ed29470928af24.svg",
     "static/media/Polygon1.svg": "/CareWise/static/media/Polygon1.6d021f9cdc6c031096cf0d21663fab58.svg",
-    "main.679a9dc8.css.map": "/CareWise/static/css/main.679a9dc8.css.map",
-    "main.b2503b03.js.map": "/CareWise/static/js/main.b2503b03.js.map",
+    "main.002693f2.css.map": "/CareWise/static/css/main.002693f2.css.map",
+    "main.7a42258c.js.map": "/CareWise/static/js/main.7a42258c.js.map",
     "453.fb256eb4.chunk.js.map": "/CareWise/static/js/453.fb256eb4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.679a9dc8.css",
-    "static/js/main.b2503b03.js"
+    "static/css/main.002693f2.css",
+    "static/js/main.7a42258c.js"
   ]
 }
