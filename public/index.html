@@ -38,6 +38,7 @@
       // the correct url will be waiting in the browser's history for
       // the single page app to route accordingly.
       (function (l) {
+        console.log("why");
         if (l.search) {
           var q = {};
           l.search
@@ -75,4 +76,5 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script src="build/bundle.js"></script>
 </html>

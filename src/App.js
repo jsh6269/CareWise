@@ -52,9 +52,10 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const public_url = "https://jj1kim.github.io/CareWise";
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={public_url}>
         <ScrollToTop />
         <div id="wrapper" className="flex flex-col items-center">
           <Header />
