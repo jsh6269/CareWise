@@ -13,7 +13,7 @@ const Footer = () => {
             src={likelion_logo}
           />
         </a>
-        <a href="/">
+        <a href="/CareWise">
           <img
             className="relative w-44 h-[46px] object-cover"
             alt="carewise"
