@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/title.png";
 import likelion_logo from "../../assets/images/likelion.png";
 
@@ -13,13 +14,16 @@ const Footer = () => {
             src={likelion_logo}
           />
         </a>
-        <a href="/CareWise">
+        <Link to="/">
           <img
             className="relative w-44 h-[46px] object-cover"
             alt="carewise"
             src={logo}
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
           />
-        </a>
+        </Link>
       </span>
       <span className="flex flex-col w-[272px] items-start gap-2.5 relative">
         <p className="relative inter-regular w-[272px] mt-[-1.00px] text-[#3f3f3f] text-lg text-right">
