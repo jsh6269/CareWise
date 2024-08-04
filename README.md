@@ -23,7 +23,7 @@
 
 ## 배포 링크
 - 배포링크 : https://carewise-snu.com (deprecated)
-- github page로 재배포되었습니다. : https://jsh6269.github.io/CareWise
+- github page로 재배포했습니다. : https://jsh6269.github.io/CareWise
 
 ## 프로젝트 뷰
 - 홈 화면
