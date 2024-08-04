@@ -1,6 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -43,6 +49,7 @@ const AnimatedRoutes = () => {
             <Route path="/label-ex" element={<LabelExPage />} />
             <Route path="/label-ex-result" element={<LabelExResult />} />
             <Route path="/label-search" element={<LabelSearchPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </CSSTransition>
