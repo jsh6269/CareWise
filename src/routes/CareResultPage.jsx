@@ -15,7 +15,7 @@ const CareResultPage = () => {
 
   return (
     resultInfo && (
-      <div className="w-[1440px] relative bg-white">
+      <div className="w-[1440px] relative bg-white dark:invert">
         <div className="flex items-center justify-center border-2 border-[#A4A4A4] rounded-lg w-[1043px] h-[149px] mt-[71px] ml-[199px] shadow">
           <img
             className="w-[90px] h-[75px] mr-[20px]"

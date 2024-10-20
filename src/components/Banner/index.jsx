@@ -23,14 +23,14 @@ const Banner = (props) => {
 const Banner0 = (
   <section className="w-[1440px] h-[480px]">
     <div
-      className={`w-[1440px] h-[480px] top-0 left-0 bg-cover bg-[50%_50%]`}
+      className="w-[1440px] h-[480px] top-0 left-0 bg-cover bg-[50%_50%]"
       style={{ backgroundImage: `url(${closet})` }}
     >
       <article className="flex flex-col w-[580px] items-end gap-3.5 relative top-[259px] left-[794px]">
         <p className="relative inter-light mt-[-1.00px] text-white text-[17px] text-right">
           의복 관리법 제공부터, 세탁기호 분석까지
         </p>
-        <p className="banner-title inter-semi-bold text-right text-white">
+        <p className="banner-title inter-semi-bold text-right text-white dark:text-[#C0C0C0]">
           복잡하고 어려운 의복 관리,
           <br />
           CareWise로 현명하게 실천해요
@@ -42,7 +42,7 @@ const Banner0 = (
 
 const Banner1 = (
   <section className="w-[1440px] h-[480px]">
-    <div className="w-[1440px] h-[480px] top-0 left-0 bg-[#b5b5b5]">
+    <div className="w-[1440px] h-[480px] top-0 left-0 bg-[#b5b5b5] dark:bg-[#4A4A4A]">
       <div className="relative w-[1051px] h-[259px] top-[127px] left-[198px]">
         <Link to="/care-search">
           <span className="span-button w-[243px] top-[206px] left-[808px] border-white">
@@ -60,7 +60,7 @@ const Banner1 = (
           <p className="relative inter-light mt-[-1px] text-[25px] text-white">
             이 옷은 어떻게 관리해야할까?
           </p>
-          <p className="banner-title inter-semi-bold h-[139px] text-white">
+          <p className="banner-title inter-semi-bold h-[139px] text-white dark:text-[#C0C0C0]">
             헷갈리는 의복 세탁/관리법,
             <br />
             AI가 답해드려요!
@@ -75,7 +75,7 @@ const Banner1 = (
 );
 
 const Banner2 = (
-  <section className="relative w-[1440px] h-[480px]">
+  <section className="relative w-[1440px] h-[480px] dark:invert">
     <div className="w-[1440px] h-[480px] top-0 left-0 bg-[#f8f8f8]">
       <Link to="/label-ex">
         <span className="span-button w-[287px] top-[311px] left-[198px] border-black">
@@ -109,7 +109,7 @@ const Banner2 = (
 );
 
 const Banner3 = (
-  <section className="w-[1440px] h-[480px]">
+  <section className="w-[1440px] h-[480px] dark:invert">
     <div className="w-[1440px] h-[480px] top-0 left-0">
       <div className="h-[480px] bg-[#e4e4e4]">
         <div className="relative w-[1044px] h-[210px] top-[127px] left-[198px]">

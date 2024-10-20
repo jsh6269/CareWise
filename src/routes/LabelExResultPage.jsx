@@ -17,7 +17,7 @@ const LabelExResultPage = () => {
 
   return (
     carelabelInfo && (
-      <div className="w-[1440px] relative bg-white flex flex-col items-center justify-center">
+      <div className="w-[1440px] relative bg-white flex flex-col items-center justify-center dark:invert">
         <div className="w-[822px] h-[47px] left-[197px] top-[50px] absolute text-neutral-700 text-[40px] font-semibold font-['Inter']">
           세탁기호 분석 결과예요:
         </div>

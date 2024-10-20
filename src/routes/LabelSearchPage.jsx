@@ -33,7 +33,7 @@ const LabelSearchPage = () => {
   }, []);
 
   return (
-    <div className="w-[1222px] top-0 left-0">
+    <div className="w-[1222px] top-0 left-0 dark:invert">
       <div className="relative w-[826px] h-[90px] mx-[3px] mt-[39px] mb-[66px] top-0 left-0">
         <p className="absolute inter-regular top-[65px] text-[#757575] text-xl left-0 whitespace-nowrap">
           다른 모양이지만 같은 의미로 쓰이는 기호들도 같이 볼 수 있어요.
@@ -67,7 +67,7 @@ const LabelSearchPage = () => {
               드라이클리닝
             </li>
           </div>
-          <div className="absolute w-[1222px] h-[960px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9]" />
+          <div className="absolute w-[1222px] h-[960px] top-0 left-0 rounded-[20px] border-2 border-solid border-[#d9d9d9] dark:border-gray-600" />
           <section className="absolute w-[1120px] h-[750px] left-[18px] top-[147px] flex flex-wrap gap-0 content-start justify-start overflow-y-auto">
             {labelLst.map((img_name) => (
               <li

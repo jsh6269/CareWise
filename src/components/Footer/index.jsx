@@ -5,7 +5,7 @@ import likelion_logo from "../../assets/images/likelion.png";
 
 const Footer = () => {
   return (
-    <footer className="flex w-[1440px] h-[128px] items-center justify-between px-[45px] py-[30px] relative">
+    <footer className="flex w-[1440px] h-[128px] items-center justify-between px-[45px] py-[30px] relative dark:invert">
       <span className="inline-flex items-center gap-5 relative flex-[0_0_auto]">
         <a href="https://snulion-web.vercel.app/">
           <img

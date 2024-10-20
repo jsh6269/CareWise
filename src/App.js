@@ -17,6 +17,8 @@ import CareResultPage2 from "./routes/CareResultPage2";
 import LabelExPage from "./routes/LabelExPage";
 import LabelExResult from "./routes/LabelExResultPage";
 import LabelSearchPage from "./routes/LabelSearchPage";
+
+import { useSelector } from "react-redux";
 import "./App.css";
 
 const ScrollToTop = () => {
@@ -58,8 +60,10 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const darkMode = useSelector((state) => state.darkMode.value);
+
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? "dark bg-black" : ""}`}>
       <BrowserRouter basename="/CareWise">
         <ScrollToTop />
         <div id="wrapper" className="flex flex-col items-center">

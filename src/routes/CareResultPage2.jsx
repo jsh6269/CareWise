@@ -14,7 +14,7 @@ const CareResultPage2 = () => {
   output = output.replace(/\n/g, "<br/>");
 
   return (
-    <div className="w-[1440px] h-[1100px] relative bg-white">
+    <div className="w-[1440px] h-[1100px] relative bg-white dark:invert">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
         질문에 대한 답변이에요:
       </div>

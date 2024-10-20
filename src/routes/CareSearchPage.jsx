@@ -84,7 +84,7 @@ const View1 = ({
   error,
 }) => {
   return (
-    <div className="relative h-[1024px] w-[1440px]">
+    <div className="relative h-[1024px] w-[1440px] dark:invert">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
         헷갈리는 의복 세탁/관리법, AI에게 물어보세요.
         <p className="mt-4 font-normal text-[#757575] text-lg">
@@ -228,7 +228,7 @@ const View1 = ({
 
 const View2 = ({ setCurrentView, handleSearchButtonClick, setInputText }) => {
   return (
-    <div className="relative w-[1440px] h-[1000px]">
+    <div className="relative w-[1440px] h-[1000px] dark:invert">
       <div className="absolute left-[180px] top-[40px] font-semibold text-[#3f3f3f] text-[40px]">
         헷갈리는 의복 세탁/관리법, AI에게 물어보세요.
         <p className="mt-4 font-normal text-[#757575] text-lg">

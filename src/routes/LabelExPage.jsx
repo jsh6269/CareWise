@@ -66,7 +66,7 @@ const LabelExPage = () => {
 
   return (
     <>
-      <div className="bg-white flex flex-row justify-center w-full">
+      <div className="bg-white flex flex-row justify-center w-full dark:invert">
         <div className="bg-white w-[1440px] h-[1389px] relative">
           <div className="absolute w-[822px] top-[39px] left-[110px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[40px] tracking-[0] leading-[normal] whitespace-nowrap">
             케어라벨 세탁기호 분석하기
