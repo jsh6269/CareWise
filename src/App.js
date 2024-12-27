@@ -19,6 +19,7 @@ import LabelExResult from "./routes/LabelExResultPage";
 import LabelSearchPage from "./routes/LabelSearchPage";
 import LoginPage from "./routes/LoginPage";
 import UserPage from "./routes/UserPage.jsx";
+import ClosetPage from "./routes/ClosetPage.jsx";
 import SignupPage from "./routes/SignupPage";
 import SignupDetailsPage from "./routes/SignupDetailsPage.jsx";
 
@@ -89,6 +90,7 @@ const AnimatedRoutes = () => {
               <Route path="/label-ex-result" element={<LabelExResult />} />
               <Route path="/label-search" element={<LabelSearchPage />} />
               <Route path="/user" element={<UserPage />} />
+              <Route path="/closet" element={<ClosetPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

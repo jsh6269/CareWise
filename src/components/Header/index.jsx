@@ -50,24 +50,28 @@ const Header = ({ isAuthenticated, onLogout }) => {
         {isAuthenticated ? (
           <nav className="flex items-center gap-[30px]">
             <p
-              className="header-menu text-[17px] cursor-pointer"
+              className="header-menu text-[17px] cursor-pointer dark:text-white"
               onClick={onLogout}
             >
               로그아웃
             </p>
             <Link to="/">
-              <img className="h-[18px] object-cover" alt="Alert" src={alert} />
+              <img
+                className="h-[18px] object-cover dark:invert"
+                alt="Alert"
+                src={alert}
+              />
             </Link>
             <Link to="/closet">
               <img
-                className="h-[18px] object-cover"
+                className="h-[18px] object-cover dark:invert"
                 alt="Closet"
                 src={closet}
               />
             </Link>
             <Link to="/user">
               <img
-                className="h-[18px] object-cover"
+                className="h-[18px] object-cover dark:invert"
                 alt="Profile"
                 src={profile}
               />

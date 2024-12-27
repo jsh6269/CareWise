@@ -18,9 +18,9 @@ const ClosetPage = () => {
   return (
     <div className="relative h-[1024px] w-[1440px]">
       {/* Header Section */}
-      <div className="ml-[180px] mt-[40px] font-semibold text-[#3f3f3f] text-[35px]">
+      <div className="ml-[180px] mt-[40px] font-semibold text-[#3f3f3f] text-[35px] dark:text-white">
         내 옷장
-        <p className="mt-4 font-normal text-[#757575] text-[17px]">
+        <p className="mt-4 font-normal text-[#757575] text-[17px] dark:text-white">
           내 옷의 세탁법을 필요할 때마다 찾아보세요!
         </p>
       </div>
@@ -40,7 +40,9 @@ const ClosetPage = () => {
             <ShirtIcon
               className={`icon drop-shadow hover:animate-shake-hover mt-[-71px] w-[147px] h-[124px] transition duration-200 ${selectedItem === "shirt" ? "selected" : ""}`}
             />
-            <span className="text-[#757575] text-[15px] mt-[65px]">상의</span>
+            <span className="text-[#757575] text-[15px] mt-[65px] dark:text-white">
+              상의
+            </span>
           </button>
 
           {/* Hanger 2 - Pants */}
@@ -54,7 +56,9 @@ const ClosetPage = () => {
             <PantsIcon
               className={`icon drop-shadow hover:animate-shake-hover mt-[-43px] w-[155px] h-[155px] transition duration-200 ${selectedItem === "pants" ? "selected" : ""}`}
             />
-            <span className="text-[#757575] text-[15px] mt-2">하의</span>
+            <span className="text-[#757575] text-[15px] mt-2 dark:text-white">
+              하의
+            </span>
           </button>
 
           {/* Hanger 3 - Jacket */}
@@ -68,7 +72,9 @@ const ClosetPage = () => {
             <JacketIcon
               className={`icon drop-shadow hover:animate-shake-hover mt-[-78px] w-[139px] h-[127px] transition duration-200 ${selectedItem === "jacket" ? "selected" : ""}`}
             />
-            <span className="text-[#757575] text-[15px] mt-[70px]">아우터</span>
+            <span className="text-[#757575] text-[15px] mt-[70px] dark:text-white">
+              아우터
+            </span>
           </button>
 
           {/* Hanger 4 - Dress */}
@@ -82,7 +88,9 @@ const ClosetPage = () => {
             <DressIcon
               className={`icon drop-shadow hover:animate-shake-hover mt-[-71px] w-[188px] h-[183px] transition duration-200 ${selectedItem === "dress" ? "selected" : ""}`}
             />
-            <span className="text-[#757575] text-[15px] mt-2">원피스</span>
+            <span className="text-[#757575] text-[15px] mt-2 dark:text-white">
+              원피스
+            </span>
           </button>
 
           {/* Hanger 5 - Accessory */}
@@ -96,7 +104,9 @@ const ClosetPage = () => {
             <AccessoryIcon
               className={`icon drop-shadow hover:animate-shake-hover mt-[-60px] w-[178px] h-[162px] transition duration-200 ${selectedItem === "accessory" ? "selected" : ""}`}
             />
-            <span className="text-[#757575] text-[15px] mt-[18px]">잡화류</span>
+            <span className="text-[#757575] text-[15px] mt-[18px] dark:text-white">
+              잡화류
+            </span>
           </button>
         </div>
       </div>
