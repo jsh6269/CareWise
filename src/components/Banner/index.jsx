@@ -47,7 +47,7 @@ const Banner1 = (
         <Link to="/care-search">
           <span className="span-button w-[243px] top-[206px] left-[808px] border-white">
             <button className="banner-button text-neutral-100">
-              관리법 검색하러 가기
+              질문하러 가기
             </button>
           </span>
         </Link>
@@ -63,7 +63,7 @@ const Banner1 = (
           <p className="banner-title inter-semi-bold h-[139px] text-white dark:text-[#C0C0C0]">
             헷갈리는 의복 세탁/관리법,
             <br />
-            AI가 답해드려요!
+            커뮤니티에 물어보세요!
           </p>
           <p className="relative inter-light w-[537px] text-[17px] text-white">
             어떻게 관리해야할지 헷갈리는 의류나, 소재를 검색해보세요.

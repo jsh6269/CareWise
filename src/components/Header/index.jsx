@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/title.png";
-
+import alert from "../../assets/images/icons/alert.png";
+import closet from "../../assets/images/icons/closet.png";
+import profile from "../../assets/images/icons/profile.png";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleDarkMode } from "../../redux/dark-slice";
 import { FiSun } from "react-icons/fi";
 import { FiMoon } from "react-icons/fi";
 
-const Header = () => {
+const Header = ({ isAuthenticated, onLogout }) => {
   const scrollTop = () => {
     window.scrollTo(0, 0);
   };
@@ -15,41 +17,77 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <header className="w-[1440px] h-[100px]">
-      <div className="fixed z-50 flex w-[1440px] h-[100px] items-center gap-[180px] px-[110px] py-[30px] bg-white dark:bg-black">
-        <Link to="/">
-          <img
-            className="relative w-[226px] h-[53px] mt-[-2.00px] mb-[-2.00px] object-cover dark:invert"
-            alt="Element"
-            src={logo}
-            onClick={scrollTop}
-          />
-        </Link>
-        <nav className="inline-flex items-center gap-[120px] relative flex-[0_0_auto]">
+    <header className="w-full max-w-[1440px] mx-auto h-[85px]">
+      <div className="fixed z-50 flex items-center justify-between w-[1440px] h-[85px] pr-[109px] pl-[20px] py-[22px] bg-white dark:bg-black">
+        <nav className="flex items-center gap-[30px]">
           <Link to="/">
-            <p className="header-menu dark:text-white" onClick={scrollTop}>
-              HOME
-            </p>
+            <p className="header-menu text-[17px] dark:text-white">HOME</p>
           </Link>
           <Link to="/care-search">
-            <p className="header-menu dark:text-white" onClick={scrollTop}>
-              관리법 검색
+            <p className="header-menu text-[17px] dark:text-white">
+              QnA 커뮤니티
             </p>
           </Link>
           <Link to="/label-ex">
-            <p className="header-menu dark:text-white" onClick={scrollTop}>
+            <p className="header-menu text-[17px] dark:text-white">
               세탁기호 분석
             </p>
           </Link>
           <Link to="/label-search">
-            <p className="header-menu dark:text-white" onClick={scrollTop}>
+            <p className="header-menu text-[17px] dark:text-white">
               세탁기호 찾기
             </p>
           </Link>
         </nav>
+        <Link to="/" className="absolute left-1/2 transform -translate-x-1/2">
+          <img
+            className="w-[168px] h-[40px] object-cover dark:invert"
+            alt="Element"
+            src={logo}
+          />
+        </Link>
+
+        {isAuthenticated ? (
+          <nav className="flex items-center gap-[30px]">
+            <p
+              className="header-menu text-[17px] cursor-pointer"
+              onClick={onLogout}
+            >
+              로그아웃
+            </p>
+            <Link to="/">
+              <img className="h-[18px] object-cover" alt="Alert" src={alert} />
+            </Link>
+            <Link to="/closet">
+              <img
+                className="h-[18px] object-cover"
+                alt="Closet"
+                src={closet}
+              />
+            </Link>
+            <Link to="/user">
+              <img
+                className="h-[18px] object-cover"
+                alt="Profile"
+                src={profile}
+              />
+            </Link>
+          </nav>
+        ) : (
+          <nav className="flex items-center gap-[30px]">
+            <Link to="/auth/login">
+              <p className="header-menu text-[17px] dark:text-white">로그인</p>
+            </Link>
+            <Link to="/auth/signup">
+              <p className="header-menu text-[17px] dark:text-white">
+                회원가입
+              </p>
+            </Link>
+          </nav>
+        )}
         <button
           onClick={() => dispatch(toggleDarkMode())}
-          className="absolute right-16"
+          className="absolute right-8"
         >
           {darkMode ? (
             <FiMoon className="w-8 h-8 p-1 invert" />
@@ -58,6 +96,7 @@ const Header = () => {
           )}
         </button>
       </div>
+      <div className="w-full h-[85px] bg-gray-200"></div>
     </header>
   );
 };
