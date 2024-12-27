@@ -28,24 +28,26 @@ const LabelExResultPage = () => {
             src={resultInfo.image}
           />
         )}
-
         {resultInfo && resultInfo.result && (
           <div className="top-[263px] ml-[120px] mb-[360px] relative flex-col justify-start items-start gap-[18px] inline-flex">
-            {resultInfo.result.map((n, index) => (
+            {resultInfo.result.result.map((pred, index) => (
               <div
                 key={index}
                 className="self-stretch h-[120px] justify-start items-center gap-[110px] inline-flex"
               >
+                {/* 탐지된 객체 이미지 */}
                 <img
-                  alt="carelabel icon"
+                  alt="Detected object"
                   className="w-[110px] h-[110px]"
-                  src={carelabelInfo[n].image}
+                  src={pred.img} // 서버에서 반환된 `img` 키 사용
                 />
+                {/* 탐지된 객체 클래스 이름 */}
                 <div className="w-[506px] h-[38px] text-neutral-500 text-[27px] font-medium font-['Inter']">
-                  {carelabelInfo[n].info}
+                  {pred.desc}
                 </div>
               </div>
             ))}
+
             <button
               className="w-[616px] h-[67px] left-[412px] mt-20 -ml-6 rounded-lg border-2 border-neutral-400 justify-center items-center gap-5 inline-flex"
               onClick={() => {

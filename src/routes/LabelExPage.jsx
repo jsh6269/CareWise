@@ -41,7 +41,8 @@ const LabelExPage = () => {
     try {
       const encodedImage = await toBase64(selectedFile);
       const result = await LabelSearchAPI(encodedImage);
-      if (result.length > 0) {
+      console.log(result);
+      if (result.result.length > 0) {
         navigate("/label-ex-result", {
           state: { image: URL.createObjectURL(selectedFile), result: result },
         });
