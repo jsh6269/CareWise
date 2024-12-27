@@ -22,6 +22,7 @@ import UserPage from "./routes/UserPage.jsx";
 import ClosetPage from "./routes/ClosetPage.jsx";
 import SignupPage from "./routes/SignupPage";
 import SignupDetailsPage from "./routes/SignupDetailsPage.jsx";
+import ClosetCreatePage from "./routes/ClosetCreatePage.jsx";
 
 import { useSelector } from "react-redux";
 import "./App.css";
@@ -91,6 +92,7 @@ const AnimatedRoutes = () => {
               <Route path="/label-search" element={<LabelSearchPage />} />
               <Route path="/user" element={<UserPage />} />
               <Route path="/closet" element={<ClosetPage />} />
+              <Route path="/closet-create" element={<ClosetCreatePage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
