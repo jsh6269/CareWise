@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import posts from "../dummyData/posts";
 import { DetailedPost } from "../components/Posts/index";
 
-export const PostDetailPage = () => {
+export const PostDetailPage = ({ isAuthenticated }) => {
   const { postID } = useParams();
   const [post, setPost] = useState(null);
   useEffect(() => {
@@ -11,5 +11,5 @@ export const PostDetailPage = () => {
     setPost(post);
   }, [postID]);
 
-  return post && <DetailedPost post={post} />;
+  return post && <DetailedPost isAuthenticated={isAuthenticated} post={post} />;
 };

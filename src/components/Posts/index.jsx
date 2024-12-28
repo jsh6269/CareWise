@@ -9,7 +9,7 @@ import SpeechBubble from "../../assets/images/icons/speech-bubble.svg";
 import paperPlane from "../../assets/images/icons/paper-plane-gray.svg";
 import replyArrow from "../../assets/images/icons/reply-arrow.png";
 
-export const DetailedPost = ({ post }) => {
+export const DetailedPost = ({ isAuthenticated, post }) => {
   const navigate = useNavigate();
   const date = new Date();
   const [replyFor, setReplyFor] = useState(0);
@@ -28,6 +28,7 @@ export const DetailedPost = ({ post }) => {
   };
 
   const onSubmit = (e) => {
+    if (!isAuthenticated) {alert("로그인이 필요합니다."); navigate("/auth/login"); return;}
     e.preventDefault();
     if (replyFor) {
       const createdReply = {

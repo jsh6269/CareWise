@@ -96,8 +96,8 @@ const AnimatedRoutes = () => {
               <Route path="/user" element={<UserPage />} />
               <Route path="/closet" element={<ClosetPage />} />
               <Route path="/qna-board" element={<QnABoardPage />} />
-              <Route path="/post/:postID" element={<PostDetailPage />} />
-              <Route path="/post-create" element={<PostCreatePage />} />
+              <Route path="/post/:postID" element={<PostDetailPage isAuthenticated={isAuthenticated} />} />
+              <Route path="/post-create" element={<PostCreatePage isAuthenticated={isAuthenticated} />} />
               <Route path="/closet-create" element={<ClosetCreatePage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

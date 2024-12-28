@@ -5,11 +5,14 @@ import paperPlane from "../assets/images/icons/paper-plane-white.svg";
 import posts from "../dummyData/posts";
 import { DetailedPost } from "../components/Posts";
 
-export const PostCreatePage = () => {
+export const PostCreatePage = ({ isAuthenticated }) => {
   const date = new Date();
   const navigate = useNavigate();
-
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated) {alert("로그인이 필요합니다."); navigate("/auth/login")}
+  }, [])
 
   const [post, setPost] = useState({
     id: posts.length,
