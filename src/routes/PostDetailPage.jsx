@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import posts from "../dummyData/posts"
-import {DetailedPost} from "../components/Posts/index"
+import posts from "../dummyData/posts";
+import { DetailedPost } from "../components/Posts/index";
 
 export const PostDetailPage = () => {
   const { postID } = useParams();
@@ -11,7 +11,5 @@ export const PostDetailPage = () => {
     setPost(post);
   }, [postID]);
 
-  return (
-    post && <DetailedPost post={post}/>
-  );
+  return post && <DetailedPost post={post} />;
 };
