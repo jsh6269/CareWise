@@ -17,9 +17,9 @@ const LabelExResultPage = () => {
 
   return (
     carelabelInfo && (
-      <div className="w-[1440px] relative bg-white flex flex-col items-center justify-center">
+      <div className="w-[1440px] relative bg-white flex flex-col items-center justify-center dark:bg-black">
         <div className="flex flex-row">
-          <div className="w-[822px] h-[47px] left-[197px] top-[50px] absolute text-neutral-700 text-[40px] font-semibold font-['Inter']">
+          <div className="w-[822px] h-[47px] left-[197px] top-[50px] absolute text-neutral-700 text-[40px] font-semibold font-['Inter'] dark:text-white">
             세탁기호 분석 결과예요:
           </div>
           <button
@@ -40,18 +40,20 @@ const LabelExResultPage = () => {
 
         {resultInfo && resultInfo.result && (
           <div className="top-[263px] ml-[120px] mb-[360px] relative flex-col justify-start items-start gap-[18px] inline-flex">
-            {resultInfo.result.map((n, index) => (
+            {resultInfo.result.result.map((pred, index) => (
               <div
                 key={index}
                 className="self-stretch h-[120px] justify-start items-center gap-[110px] inline-flex"
               >
+                {/* 탐지된 객체 이미지 */}
                 <img
-                  alt="carelabel icon"
+                  alt="Detected object"
                   className="w-[110px] h-[110px]"
-                  src={carelabelInfo[n].image}
+                  src={pred.img} // 서버에서 반환된 `img` 키 사용
                 />
-                <div className="w-[506px] h-[38px] text-neutral-500 text-[27px] font-medium font-['Inter']">
-                  {carelabelInfo[n].info}
+                {/* 탐지된 객체 클래스 이름 */}
+                <div className="w-[506px] h-[38px] text-neutral-500 text-[27px] font-medium font-['Inter'] dark:text-white">
+                  {pred.desc}
                 </div>
               </div>
             ))}
