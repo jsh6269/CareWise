@@ -103,21 +103,21 @@ export const QnABoardPage = () => {
       </div>
 
       <div className="flex-col">
-        {postList.slice(8 * (page - 1), 8 * page).map((post) => (
+        {postList.slice(5 * (page - 1), 5 * page).map((post) => (
           <SimplePost post={post} />
         ))}
       </div>
 
-      <div className="mt-[50px] flex justify-center">
+      <div className="mt-[50px] flex items-center justify-center">
         <Pagination
           activePage={page}
-          itemsCountPerPage={8}
+          itemsCountPerPage={5}
           totalItemsCount={posts.length}
           pageRangeDisplayed={5}
           prevPageText={"‹"}
           nextPageText={"›"}
           onChange={handlePageChange}
-          className="flex justify-center"
+          className="pagination flex gap-2"
         />
       </div>
     </div>

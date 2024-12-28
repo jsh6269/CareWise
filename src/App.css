@@ -35,3 +35,32 @@
   display: none;
   z-index: 0;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* 각 항목 간격 */
+  list-style: none; /* 기본 점 제거 */
+  padding: 0;
+}
+
+.pagination li {
+  display: flex; /* inline-block 대신 flex */
+}
+
+.pagination li a {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.pagination li a:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination li.active a {
+  background-color: #666666; /* 활성화된 배경색 */
+  color: white; /* 활성화된 텍스트 색상 */
+}
