@@ -44,7 +44,7 @@ const Banner1 = (
   <section className="w-[1440px] h-[480px]">
     <div className="w-[1440px] h-[480px] top-0 left-0 bg-[#b5b5b5] dark:bg-[#4A4A4A]">
       <div className="relative w-[1051px] h-[259px] top-[127px] left-[198px]">
-        <Link to="/care-search">
+        <Link to="/qna-board">
           <span className="span-button w-[243px] top-[206px] left-[808px] border-white">
             <button className="banner-button text-neutral-100">
               질문하러 가기

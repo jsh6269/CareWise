@@ -23,7 +23,7 @@ const Header = ({ isAuthenticated, onLogout }) => {
           <Link to="/">
             <p className="header-menu text-[17px] dark:text-white">HOME</p>
           </Link>
-          <Link to="/care-search">
+          <Link to="/qna-board">
             <p className="header-menu text-[17px] dark:text-white">
               QnA 커뮤니티
             </p>

@@ -22,6 +22,9 @@ import UserPage from "./routes/UserPage.jsx";
 import ClosetPage from "./routes/ClosetPage.jsx";
 import SignupPage from "./routes/SignupPage";
 import SignupDetailsPage from "./routes/SignupDetailsPage.jsx";
+import { QnABoardPage } from "./routes/QnABoardPage";
+import { PostDetailPage } from "./routes/PostDetailPage";
+import { PostCreatePage } from "./routes/PostCreatePage";
 
 import { useSelector } from "react-redux";
 import "./App.css";
@@ -91,6 +94,9 @@ const AnimatedRoutes = () => {
               <Route path="/label-search" element={<LabelSearchPage />} />
               <Route path="/user" element={<UserPage />} />
               <Route path="/closet" element={<ClosetPage />} />
+              <Route path="/qna-board" element={<QnABoardPage />} />
+              <Route path="/post/:postID" element={<PostDetailPage />} />
+              <Route path="/post-create" element={<PostCreatePage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
