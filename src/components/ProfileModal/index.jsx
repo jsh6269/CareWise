@@ -5,14 +5,16 @@ const ProfileModal = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg shadow-lg p-10 w-[1043px] relative">
+      <div className="bg-white rounded-lg shadow-lg p-10 w-[1043px] relative dark:bg-black">
         <button
           onClick={onClose}
-          className="absolute top-2 right-4 text-5xl text-gray-500 font-light hover:text-gray-800 pt-2 pr-3"
+          className="absolute top-2 right-4 text-5xl text-gray-500 font-light hover:text-gray-800 pt-2 pr-3 dark:text-white"
         >
           &times;
         </button>
-        <h2 className="text-xl font-semibold mb-4 text-[#3F3F3F]">{title}</h2>
+        <h2 className="text-xl font-semibold mb-4 text-[#3F3F3F] dark:text-white">
+          {title}
+        </h2>
         <div>{children}</div>
       </div>
     </div>

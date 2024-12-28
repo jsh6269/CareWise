@@ -43,12 +43,12 @@ export const PostCreatePage = () => {
   ) : (
     <form
       onSubmit={onSubmit}
-      className="bg-white w-[1043px] flex-col justify-center mx-auto"
+      className="bg-white w-[1043px] flex-col justify-center mx-auto dark:bg-black"
     >
-      <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[35px] leading-[normal] mt-[38px] mb-2.5">
+      <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] dark:text-white text-[35px] leading-[normal] mt-[38px] mb-2.5">
         QnA 커뮤니티
       </div>
-      <p className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[17px] leading-[normal]">
+      <p className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] dark:text-white text-[17px] leading-[normal]">
         자유롭게 의복 세탁, 관리에 대한 질문 및 의견을 나눠보세요!
       </p>
 
@@ -59,7 +59,7 @@ export const PostCreatePage = () => {
           }}
           className="flex w-[154px] h-[33px] items-center justify-center rounded-[15px] border border-solid border-[#a4a3a3]"
         >
-          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[13px] tracking-[0] leading-[normal]">
+          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] dark:text-white text-[13px] tracking-[0] leading-[normal]">
             목록으로 돌아가기
           </div>
         </button>
@@ -85,7 +85,7 @@ export const PostCreatePage = () => {
           id="title"
           required
           onChange={handleChange}
-          className="mb-[24px] w-full [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#666666] text-[25px] whitespace-nowrap tracking-[0] leading-[normal]"
+          className="mb-[24px] w-full [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#666666] text-[25px] whitespace-nowrap tracking-[0] leading-[normal] dark:bg-black"
           placeholder="제목을 입력하세요"
         ></input>
         <hr></hr>
@@ -94,7 +94,7 @@ export const PostCreatePage = () => {
           required
           onChange={handleChange}
           rows="10"
-          className="mt-[29px] mb-[29px] w-full [font-family:'Inter-Regular',Helvetica] font-normal text-[#666666] text-[17px] tracking-[0] leading-[normal]"
+          className="mt-[29px] mb-[29px] w-full [font-family:'Inter-Regular',Helvetica] font-normal text-[#666666] text-[17px] tracking-[0] leading-[normal] dark:bg-black"
           placeholder="내용을 입력하세요"
         ></textarea>
         <hr></hr>

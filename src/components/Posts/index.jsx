@@ -58,11 +58,11 @@ export const DetailedPost = ({ post }) => {
   };
 
   return (
-    <div className="bg-white w-[1043px] flex-col justify-center mx-auto">
-      <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[35px] leading-[normal] mt-[38px] mb-2.5">
+    <div className="bg-white w-[1043px] flex-col justify-center mx-auto dark:bg-black">
+      <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] dark:text-white text-[35px] leading-[normal] mt-[38px] mb-2.5">
         QnA 커뮤니티
       </div>
-      <p className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[17px] leading-[normal]">
+      <p className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] dark:text-white text-[17px] leading-[normal]">
         자유롭게 의복 세탁, 관리에 대한 질문 및 의견을 나눠보세요!
       </p>
 
@@ -73,7 +73,7 @@ export const DetailedPost = ({ post }) => {
           }}
           className="flex w-[154px] h-[33px] items-center justify-center rounded-[15px] border border-solid border-[#a4a3a3]"
         >
-          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[13px] tracking-[0] leading-[normal]">
+          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] dark:text-white text-[13px] tracking-[0] leading-[normal]">
             목록으로 돌아가기
           </div>
         </button>
@@ -85,14 +85,14 @@ export const DetailedPost = ({ post }) => {
           className="w-[136px] h-[33px] gap-1 flex items-center justify-center rounded-[15px] border border-solid border-[#a4a3a3]"
         >
           <img className="w-5 h-5" alt="Pencil" src={Pencil} />
-          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[13px] leading-[normal]">
+          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] dark:text-white text-[13px] leading-[normal]">
             글 작성하기
           </div>
         </button>
       </div>
 
       <div className="border-[0.5px] border-solid border-[#a4a3a3] rounded-[10px] mb-[29px] px-[66px] py-[56px]">
-        <p className="mb-[12px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-black text-[25px] whitespace-nowrap tracking-[0] leading-[normal]">
+        <p className="mb-[12px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-black dark:text-white text-[25px] whitespace-nowrap tracking-[0] leading-[normal]">
           {post.title}
         </p>
         <div className="flex items-center gap-[9px] mb-[12px]">
@@ -104,7 +104,7 @@ export const DetailedPost = ({ post }) => {
           <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#767676] text-sm tracking-[0] leading-[normal]">
             {post.author.username}
           </div>
-          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[13px] tracking-[0] leading-[normal]">
+          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black dark:text-white text-[13px] tracking-[0] leading-[normal]">
             ｜
           </div>
           <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#b8b8b8] text-xs tracking-[0] leading-[normal]">
@@ -114,20 +114,20 @@ export const DetailedPost = ({ post }) => {
 
         <hr></hr>
 
-        <div className="my-[42px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal]">
+        <div className="my-[42px] [font-family:'Inter-Regular',Helvetica] font-normal text-black dark:text-white text-[17px] tracking-[0] leading-[normal]">
           {post.content}
         </div>
 
         <div className="flex items-center gap-[27px] mb-[38px]">
           <button className="inline-flex items-center gap-[7px] relative flex-[0_0_auto]">
             <img className="w-5 h-5" alt="ThumbUp" src={ThumbUp} />
-            <div className="text-[#555555] text-xl whitespace-nowrap [font-family:'Inter-Regular',Helvetica] font-normal tracking-[0] leading-[normal]">
+            <div className="text-[#555555] dark:text-white text-xl whitespace-nowrap [font-family:'Inter-Regular',Helvetica] font-normal tracking-[0] leading-[normal]">
               {post.like_count}
             </div>
           </button>
           <button className="inline-flex items-center gap-[7px] relative flex-[0_0_auto]">
             <img className="w-5 h-5" alt="ThumbDown" src={ThumbDown} />
-            <div className="text-[#555555] text-xl whitespace-nowrap [font-family:'Inter-Regular',Helvetica] font-normal tracking-[0] leading-[normal]">
+            <div className="text-[#555555] dark:text-white text-xl whitespace-nowrap [font-family:'Inter-Regular',Helvetica] font-normal tracking-[0] leading-[normal]">
               {post.dislike_count}
             </div>
           </button>
@@ -135,7 +135,7 @@ export const DetailedPost = ({ post }) => {
 
         <hr></hr>
 
-        <div className="mt-[36px] ml-[6px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#696969] text-[25px] whitespace-nowrap tracking-[0] leading-[normal]">
+        <div className="mt-[36px] ml-[6px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#696969] text-[25px] whitespace-nowrap tracking-[0] leading-[normal] dark:text-white">
           댓글
         </div>
 
@@ -156,13 +156,13 @@ export const DetailedPost = ({ post }) => {
                       alt="default profile"
                       src={defaultProfile}
                     />
-                    <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#767676] text-sm tracking-[0] leading-[normal]">
+                    <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#767676] text-sm tracking-[0] leading-[normal] dark:text-white">
                       {comment.author.username}
                     </div>
-                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[13px] tracking-[0] leading-[normal]">
+                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[13px] tracking-[0] leading-[normal] dark:text-white">
                       ｜
                     </div>
-                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#b8b8b8] text-xs tracking-[0] leading-[normal]">
+                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#b8b8b8] text-xs tracking-[0] leading-[normal] dark:text-white">
                       {comment.created_at.slice(0, 10)}
                     </div>
                   </div>
@@ -203,13 +203,16 @@ export const DetailedPost = ({ post }) => {
                   </div>
                 </div>
 
-                <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal]">
+                <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal] dark:text-white">
                   {comment.content}
                 </div>
               </div>
               {comment.replies.map((reply) => (
                 <div className="flex px-[20px] py-[25px] gap-[21px]">
-                  <img className="w-[25px] h-[27px]" src={replyArrow} />
+                  <img
+                    className="w-[25px] h-[27px] dark:invert"
+                    src={replyArrow}
+                  />
                   <div className="w-full">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[9px] mb-[12px]">
@@ -229,14 +232,14 @@ export const DetailedPost = ({ post }) => {
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-[11px]">
+                      <div className="flex items-center gap-[11px] ">
                         <button className="inline-flex items-center gap-[7px] flex-[0_0_auto]">
                           <img
                             className="w-[13px] h-[13px]"
                             alt="ThumbUp"
                             src={ThumbUp}
                           />
-                          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#e76565] text-[13px] tracking-[0] leading-[normal]">
+                          <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#e76565] text-[13px] tracking-[0] leading-[normal] ">
                             {reply.like_count}
                           </div>
                         </button>
@@ -253,7 +256,7 @@ export const DetailedPost = ({ post }) => {
                       </div>
                     </div>
 
-                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal]">
+                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal] dark:text-white">
                       {reply.content}
                     </div>
                   </div>
@@ -265,17 +268,17 @@ export const DetailedPost = ({ post }) => {
 
         <form
           onSubmit={onSubmit}
-          className="mt-[30px] flex w-full items-center justify-between gap-[14px] px-[25px] py-[15px] bg-[#f3f3f3] rounded-[10px]"
+          className="mt-[30px] flex w-full items-center justify-between gap-[14px] px-[25px] py-[15px] bg-[#f3f3f3] rounded-[10px] dark:bg-zinc-700 dark:border-white"
         >
           <img
-            className="w-5 h-[18px]"
+            className="w-5 h-[18px] dark:invert"
             alt="Speech Bubble"
             src={SpeechBubble}
           />
           <input
             id="content"
             onChange={handleChange}
-            className="w-full [font-family:'Inter-Regular',Helvetica] font-normal bg-[#f3f3f3] text-[#757575] text-[17px] tracking-[0] leading-[normal]"
+            className="w-full [font-family:'Inter-Regular',Helvetica] font-normal bg-[#f3f3f3] text-[#757575]  dark:text-white text-[17px] tracking-[0] leading-[normal] dark:bg-zinc-700"
             placeholder="댓글을 입력하세요"
             required
           ></input>
@@ -292,19 +295,19 @@ export const SimplePost = ({ post }) => {
   return (
     <div className="mt-[26px]">
       <Link to={`/post/${post.id}`} className="w-full flex-col">
-        <div className="flex justify-start mb-[21px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal]">
+        <div className="flex justify-start mb-[21px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[17px] tracking-[0] leading-[normal] dark:text-white">
           {post.title}
         </div>
 
         <div className="flex justify-between mb-[26px]">
           <div className="flex items-center gap-[9px]">
-            <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#767676] text-sm tracking-[0] leading-[normal]">
+            <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#767676] text-sm tracking-[0] leading-[normal] dark:text-white">
               {post.author.username}
             </div>
-            <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[13px] tracking-[0] leading-[normal]">
+            <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-black text-[13px] tracking-[0] leading-[normal] dark:text-white">
               ｜
             </div>
-            <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#b8b8b8] text-xs tracking-[0] leading-[normal]">
+            <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#b8b8b8] text-xs tracking-[0] leading-[normal] dark:text-white">
               {post.created_at.slice(0, 10)}
             </div>
           </div>

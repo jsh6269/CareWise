@@ -24,7 +24,7 @@ const UserPage = () => {
   const closeModal = (modalSetter) => modalSetter(false);
   const profileModalContent = (
     <>
-      <div className="flex flex-row mb-6">
+      <div className="flex flex-row mb-6 ">
         <img
           src={profileImage || defaultProfile}
           alt="Profile"
@@ -44,9 +44,11 @@ const UserPage = () => {
         />
       </div>
       <form className="flex flex-col gap-4">
-        <label className="text-sm">아이디 변경</label>
+        <label className="text-sm dark:text-white">아이디 변경</label>
         <input type="text" className="p-2 border border-gray-300 rounded-md" />
-        <label className="text-sm">닉네임 변경(최대 10자)</label>
+        <label className="text-sm dark:text-white">
+          닉네임 변경(최대 10자)
+        </label>
         <input type="text" className="p-2 border border-gray-300 rounded-md" />
       </form>
       <div className="flex justify-center mt-8">
@@ -158,22 +160,24 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div className="w-[1440px] h-[1150px] flex justify-center bg-white">
+    <div className="w-[1440px] h-[1150px] flex justify-center bg-white dark:bg-black">
       <div className="flex flex-col">
-        <div className="w-[1045px] h-[186px] px-[42px] mt-[75px] shadow-custom-light rounded-2xl bg-white flex flex-row gap-4 items-center">
+        <div className="w-[1045px] h-[186px] px-[42px] mt-[75px] shadow-custom-light rounded-2xl bg-white flex flex-row gap-4 items-center dark:bg-black">
           <img
             src={profileImage}
             alt="profile"
             className="w-[130px] h-[130px] border-radius-50"
           />
           <div className="ml-[53px] flex flex-col gap-[8px]">
-            <h2 className="text-[25px] font-semibold text-[#3F3F3F]">
+            <h2 className="text-[25px] font-semibold text-[#3F3F3F] dark:text-white">
               {nickname}
             </h2>
-            <p className="text-[#757575] text-[17px]">{email}</p>
+            <p className="text-[#757575] text-[17px] dark:text-white">
+              {email}
+            </p>
           </div>
           <button
-            className="ml-[424px] w-[106px] h-[33px] rounded-2xl hover:bg-[#757575] hover:text-white border border-[#757575] text-[#757575] text-[13px]"
+            className="ml-[424px] w-[106px] h-[33px] rounded-2xl hover:bg-[#757575] hover:text-white border border-[#757575] text-[#757575] text-[13px] dark:text-white"
             onClick={() => openModal(setProfileModalOpen)}
           >
             프로필 수정
@@ -213,21 +217,21 @@ const UserPage = () => {
         </ProfileModal>
 
         <div className="mt-[64px] gap-[25px] flex flex-col">
-          <h2 className="text-[25px] font-semibold text-[#3F3F3F]">
+          <h2 className="text-[25px] font-semibold text-[#3F3F3F] dark:text-white">
             QnA 커뮤니티
           </h2>
           {/*링크연결하기*/}
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <img src={pen} alt="pen" />
             <span>내가 작성한 글</span>
           </a>
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <img src={like} alt="like" />
             <span>추천한 글</span>
             <span className="ml-[32px] text-[#E86666]">{likeCount}</span>{" "}
             {/* 추천 개수 표시 */}
           </a>
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <img src={dislike} alt="dislike" />
             <span>비추천한 글</span>
             <span className="text-[#4762AB] ml-[16px]">
@@ -240,16 +244,18 @@ const UserPage = () => {
         <hr className="mt-[50px]" />
 
         <div className="mt-[48px] gap-[25px] flex flex-col">
-          <h2 className="text-[25px] font-semibold text-[#3F3F3F]">내 옷장</h2>
+          <h2 className="text-[25px] font-semibold text-[#3F3F3F] dark:text-white">
+            내 옷장
+          </h2>
           {/*링크연결하기*/}
           <Link
             to="/closet"
-            className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]"
+            className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white"
           >
             <img src={hanger} alt="hanger" />
             <span>내 옷장 보기</span>
           </Link>
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <img src={symbol} alt="symbol" />
             <span>옷장에 옷 등록하기</span>
           </a>
@@ -257,19 +263,21 @@ const UserPage = () => {
         <hr className="mt-[50px]" />
 
         <div className="mt-[48px] gap-[25px] flex flex-col">
-          <h2 className="text-[25px] font-semibold text-[#3F3F3F]">계정</h2>
+          <h2 className="text-[25px] font-semibold text-[#3F3F3F] dark:text-white">
+            계정
+          </h2>
           {/*링크연결하기*/}
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <span onClick={() => openModal(setDeveloperModalOpen)}>
               개발자 괴롭히기
             </span>
           </a>
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <span onClick={() => openModal(setPasswordModalOpen)}>
               비밀번호 변경
             </span>
           </a>
-          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A]">
+          <a className="flex flex-row gap-[23px] text-[16px] text-[#3A3A3A] dark:text-white">
             <span onClick={() => openModal(setDeleteModalOpen)}>탈퇴하기</span>
           </a>
         </div>

@@ -37,11 +37,11 @@ export const QnABoardPage = () => {
   }, [postList]);
 
   return (
-    <div className="bg-white w-[1043px] flex-col justify-center mx-auto">
-      <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[35px] leading-[normal] mt-[38px] mb-2.5">
+    <div className="bg-white w-[1043px] flex-col justify-center mx-auto dark:bg-black">
+      <div className="[font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#3f3f3f] text-[35px] leading-[normal] mt-[38px] mb-2.5 dark:text-white">
         QnA 커뮤니티
       </div>
-      <p className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[17px] leading-[normal]">
+      <p className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#757575] text-[17px] leading-[normal] dark:text-white">
         자유롭게 의복 세탁, 관리에 대한 질문 및 의견을 나눠보세요!
       </p>
 
